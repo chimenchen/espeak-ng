@@ -396,6 +396,7 @@ phsource/phonemes.stamp: \
 	phsource/ph_yoruba \
 	phsource/ph_zh \
 	phsource/ph_zh_yue \
+	phsource/ph_ipa \
 	phsource/phonemes \
 	src/espeak-ng
 	ESPEAK_DATA_PATH=$(PWD) src/espeak-ng --compile-intonations && \
@@ -544,7 +545,8 @@ dictionaries: \
 	espeak-ng-data/ur_dict \
 	espeak-ng-data/vi_dict \
 	espeak-ng-data/zh_dict \
-	espeak-ng-data/zhy_dict
+	espeak-ng-data/zhy_dict \
+	espeak-ng-data/ipa_dict
 
 af: espeak-ng-data/af_dict
 espeak-ng-data/af_dict: dictsource/af_list dictsource/af_rules dictsource/af_extra dictsource/af_emoji
@@ -856,6 +858,9 @@ dictsource/zhy_emoji:
 	else \
 		tools/emoji dictsource/en_emoji yue ${CLDR_PATH} > $@ ; \
 	fi
+
+ipa: espeak-ng-data/ipa_dict
+espeak-ng-data/ipa_dict: dictsource/ipa_list dictsource/ipa_rules dictsource/ipa_extra
 
 ##### mbrola:
 

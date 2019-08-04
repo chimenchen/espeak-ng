@@ -1544,6 +1544,7 @@ Translator *SelectTranslator(const char *name)
 		tr->langopts.break_numbers = BREAK_INDIVIDUAL;
 		break;
 	case L3('c', 'm', 'n'): // no break, just go to 'zh' case
+	case L3('i', 'p', 'a'): // no break, just go to 'zh' case
 	case L3('z', 'h', 'y'): // just go to 'zh' case
 	case L('z','h'):
 	{

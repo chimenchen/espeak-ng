@@ -1,0 +1,135 @@
+.replace
+pʰ  ph
+tʰ  th
+ʈ  t.
+ʈʰ  t.h
+ɖ  d.
+ɳ  n.
+ɲ  n^
+t͡s  ts
+t͡sʰ  tsh
+d͡z  dz
+t͡ʂ  ts.
+t͡ʂʰ  ts.h
+d͡ʐ  dz.
+ʂ  s.
+ʐ  z.
+t͡ɕ  tS;
+t͡ɕʰ  tS;h
+d͡ʑ  dZ;
+ɕ  S;
+ʑ  Z;
+kʰ  kh
+ŋ  N
+ʔ  ?
+ɦ  h.
+O  U
+æ  &
+ɐ  &"
+ɑ  A
+ɔ  O
+ə  @
+ɛ  E
+ɤ  o-
+ɨ  i"
+æi  &i
+ɐi  &"i
+ɑi  Ai
+ɑu  Au
+əi  @i
+ɛi  Ei
+ɛu  Eu
+ɤi  o-i
+ɨu  i"u
+j̈  j"
+ẅ  w"
+ɥ  y
+ɻ  r.
+ɻj  r.j
+ɻw  r.w
+ɻɥ  r.y
+
+.group p
+       p    p
+
+.group b
+       b    b
+
+.group m
+       m    m
+
+.group t
+       t    t
+
+.group d
+       d    d
+
+.group n
+       n    n
+
+.group l
+       l    l
+
+.group s
+       s    s
+
+.group z
+       z    z
+
+.group k
+       k    k
+
+.group g
+       g    g
+
+.group j
+       j    j
+
+.group h
+       h    h
+
+.group I
+       I    I
+
+.group a
+       a    a
+       ai   ai
+       au   au
+
+.group e
+       e    e
+       ei   ei
+       eu   eu
+
+.group i
+       i    i
+
+.group o
+       o    o
+       oi   oi
+
+.group u
+       u    u
+
+.group w
+       w    w
+
+//tone
+.group
+       // 1        32
+       // 2        55
+       // 3        35
+       // 4        5
+       // 5        22
+       // 6        45
+       // 7        24
+       // 8        4
+       1        33
+       2        46
+       3        52
+       4        5
+       5        11
+       6        35
+       7        41
+       8        13
+       |        _|

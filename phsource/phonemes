@@ -1879,6 +1879,8 @@ include ph_zh_yue
 phonemetable zh base1
 include ph_zh
 
+phonemetable ipa base1
+include ph_ipa
 
 phonemetable sw base1
 include ph_swahili
