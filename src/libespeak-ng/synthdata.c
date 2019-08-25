@@ -325,7 +325,7 @@ frameref_t *LookupSpect(PHONEME_TAB *this_ph, int which, FMT_PARAMS *fmt_params,
 unsigned char *GetEnvelope(int index)
 {
 	if (index == 0) {
-		fprintf(stderr, "espeak: No envelope\n");
+		// fprintf(stderr, "espeak: No envelope\n");
 		return envelope_data[0]; // not found, use a default envelope
 	}
 	return (unsigned char *)&phondata_ptr[index];
