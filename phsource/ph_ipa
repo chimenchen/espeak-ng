@@ -99,6 +99,11 @@ phoneme 33
   // vietnamese: Tone(27, 25, envelope/p_level, NULL) // 28 29
 endphoneme
 
+phoneme 335  // FIXME
+  stress
+  Tone(34, 60, envelope/p_214, envelope/vi_5amp)
+endphoneme
+
 phoneme 34
   stress
   Tone(30, 40, envelope/p_rise, NULL)
@@ -204,10 +209,11 @@ phoneme mh
   import_phoneme m  // FIXME: voiceless
 endphoneme
 
-phoneme m
+phoneme m0
   vcd blb nas
   Vowelout f1=2 f2=1700 -300 250  f3=-100 80  rms=20 brk
-  lengthmod 4
+  // lengthmod 4
+  lengthmod 2
 
   NextVowelStarts
     VowelStart(m/m@)
@@ -218,10 +224,10 @@ phoneme m
     VowelStart(m/mu)
   EndSwitch
 
-  IF nextPh(isNotVowel) THEN
-    length 190
-    FMT(m/m_)
-  ENDIF
+  // IF nextPh(isNotVowel) THEN
+    // length 190
+    // FMT(m/m_)
+  // ENDIF
   FMT(m/_m)
 endphoneme
 
@@ -234,6 +240,9 @@ phoneme t
   // Vowelout f1=1 f2=1700 -300 250  f3=-100 80  rms=20
   Vowelout f1=1 f2=1700 -300 250  f3=-100 80  rms=20 len=15
   // WAV(ustop/t_unasp2, 40)
+  // IF thisPh(isWordEnd) THEN
+    // WAV(NULL)
+  // ENDIF
   WAV(ustop/t)
 endphoneme
 
@@ -577,6 +586,9 @@ phoneme k
   Vowelin f1=1  f2=1700 0 200  f3=-300 80 f4
   // Vowelout f1=1 f2=1700 0 200  f3=-300 80 f4 rms=30
   Vowelout f1=1 f2=1700 0 200  f3=-300 80 f4 len=15
+  IF thisPh(isWordEnd) THEN
+    WAV(NULL)
+  ENDIF
   WAV(ustop/k_unasp_, 75)
 endphoneme
 
@@ -644,7 +656,9 @@ phoneme j
   liquid pal
   lengthmod 1
 
-  IF nextPh(isVowel) THEN
+  IF nextPhW(i) THEN
+    WAV(NULL)
+  ELIF nextPh(isVowel) THEN
     NextVowelStarts
       VowelStart(j/j@)
       VowelStart(j/ja)
@@ -723,6 +737,7 @@ phoneme b`
   FMT(b/b) addWav(x/b)
 endphoneme
 
+
 phoneme f
   vls lbd frc
   ipa f
@@ -734,6 +749,27 @@ phoneme f
     WAV(ufric/f_)
   ENDIF
   WAV(ufric/f)
+endphoneme
+
+phoneme fh
+  vls lbd frc
+  ipa fʰ
+  lengthmod 2
+  Vowelout f1=0  f2=1000 -500 -350  f3=-200 80
+  WAV(ufric/f) addWav(h/h_, 150)  // FIXME
+endphoneme
+
+phoneme v.        // approximant, not fricative
+  vcd lbd frc
+  ipa ʋ
+  lengthmod 6
+  voicingswitch f
+  Vowelin  f1=0  f2=1000 -300 -200  f3=-300 100
+  Vowelout f1=0  f2=1000 -500 -300  f3=-300 60  len=50
+  IF nextPh(isPause2) THEN
+    FMT(voc/v_)
+  ENDIF
+  FMT(voc/v)
 endphoneme
 
 phoneme v
@@ -785,16 +821,24 @@ phoneme tSh  // FIXME: bellow is tʂʰ
   WAV(ustop/ts_rfx)
 endphoneme
 
-phoneme S  // FIXME: bellow is ʂ
-  vls pla frc sib
-  ipa ʃ
-  lengthmod 3
-  Vowelin  f1=0  f2=1800 -100 300  f3=-300 80
-  Vowelout f1=0  f2=1800 -100 300  f3=-300 80
-  IF nextPh(isPause2) THEN
-    WAV(ufric/sh_rfx, 50)
-  ENDIF
-  WAV(ufric/sh_rfx, 50)   // quieter
+phoneme Sh
+  import_phoneme base1/S  // FIXME: ʃ
+  // ipa ʃʰ
+endphoneme
+
+phoneme S
+  import_phoneme base1/S
+  // ipa ʃ
+endphoneme
+
+phoneme Z
+  import_phoneme base1/Z
+  // ipa ʒ
+endphoneme
+
+phoneme dZ
+  import_phoneme base1/dZ
+  // ipa dʒ
 endphoneme
 
 phoneme ss
@@ -832,6 +876,26 @@ phoneme x  // FIXME
   WAV(ufric/x_hr, 20)
 endphoneme
 
+phoneme Q
+  vcd vel frc
+  ipa ɣ
+  lengthmod 6
+  Vowelin f1=2  f2=2300 200 400  f3=-100 80
+  Vowelout f1=2  f2=2300 250 300  f3=-300 80 brk
+
+  IF KlattSynth THEN
+    IF nextPh(isPause2) THEN
+      FMT(klatt/qqh_) addWav(vocw/Q_)
+    ENDIF
+    FMT(klatt/qqh) addWav(vocw/Q)
+  ENDIF
+
+  IF nextPh(isPause2) THEN
+    FMT(voc/Q_) addWav(vocw/Q_)
+  ENDIF
+  FMT(voc/Q) addWav(vocw/Q)
+endphoneme
+
 phoneme rh  // FIXME: placeholder
   liquid rfx vls
   ChangePhoneme(r)
@@ -854,6 +918,19 @@ phoneme r  // FIXME
   Vowelin  f1=2 f2=1400 -400 300  f3=-400 80 len=20
 
   FMT(r3/@tap_rfx)
+endphoneme
+
+phoneme r1
+  liquid trl
+  lengthmod 6
+  ipa r
+  Vowelin  f1=0  f2=1700 -300 300  f3=-300 80
+  Vowelout f1=2  f2=1700 -300 300  f3=-300 80 brk
+  FMT(r3/r_trill_short) addWav(r3/r_trill.wav, 50)
+endphoneme
+
+phoneme r2
+  import_phoneme base1/R
 endphoneme
 
 //====================================================
@@ -923,13 +1000,26 @@ endphoneme
 phoneme i
   vwl  starttype #i  endtype #i
   IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
-	length 110
+	length 100
   ELIF nextPh(isVowel) THEN
 	length 90
   ELSE
-    length 200
+    length 220
   ENDIF
   FMT(vowel/i)
+endphoneme
+
+phoneme ir
+  vwl  starttype #i  endtype #i
+  ipa i˞
+  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
+	length 140
+  ELIF nextPh(isVowel) THEN
+	length 120
+  ELSE
+    length 230
+  ENDIF
+  FMT(vowelr/i_r)
 endphoneme
 
 phoneme o
@@ -1008,6 +1098,24 @@ phoneme A
   FMT(vowel/a_3)
 endphoneme
 
+phoneme A.
+  vwl starttype #a endtype #a
+  ipa ɒ
+  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
+	length 100
+  ELIF nextPhW(n) OR nextPhW(m) OR nextPhW(N) THEN
+	length 150
+  ELIF nextPh(isNotVowel) THEN
+	length 220
+  ELSE
+    length 250
+  ENDIF
+  IF nextPh(N) THEN
+    FMT(vowel/aa_5)
+  ENDIF
+  FMT(vowel/a_2)
+endphoneme
+
 phoneme O
   vwl starttype #o endtype #o
   ipa ɔ
@@ -1028,6 +1136,17 @@ phoneme @
     length 200
   ENDIF
   FMT(vowel/@)
+endphoneme
+
+phoneme @;
+  vwl  starttype #@  endtype #@
+  ipa ɘ
+  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
+	length 100
+  ELSE
+    length 200
+  ENDIF
+  FMT(vowel/@_4)
 endphoneme
 
 phoneme E
@@ -1061,6 +1180,17 @@ phoneme i"
   ENDIF
   ipa ɨ
   FMT(vowel/i#_6)
+endphoneme
+
+phoneme y"
+  vwl starttype #i endtype #i
+  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
+	length 90
+  ELSE
+    length 180
+  ENDIF
+  ipa ʉ
+  FMT(vowel/yy_4) // FIXME: placeholder
 endphoneme
 
 phoneme ee  // FIXME: bellow is e
@@ -1434,8 +1564,8 @@ phoneme w"
   ipa ẅ
   unstressed
   vwl  starttype #u  endtype #u
-  length 80
-  IfNextVowelAppend(;)
+  length 40
+  // IfNextVowelAppend(;)
   FMT(vowel/yy_4) // FIXME: placeholder
 endphoneme
 
@@ -1450,16 +1580,40 @@ phoneme y
   FMT(vowel/y_2)
 endphoneme
 
-phoneme r.  // FIXME: placeholder
+phoneme r;  // FIXME: placeholder. deprecated.
   vcd alv flp rhotic
   ipa ɻ
   unstressed
-  lengthmod 1
+  lengthmod 2
   Vowelout f1=3 f2=1600 -300 300  f3=-300 80 rms=35 len=15
   Vowelin f1=2  f2=1600 -300 300  f3=-100 80 len=20
 
   FMT(r3/@tap)
 endphoneme
+
+phoneme r.    //   retroflex
+  liquid rfx
+  ipa ɻ
+  lengthmod 3
+  Vowelout f1=3 f2=1400 -400 300  f3=-400 80 rms=35 len=15 colr=2
+  Vowelin f1=2  f2=1400 -400 300  f3=-400 80 len=20
+
+  IF nextPh(isNotVowel) THEN
+    FMT(r3/@tap_rfx_)
+  ENDIF
+  FMT(r3/@tap_rfx)
+endphoneme
+
+phoneme *.  // copied from Japanese phoneme r`
+  liquid rfx
+  ipa ɽ
+  lengthmod 3
+  Vowelout f1=3 f2=1400 -400 300  f3=-400 80 rms=35 len=15 colr=2
+  Vowelin  f1=2 f2=1400 -400 300  f3=-400 80 len=20
+
+  FMT(r3/@tap_rfx)
+endphoneme
+
 
 phoneme ui
   vwl  starttype #u  endtype #i
