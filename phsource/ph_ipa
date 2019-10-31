@@ -240,9 +240,10 @@ phoneme t
   // Vowelout f1=1 f2=1700 -300 250  f3=-100 80  rms=20
   Vowelout f1=1 f2=1700 -300 250  f3=-100 80  rms=20 len=15
   // WAV(ustop/t_unasp2, 40)
-  // IF thisPh(isWordEnd) THEN
-    // WAV(NULL)
-  // ENDIF
+  IF thisPh(isWordEnd) THEN
+     // WAV(NULL)
+     FMT(d/d_)
+  ENDIF
   WAV(ustop/t)
 endphoneme
 
@@ -936,6 +937,172 @@ endphoneme
 //====================================================
 //  Vowels and Diphtnongs
 //====================================================
+
+procedure vowel_length_a_long
+  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
+	length 180
+  ELIF nextPhW(n) OR nextPhW(m) OR nextPhW(N) THEN
+	length 260
+  ELIF nextPh(isNotVowel) THEN
+	length 300
+  ELSE
+    length 370
+  ENDIF
+endprocedure
+
+procedure vowel_length_a
+  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
+	length 150
+  ELIF nextPhW(n) OR nextPhW(m) OR nextPhW(N) THEN
+	length 180
+  ELIF nextPh(isNotVowel) THEN
+	length 200
+  ELSE
+    length 250
+  ENDIF
+endprocedure
+
+procedure vowel_length_@
+  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
+	length 140
+  ELIF nextPhW(n) OR nextPhW(m) OR nextPhW(N) THEN
+	length 160
+  ELIF nextPh(isNotVowel) THEN
+	length 185
+  ELSE
+    length 230
+  ENDIF
+endprocedure
+
+procedure vowel_length_o_long
+  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
+	length 170
+  ELIF nextPhW(n) OR nextPhW(m) OR nextPhW(N) THEN
+	length 230
+  ELIF nextPh(isNotVowel) THEN
+	length 270
+  ELSE
+    length 330
+  ENDIF
+endprocedure
+
+procedure vowel_length_o
+  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
+	length 135
+  ELIF nextPhW(n) OR nextPhW(m) OR nextPhW(N) THEN
+	length 160
+  ELIF nextPh(isNotVowel) THEN
+	length 180
+  ELSE
+    length 220
+  ENDIF
+endprocedure
+
+procedure vowel_length_e_long
+  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
+	length 170
+  ELIF nextPhW(n) OR nextPhW(m) OR nextPhW(N) THEN
+	length 230
+  ELIF nextPh(isNotVowel) THEN
+	length 270
+  ELSE
+    length 330
+  ENDIF
+endprocedure
+
+procedure vowel_length_e
+  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
+	length 135
+  ELIF nextPhW(n) OR nextPhW(m) OR nextPhW(N) THEN
+	length 160
+  ELIF nextPh(isNotVowel) THEN
+	length 180
+  ELSE
+    length 220
+  ENDIF
+endprocedure
+
+procedure vowel_length_e_short
+  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
+	length 90
+  ELIF nextPhW(n) OR nextPhW(m) OR nextPhW(N) THEN
+	length 100
+  ELIF nextPh(isNotVowel) THEN
+	length 120
+  ELSE
+    length 150
+  ENDIF
+endprocedure
+
+procedure vowel_length_u_long
+  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
+	length 140
+  ELIF nextPhW(n) OR nextPhW(m) OR nextPhW(N) THEN
+	length 200
+  ELIF nextPh(isNotVowel) THEN
+	length 230
+  ELSE
+    length 280
+  ENDIF
+endprocedure
+
+procedure vowel_length_u
+  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
+	length 130
+  ELIF nextPhW(n) OR nextPhW(m) OR nextPhW(N) THEN
+	length 150
+  ELIF nextPhW(i) THEN
+	length 170
+  ELIF nextPh(isVowel) THEN
+	length 80
+  ELIF nextPh(isNotVowel) THEN
+	length 170
+  ELSE
+    length 210
+  ENDIF
+endprocedure
+
+procedure vowel_length_i_long
+  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
+	length 180
+  ELIF nextPhW(n) OR nextPhW(m) OR nextPhW(N) THEN
+	length 210
+  ELIF nextPh(isNotVowel) THEN
+	length 240
+  ELSE
+    length 300
+  ENDIF
+endprocedure
+
+procedure vowel_length_i
+  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
+	length 120
+  ELIF nextPhW(n) OR nextPhW(m) OR nextPhW(N) THEN
+	length 150
+  ELIF nextPhW(isVowel) OR nextPhW(w) THEN
+	length 90
+  ELIF thisPh(isWordEnd) AND prevPhW(isNotVowel) THEN
+	length 200
+  ELSE
+    length 180
+  ENDIF
+endprocedure
+
+procedure vowel_length_i_short
+  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
+	length 100
+  ELIF nextPhW(n) OR nextPhW(m) OR nextPhW(N) THEN
+	length 130
+  ELIF nextPhW(isVowel) OR nextPhW(w) THEN
+	length 50
+  ELIF thisPh(isWordEnd) AND prevPhW(isNotVowel) THEN
+	length 130
+  ELSE
+    length 120
+  ENDIF
+endprocedure
+
+
 phoneme ·
   vwl   starttype #@  endtype #@
   unstressed
@@ -953,7 +1120,7 @@ endphoneme
 phoneme I
   vwl  starttype #i  endtype #i
   ipa Ie
-  length 130
+  CALL vowel_length_i_short  // 130
   IfNextVowelAppend(;)
   FMT(vowel/ii_2)  // FIXME: ɪ
 endphoneme
@@ -971,64 +1138,38 @@ endphoneme
 
 phoneme a
   vwl starttype #a endtype #a
-  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
-	length 100
-  ELIF nextPhW(n) OR nextPhW(m) OR nextPhW(N) THEN
-	length 150
-  ELIF nextPh(isNotVowel) THEN
-	length 220
-  ELSE
-    length 250
-  ENDIF
+  CALL vowel_length_a
   FMT(vowel/a)
 endphoneme
 
 phoneme e
   vwl starttype #e endtype #e
-  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
-	length 100
-  ELIF nextPhW(n) OR nextPhW(m) OR nextPhW(N) THEN
-	length 120
-  ELIF nextPh(isNotVowel) THEN
-	length 180
-  ELSE
-    length 220
-  ENDIF
+  CALL vowel_length_e
+  FMT(vowel/ee_1)
+endphoneme
+
+phoneme e-
+  vwl starttype #e endtype #e
+  CALL vowel_length_e_short
   FMT(vowel/ee_1)
 endphoneme
 
 phoneme i
   vwl  starttype #i  endtype #i
-  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
-	length 100
-  ELIF nextPh(isVowel) THEN
-	length 90
-  ELSE
-    length 220
-  ENDIF
+  CALL vowel_length_i
   FMT(vowel/i)
 endphoneme
 
 phoneme ir
   vwl  starttype #i  endtype #i
   ipa i˞
-  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
-	length 140
-  ELIF nextPh(isVowel) THEN
-	length 120
-  ELSE
-    length 230
-  ENDIF
+  CALL vowel_length_i  // 140, next vowel 120, 230
   FMT(vowelr/i_r)
 endphoneme
 
 phoneme o
   vwl starttype #o endtype #o
-  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
-	length 90
-  ELSE
-    length 180
-  ENDIF
+  CALL vowel_length_e  // 90, , 180
   // FMT(vowel/o)
   IF nextPh(N) THEN
     FMT(vnasal/oo_n2)
@@ -1044,54 +1185,28 @@ endphoneme
 
 phoneme u
   vwl starttype #u endtype #u
-  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
-	length 90
-  ELIF nextPh(isVowel) THEN
-    length 20
-  ELSE
-    length 180
-  ENDIF
+  CALL vowel_length_u  // 90, next vowel 20, 180
   FMT(vowel/u)
 endphoneme
 
 phoneme &
   vwl  starttype #e  endtype #e
   ipa æ
-  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
-	length 100
-  ELIF nextPhW(n) OR nextPhW(m) OR nextPhW(N) THEN
-	length 150
-  ELIF nextPh(isNotVowel) THEN
-	length 220
-  ELSE
-    length 250
-  ENDIF
+  CALL vowel_length_a  // 100, 150, 220, 250
   FMT(vowel/ee_6)
 endphoneme
 
 phoneme &"
   vwl  starttype #@  endtype #@
   ipa ɐ
-  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
-	length 100
-  ELSE
-    length 200
-  ENDIF
+  CALL vowel_length_@  // 100, , 200
   FMT(vowel/a#_3)
 endphoneme
 
 phoneme A
   vwl starttype #a endtype #a
   ipa ɑ
-  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
-	length 100
-  ELIF nextPhW(n) OR nextPhW(m) OR nextPhW(N) THEN
-	length 150
-  ELIF nextPh(isNotVowel) THEN
-	length 220
-  ELSE
-    length 250
-  ENDIF
+  CALL vowel_length_a  // 100, 150, 220, 250
   IF nextPh(N) THEN
     FMT(vowel/aa_2)
   ENDIF
@@ -1101,15 +1216,7 @@ endphoneme
 phoneme A.
   vwl starttype #a endtype #a
   ipa ɒ
-  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
-	length 100
-  ELIF nextPhW(n) OR nextPhW(m) OR nextPhW(N) THEN
-	length 150
-  ELIF nextPh(isNotVowel) THEN
-	length 220
-  ELSE
-    length 250
-  ENDIF
+  CALL vowel_length_a  // 100, 150, 220, 250
   IF nextPh(N) THEN
     FMT(vowel/aa_5)
   ENDIF
@@ -1119,161 +1226,89 @@ endphoneme
 phoneme O
   vwl starttype #o endtype #o
   ipa ɔ
-  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
-	length 80
-  ELSE
-    length 150
-  ENDIF
+  CALL vowel_length_o  // 80, , 150
   FMT(vowel/oo_2)
 endphoneme
 
 phoneme @
   vwl  starttype #@  endtype #@
   ipa ə
-  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
-	length 100
-  ELSE
-    length 200
-  ENDIF
+  CALL vowel_length_@  // 100, , 200
   FMT(vowel/@)
 endphoneme
 
 phoneme @;
   vwl  starttype #@  endtype #@
   ipa ɘ
-  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
-	length 100
-  ELSE
-    length 200
-  ENDIF
+  CALL vowel_length_@  // 100, , 200
   FMT(vowel/@_4)
 endphoneme
 
 phoneme E
   vwl starttype #e endtype #e
   ipa ɛ
-  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
-	length 90
-  ELSE
-    length 200
-  ENDIF
+  CALL vowel_length_e  // 90, , 200
   FMT(vowel/ee_5)
 endphoneme
 
 phoneme o-
   vwl  starttype #o  endtype #o
   ipa ɤ
-  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
-	length 80
-  ELSE
-    length 130
-  ENDIF
+  CALL vowel_length_o  // 80, , 130
   FMT(vowel/8)
 endphoneme
 
 phoneme i"
   vwl starttype #i endtype #i
-  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
-	length 90
-  ELSE
-    length 180
-  ENDIF
   ipa ɨ
+  CALL vowel_length_i  // 90, , 180
   FMT(vowel/i#_6)
 endphoneme
 
 phoneme y"
   vwl starttype #i endtype #i
-  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
-	length 90
-  ELSE
-    length 180
-  ENDIF
   ipa ʉ
+  CALL vowel_length_i  // 90, , 180
   FMT(vowel/yy_4) // FIXME: placeholder
 endphoneme
 
 phoneme ee  // FIXME: bellow is e
   vwl starttype #e endtype #e
   ipa E
-  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
-	length 100
-  ELSE
-    length 220
-  ENDIF
+  CALL vowel_length_e  // 100, , 220
   FMT(vowel/ee_1)
 endphoneme
 
 phoneme a:
   vwl starttype #a endtype #a
-  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
-	length 150
-  ELIF nextPhW(n) OR nextPhW(m) OR nextPhW(N) THEN
-	length 200
-  ELIF nextPh(isNotVowel) THEN
-	length 280
-  ELSE
-    length 320
-  ENDIF
+  CALL vowel_length_a_long
   FMT(vowel/a)
 endphoneme
 
 phoneme e:
   vwl starttype #e endtype #e
-  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
-	length 150
-  ELIF nextPhW(n) OR nextPhW(m) OR nextPhW(N) THEN
-	length 200
-  ELIF nextPh(isNotVowel) THEN
-	length 280
-  ELSE
-    length 300
-  ENDIF
+  CALL vowel_length_e_long
   FMT(vowel/ee_1)
 endphoneme
 
 phoneme i:
   vwl  starttype #i  endtype #i
   ipa iː
-  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
-	length 120
-  ELIF nextPhW(n) OR nextPhW(m) OR nextPhW(N) THEN
-	length 150
-  ELIF nextPh(isNotVowel) THEN
-	length 220
-  ELSE
-    length 250
-  ENDIF
+  CALL vowel_length_i_long
   FMT(vowel/i)
 endphoneme
 
 phoneme o:
   vwl starttype #o endtype #o
   ipa oː
-  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
-	length 120
-  ELIF nextPhW(n) OR nextPhW(m) OR nextPhW(N) THEN
-	length 150
-  ELIF nextPh(isNotVowel) THEN
-	length 220
-  ELSE
-    length 250
-  ENDIF
+  CALL vowel_length_o_long
   FMT(vowel/o)
 endphoneme
 
 phoneme u:
   vwl starttype #u endtype #u
   ipa uː
-  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
-	length 120
-  ELIF nextPhW(n) OR nextPhW(m) OR nextPhW(N) THEN
-	length 150
-  ELIF nextPh(isNotVowel) THEN
-	length 220
-  ELSE
-    length 250
-  ENDIF
+  CALL vowel_length_u_long
   FMT(vowel/u)
 endphoneme
 
@@ -1281,21 +1316,21 @@ phoneme u-:
   // FIXME: bellow is ipa ʉ
   ipa ɯ:
   vwl starttype #u endtype #u
-  length 200
+  CALL vowel_length_u_long
   FMT(vowel/u#_2)
 endphoneme
 
 phoneme Y
   vwl starttype #@ endtype #@
   ipa ø
-  length 180
+  CALL vowel_length_@
   FMT(vowel/y#)
 endphoneme
 
 phoneme W
   vwl starttype #@ endtype #@
   ipa œ
-  length 180
+  CALL vowel_length_@
   FMT(vowel/oe)
 endphoneme
 
@@ -1310,7 +1345,7 @@ endphoneme
 phoneme u-
   ipa ɯ
   vwl starttype #u endtype #u
-  length 130
+  CALL vowel_length_u  // length 130
   // FMT(vowel/u_bck2)
   FMT(vowel/u#_2)
 endphoneme
@@ -1318,6 +1353,7 @@ endphoneme
 phoneme @.  // FIXME: copied from zh_yue phoneme eo
   vwl  starttype #@  endtype #@
   ipa ɵ
+  CALL vowel_length_@  // length 170
   length 170
   FMT(vowel/8_3)
 endphoneme
@@ -1325,11 +1361,7 @@ endphoneme
 phoneme U
   vwl starttype #u endtype #u
   ipa ʊ
-  IF nextPhW(p) OR nextPhW(t) OR nextPhW(k) OR nextPhW(?) THEN
-	length 90
-  ELSE
-    length 180
-  ENDIF
+  CALL vowel_length_u  // 90, , 180
   FMT(vowel/uu_2)
 endphoneme
 
@@ -1342,7 +1374,7 @@ endphoneme
 phoneme V
   vwl  starttype #a  endtype #@
   ipa ʌ
-  length 140
+  CALL vowel_length_@  // 140
   FMT(vowel/V_2)
 endphoneme
 
@@ -1356,7 +1388,7 @@ endphoneme
 phoneme au
   vwl starttype #a endtype #u
   ipa au
-  length 200
+  length 250
   FMT(vdiph/au_2)
 endphoneme
 
