@@ -1543,6 +1543,8 @@ static void CompileToneSpec(void)
 
 	pitch1 = NextItemBrackets(tNUMBER, 2);
 	pitch2 = NextItemBrackets(tNUMBER, 3);
+    pitch1 += 20;
+    pitch2 += 20;
 
 	if (item_terminator == ',') {
 		NextItemBrackets(tSTRING, 3);

@@ -1543,8 +1543,15 @@ Translator *SelectTranslator(const char *name)
 		tr->langopts.numbers = 1;
 		tr->langopts.break_numbers = BREAK_INDIVIDUAL;
 		break;
+	case L3('i', 'p', 'a'):
+    {
+        tr->langopts.stress_flags = S_NO_DIM; // don't automatically set diminished stress (may be set in the intonation module)
+        tr->langopts.tone_language = 1; // Tone language, use  CalcPitches_Tone() rather than CalcPitches()
+        tr->langopts.tone_numbers = 1; // a number after letters indicates a tone number (eg. pinyin or jyutping)
+        tr->langopts.ideographs = 1;
+        break;
+    }
 	case L3('c', 'm', 'n'): // no break, just go to 'zh' case
-	case L3('i', 'p', 'a'): // no break, just go to 'zh' case
 	case L3('z', 'h', 'y'): // just go to 'zh' case
 	case L('z','h'):
 	{
