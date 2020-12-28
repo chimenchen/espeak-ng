@@ -1655,6 +1655,13 @@ phoneme &"i
   FMT(vdiph/ai_3)  // FIXME: placeholder
 endphoneme
 
+phoneme A.i
+  vwl starttype #a endtype #i
+  ipa ɒi
+  length 250
+  FMT(vdiph/ai_6)  // FIXME: placeholder
+endphoneme
+
 phoneme Ai
   vwl  starttype #a  endtype #i
   ipa ɑi
@@ -1774,6 +1781,12 @@ phoneme u~
 endphoneme
 
 // TODO: ai~, au~, oi~, ou~, ui~
+phoneme ui
+  vwl  starttype #u  endtype #i
+  unstressed
+  length 250
+  FMT(vdiph/ui)
+endphoneme
 
 phoneme j"
   vwl starttype #i endtype #i
@@ -1898,11 +1911,4 @@ phoneme *.  // copied from Japanese phoneme r`
   FMT(r3/@tap_rfx)
 endphoneme
 
-
-phoneme ui
-  vwl  starttype #u  endtype #i
-  unstressed
-  length 250
-  FMT(vdiph/ui)
-endphoneme
 
