@@ -180,11 +180,11 @@ typedef struct {
 // a clause translated into phoneme codes (first stage)
 typedef struct {
 	unsigned short synthflags; // NOTE Put shorts on 32bit boundaries, because of RISC OS compiler bug?
-	unsigned char phcode;
+	unsigned short phcode;
 	unsigned char stresslevel;
 	unsigned short sourceix;  // ix into the original source text string, only set at the start of a word
 	unsigned char wordstress; // the highest level stress in this word
-	unsigned char tone_ph;    // tone phoneme to use with this vowel
+	unsigned short tone_ph;    // tone phoneme to use with this vowel
 } PHONEME_LIST2;
 
 #define PHLIST_START_OF_WORD     1
@@ -195,11 +195,11 @@ typedef struct {
 typedef struct {
 	// The first section is a copy of PHONEME_LIST2
 	unsigned short synthflags;
-	unsigned char phcode;
+	unsigned short phcode;
 	unsigned char stresslevel;
 	unsigned short sourceix;  // ix into the original source text string, only set at the start of a word
 	unsigned char wordstress; // the highest level stress in this word
-	unsigned char tone_ph;    // tone phoneme to use with this vowel
+	unsigned short tone_ph;    // tone phoneme to use with this vowel
 
 	PHONEME_TAB *ph;
 	unsigned int length;  // length_mod
@@ -209,9 +209,9 @@ typedef struct {
 	unsigned char postpause;
 	unsigned char amp;
 	unsigned char newword;   // bit flags, see PHLIST_(START|END)_OF_*
-	unsigned char pitch1;
-	unsigned char pitch2;
-	unsigned char std_length;
+	unsigned short pitch1;
+	unsigned short pitch2;
+	unsigned int std_length;
 	unsigned int phontab_addr;
 	int sound_param;
 } PHONEME_LIST;

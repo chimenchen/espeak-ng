@@ -192,16 +192,17 @@ const char *WordToString2(unsigned int word)
 
 static const char *LookupSpecial(Translator *tr, const char *string, char *text_out)
 {
+	DEBUG_PRINT("DEBUG 195 LookupSpecial %s\n", string);
 	unsigned int flags[2];
-	char phonemes[55];
-	char phonemes2[55];
+	int phonemes[55];
+	char phonemes2_str[55];
 	char *string1 = (char *)string;
 
 	flags[0] = flags[1] = 0;
 	if (LookupDictList(tr, &string1, phonemes, flags, 0, NULL)) {
 		SetWordStress(tr, phonemes, flags, -1, 0);
-		DecodePhonemes(phonemes, phonemes2);
-		sprintf(text_out, "[\002%s]]", phonemes2);
+		DecodePhonemes(phonemes, phonemes2_str);
+		sprintf(text_out, "[\002%s]]", phonemes2_str);
 		return text_out;
 	}
 	return NULL;
@@ -215,7 +216,7 @@ static const char *LookupCharName(Translator *tr, int c, int only)
 	int ix;
 	unsigned int flags[2];
 	char single_letter[24];
-	char phonemes[60];
+	int phonemes[60];
 	char phonemes2[60];
 	const char *lang_name = NULL;
 	char *string;

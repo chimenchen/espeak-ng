@@ -1,0 +1,19 @@
+language variant
+name female7
+gender female
+
+pitch 250 350
+
+formant 0 115  120 150
+formant 1 120  90 160
+formant 2 130  70 150
+formant 3 120  60 180
+formant 4 125  60 180
+formant 5 125  50 150
+formant 6 120  40 150
+formant 7 120  50 150
+formant 8 120  40 150
+voicing 80
+
+// breath 0 2 3 3 3 3 3 2
+

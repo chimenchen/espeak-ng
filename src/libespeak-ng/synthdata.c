@@ -138,14 +138,36 @@ espeak_ng_STATUS LoadPhData(int *srate, espeak_ng_ERROR_CONTEXT *context)
 	p += 4;
 
 	for (ix = 0; ix < n_phoneme_tables; ix++) {
+#if 0
 		n_phonemes = p[0];
 		phoneme_tab_list[ix].n_phonemes = p[0];
+#else
+		// using 2-bytes for n_phonemes, since n_phonemes may > 256
+		n_phonemes = (p[0] * 256) + p[1];
+		phoneme_tab_list[ix].n_phonemes = n_phonemes;
+		p += 1;
+#endif
+
 		phoneme_tab_list[ix].includes = p[1];
 		p += 4;
 		memcpy(phoneme_tab_list[ix].name, p, N_PHONEME_TAB_NAME);
 		p += N_PHONEME_TAB_NAME;
 		phoneme_tab_list[ix].phoneme_tab_ptr = (PHONEME_TAB *)p;
 		p += (n_phonemes * sizeof(PHONEME_TAB));
+
+#ifdef DEBUG_CC
+		if (0 == strcmp(phoneme_tab_list[ix].name, "ipa")) {
+			DEBUG_PRINT("DEBUG 150 ix=%d, n_phonemes=%d, %s\n", ix, n_phonemes, phoneme_tab_list[ix].name);
+
+			PHONEME_TAB *phtab2;
+			phtab2 = phoneme_tab_list[ix].phoneme_tab_ptr;
+			int ix2;
+			for (ix2 = 0; ix2 < phoneme_tab_list[ix].n_phonemes; ix2++) {
+				DEBUG_PRINT("DEBUG 150 ix2=%d, code=%d, type=%d, %s\n",
+						ix2, phtab2[ix2].code, phtab2[ix2].type, WordToString(phtab2[ix2].mnemonic));
+			}
+		}
+#endif
 	}
 
 	if (phoneme_tab_number >= n_phoneme_tables)
@@ -231,6 +253,8 @@ frameref_t *LookupSpect(PHONEME_TAB *this_ph, int which, FMT_PARAMS *fmt_params,
 		frames_buf[ix].frame = frame;
 		frames_buf[ix].frflags = frame->frflags;
 		frames_buf[ix].length = frame->length;
+		DEBUG_PRINT("DEBUG 256: frames_buf[%d].length=%d, %d\n",
+				ix, frames_buf[ix].length, frame->length);
 		if (frame->frflags & FRFLAG_VOWEL_CENTRE)
 			seq_break = ix;
 	}
@@ -356,6 +380,9 @@ static void SetUpPhonemeTable(int number, bool recursing)
 
 		if (recursing == 0)
 			phoneme_tab_flags[ph_code] |= 1; // not inherited
+
+		DEBUG_PRINT("DEBUG 379: phoneme_tab[%d] = &phtab[%d], %s\n", ph_code, ix,
+				WordToString(phtab[ix].mnemonic));
 	}
 }
 
@@ -377,8 +404,10 @@ int LookupPhonemeTable(const char *name)
 			break;
 		}
 	}
-	if (ix == n_phoneme_tables)
+	// DEBUG_PRINT("DEBUG 401: LookupPhonemeTable %s, %d\n", name, ix);
+	if (ix == n_phoneme_tables) {
 		return -1;
+	}
 
 	return ix;
 }
@@ -791,6 +820,9 @@ void InterpretPhoneme(Translator *tr, int control, PHONEME_LIST *plist, PHONEME_
 
 	memset(phdata, 0, sizeof(PHONEME_DATA));
 	phdata->pd_param[i_SET_LENGTH] = ph->std_length;
+	DEBUG_PRINT("DEBUG 823: phdata->pd_param[i_SET_LENGTH]=%d, %s\n",
+			phdata->pd_param[i_SET_LENGTH],
+			WordToString(ph->mnemonic));
 	phdata->pd_param[i_LENGTH_MOD] = ph->length_mod;
 
 	if (ph->program == 0)
@@ -839,6 +871,10 @@ void InterpretPhoneme(Translator *tr, int control, PHONEME_LIST *plist, PHONEME_
 				phdata->ipa_string[ix] = 0;
 			} else if (instn2 < N_PHONEME_DATA_PARAM) {
 				phdata->pd_param[instn2] = data;
+				if (instn2 == i_SET_LENGTH) {
+					DEBUG_PRINT("DEBUG 875: pd_param[i_SET_LENGTH]=%d, %s\n",
+							data, WordToString(ph->mnemonic));
+				}
 				if ((instn2 == i_CHANGE_PHONEME) && (control & 0x100)) {
 					// found ChangePhoneme() in PhonemeList mode, exit
 					end_flag = 1;
@@ -987,6 +1023,7 @@ void InterpretPhoneme(Translator *tr, int control, PHONEME_LIST *plist, PHONEME_
 		memcpy(&worddata->prev_vowel, &plist[0], sizeof(PHONEME_LIST));
 
 	plist->std_length = phdata->pd_param[i_SET_LENGTH];
+	DEBUG_PRINT("DEBUG 1026: plist->std_length=%d, %s\n", plist->std_length, WordToString(ph->mnemonic));
 	if (phdata->sound_addr[0] != 0) {
 		plist->phontab_addr = phdata->sound_addr[0]; // FMT address
 		plist->sound_param = phdata->sound_param[0];

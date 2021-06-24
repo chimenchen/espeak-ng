@@ -394,6 +394,7 @@ static void set_pitch(SYLLABLE *syl, int base, int drop)
 	if (pitch1 > 254) pitch1 = 254;
 	if (pitch2 > 254) pitch2 = 254;
 
+	DEBUG_PRINT("DEBUG pitch1 set 1\n");
 	syl->pitch1 = pitch1;
 	syl->pitch2 = pitch2;
 	syl->flags |= flags;
@@ -904,6 +905,11 @@ static void CalcPitches_Tone(Translator *tr)
 		if (p->synthflags & SFLAG_SYLLABLE) {
 			tone_ph = p->tone_ph;
 
+			DEBUG_PRINT("DEBUG 905: ix=%d, %s, tone_ph=%d\n",
+					ix,
+					WordToString(p->ph->mnemonic),
+					p->tone_ph);
+
 			if (p->stresslevel != 0) { // TEST, consider all syllables as stressed
 				if (ix == final_stressed) {
 					// the last stressed syllable
@@ -921,6 +927,18 @@ static void CalcPitches_Tone(Translator *tr)
 			}
 			p->pitch1 = pitch_adjust + phoneme_tab[tone_ph]->start_type;
 			p->pitch2 = pitch_adjust + phoneme_tab[tone_ph]->end_type;
+
+			DEBUG_PRINT("DEBUG pitch1 set 2, start=%d, end=%d, tone_ph=%d, pitch_adjust=%d, 1=%d, 2=%d\n",
+					phoneme_tab[tone_ph]->start_type,
+					phoneme_tab[tone_ph]->end_type,
+					tone_ph,
+					pitch_adjust,
+					p->pitch1, p->pitch2);
+			DEBUG_PRINT("DEBUG 925 pitch: %s, tone_ph %d, pitch_adjust %d, start_type %d pitch %d, end_type %d pitch %d\n",
+					WordToString(phoneme_tab[tone_ph]->mnemonic),
+					tone_ph, pitch_adjust,
+					phoneme_tab[tone_ph]->start_type, p->pitch1,
+					phoneme_tab[tone_ph]->end_type, p->pitch2);
 		}
 	}
 }
@@ -1076,6 +1094,7 @@ void CalcPitches(Translator *tr, int clause_type)
 		if (p->synthflags & SFLAG_SYLLABLE) {
 			syl = &syllable_tab[st_ix];
 
+			DEBUG_PRINT("DEBUG pitch1 set 3\n");
 			p->pitch1 = syl->pitch1;
 			p->pitch2 = syl->pitch2;
 
@@ -1088,6 +1107,7 @@ void CalcPitches(Translator *tr, int clause_type)
 			if (p->pitch1 > p->pitch2) {
 				// swap so that pitch2 is the higher
 				x = p->pitch1;
+				DEBUG_PRINT("DEBUG pitch1 set 4\n");
 				p->pitch1 = p->pitch2;
 				p->pitch2 = x;
 			}
@@ -1095,6 +1115,7 @@ void CalcPitches(Translator *tr, int clause_type)
 			if (p->tone_ph) {
 				ph = phoneme_tab[p->tone_ph];
 				x = (p->pitch1 + p->pitch2)/2;
+				DEBUG_PRINT("DEBUG pitch1 set 5\n");
 				p->pitch2 = x + ph->end_type;
 				p->pitch1 = x + ph->start_type;
 			}

@@ -531,6 +531,7 @@ void MakePhonemeList(Translator *tr, int post_pause, bool start_sentence, int *n
 				phlist[ix].ph = phoneme_tab[phonPAUSE_SHORT];
 				phlist[ix].length = option_wordgap*14; // 10mS per unit at the default speed
 			}
+			DEBUG_PRINT("DEBUG 534: phlist[%d].length=%d\n", ix, phlist[ix].length);
 
 			if (ph->type == phVOWEL || ph->type == phLIQUID || ph->type == phNASAL || ph->type == phVSTOP || ph->type == phVFRICATIVE || (ph->phflags & phPREVOICE)) {
 				phlist[ix].length = 128; // length_mod
@@ -539,8 +540,9 @@ void MakePhonemeList(Translator *tr, int post_pause, bool start_sentence, int *n
 
 			phlist[ix].prepause = 0;
 			phlist[ix].amp = 20; // default, will be changed later
-			phlist[ix].pitch1 = 255;
-			phlist[ix].pitch2 = 255;
+			// DEBUG_PRINT("DEBUG pitch1 set 6\n");
+			phlist[ix].pitch1 = 8191;  // was 255
+			phlist[ix].pitch2 = 8191;  // was 255
 			ix++;
 		}
 	}

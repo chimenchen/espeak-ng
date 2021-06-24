@@ -46,7 +46,7 @@
 
 static FILE *f_log = NULL;
 
-extern char word_phonemes[N_WORD_PHONEMES];    // a word translated into phoneme codes
+extern int word_phonemes[N_WORD_PHONEMES];    // a word translated into phoneme codes
 
 static int linenum;
 static int error_count;
@@ -398,7 +398,7 @@ static int compile_line(char *linebuf, char *dict_line, int n_dict_line, int *ha
 
 	char *mnemptr;
 	unsigned char flag_codes[100];
-	char encoded_ph[200];
+	int encoded_ph[200];  // FIXME
 	char bad_phoneme_str[4];
 	int bad_phoneme;
 	static char nullstring[] = { 0 };
@@ -548,7 +548,7 @@ static int compile_line(char *linebuf, char *dict_line, int n_dict_line, int *ha
 			// condition rules are not applied
 			TranslateWord(translator, phonetic, NULL, NULL);
 			text_not_phonemes = false;
-			strncpy0(encoded_ph, word_phonemes, N_WORD_BYTES-4);
+			ph_codes_ncpy0(encoded_ph, word_phonemes, N_WORD_BYTES-4);
 
 			if ((word_phonemes[0] == 0) && (error_need_dictionary < 3)) {
 				// the dictionary was not loaded, we need a second attempt
@@ -557,10 +557,11 @@ static int compile_line(char *linebuf, char *dict_line, int n_dict_line, int *ha
 			}
 		} else
 			// this is replacement text, so don't encode as phonemes. Restrict the length of the replacement word
-			strncpy0(encoded_ph, phonetic, N_WORD_BYTES-4);
+			// strncpy0(encoded_ph, phonetic, N_WORD_BYTES-4);
+			str_to_ph_codes(encoded_ph, phonetic);
 	} else {
 		EncodePhonemes(phonetic, encoded_ph, &bad_phoneme);
-		if (strchr(encoded_ph, phonSWITCH) != 0)
+		if (ph_codes_find(encoded_ph, phonSWITCH) != 0)
 			flag_codes[n_flag_codes++] = BITNUM_FLAG_ONLY_S;  // don't match on suffixes (except 's') when switching languages
 
 		// check for errors in the phonemes codes
@@ -606,7 +607,7 @@ static int compile_line(char *linebuf, char *dict_line, int n_dict_line, int *ha
 		len_word = TransposeAlphabet(translator, word);
 
 	*hash = HashDictionary(word);
-	len_phonetic = strlen(encoded_ph);
+	len_phonetic = ph_codes_len(encoded_ph);
 
 	dict_line[1] = len_word; // bit 6 indicates whether the word has been compressed
 	len_word &= 0x3f;
@@ -620,7 +621,8 @@ static int compile_line(char *linebuf, char *dict_line, int n_dict_line, int *ha
 	} else {
 		length = len_word + len_phonetic + 3;
 		if (length < n_dict_line) {
-			strcpy(&dict_line[(len_word)+2], encoded_ph);
+			// strcpy(&dict_line[(len_word)+2], encoded_ph);
+			ph_codes_to_str(&dict_line[(len_word)+2], encoded_ph);
 		} else {
 			fprintf(f_log, "%5d: Dictionary line length would overflow the data buffer: %d\n", linenum, length);
 			error_count++;
@@ -747,7 +749,7 @@ static char rule_cond[80];
 static char rule_pre[80];
 static char rule_post[80];
 static char rule_match[80];
-static char rule_phonemes[80];
+static char rule_phonemes[80];  // FIXME: char
 static char group_name[LEN_GROUP_NAME+1];
 static int group3_ix;
 
@@ -1009,6 +1011,7 @@ static void copy_rule_string(char *string, int *state_out)
 
 static char *compile_rule(char *input)
 {
+	// DEBUG_PRINT("DEBUG compile_rule %s\n", input);
 	int ix;
 	unsigned char c;
 	int wc;
@@ -1019,7 +1022,7 @@ static char *compile_rule(char *input)
 	int start;
 	int state = 2;
 	bool finish = false;
-	char buf[80];
+	char buf[80];  // FIXME: char or int?
 	char output[150];
 	int bad_phoneme;
 	char bad_phoneme_str[4];
@@ -1089,7 +1092,12 @@ static char *compile_rule(char *input)
 		return NULL;
 	}
 
-	EncodePhonemes(rule_phonemes, buf, &bad_phoneme);
+	int ph_buf[80];
+	ph_buf[0] = 0;
+	EncodePhonemes(rule_phonemes, ph_buf, &bad_phoneme);
+	// FIXME: not safe
+	ph_codes_to_str(buf, ph_buf);
+
 	if (bad_phoneme != 0) {
 		bad_phoneme_str[utf8_out(bad_phoneme, bad_phoneme_str)] = 0;
 		fprintf(f_log, "%5d: Bad phoneme [%s] (U+%x) in: %s\n", linenum, bad_phoneme_str, bad_phoneme, input);

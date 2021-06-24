@@ -225,7 +225,7 @@ phoneme_feature_t phoneme_feature_from_string(const char *feature);
 #define phonVOWELTYPES   28  // 28 to 33
 
 #define N_PHONEME_TABS     150     // number of phoneme tables
-#define N_PHONEME_TAB      256     // max phonemes in a phoneme table
+#define N_PHONEME_TAB      2048     // max phonemes in a phoneme table
 #define N_PHONEME_TAB_NAME  32     // must be multiple of 4
 
 // main table of phonemes, index by phoneme number (1-254)
@@ -234,11 +234,11 @@ typedef struct {
 	unsigned int mnemonic;       // Up to 4 characters.  The first char is in the l.s.byte
 	unsigned int phflags;        // bits 16-19 place of articulation
 	unsigned short program;      // index into phondata file
-	unsigned char code;          // the phoneme number
+	unsigned short code;          // the phoneme number
 	unsigned char type;          // phVOWEL, phPAUSE, phSTOP etc
-	unsigned char start_type;
-	unsigned char end_type;      // vowels: endtype; consonant: voicing switch
-	unsigned char std_length;    // for vowels, in mS/2;  for phSTRESS phonemes, this is the stress/tone type
+	unsigned short start_type;
+	unsigned short end_type;      // vowels: endtype; consonant: voicing switch
+	unsigned int std_length;    // for vowels, in mS/2;  for phSTRESS phonemes, this is the stress/tone type
 	unsigned char length_mod;    // a length_mod group number, used to access length_mod_tab
 } PHONEME_TAB;
 
@@ -263,8 +263,8 @@ typedef struct {
 // table of phonemes to be replaced with different phonemes, for the current voice
 #define N_REPLACE_PHONEMES   60
 typedef struct {
-	unsigned char old_ph;
-	unsigned char new_ph;
+	unsigned short old_ph;
+	unsigned short new_ph;
 	char type;   // 0=always replace, 1=only at end of word
 } REPLACE_PHONEMES;
 
@@ -283,6 +283,20 @@ typedef struct {
 
 extern PHONEME_TAB_LIST phoneme_tab_list[N_PHONEME_TABS];
 extern int phoneme_tab_number;
+
+#define DEBUG_CC 1
+#if defined(DEBUG_CC)
+#if DEBUG_CC >= 2
+#define DEBUG_PRINT(...) do{ fprintf( stderr, __VA_ARGS__ ); } while( false )
+#define DEBUG_PRINT1(...) do{ fprintf( stderr, __VA_ARGS__ ); } while( false )
+#else
+#define DEBUG_PRINT(...) do{ } while ( false )
+#define DEBUG_PRINT1(...) do{ fprintf( stderr, __VA_ARGS__ ); } while( false )
+#endif
+#else
+#define DEBUG_PRINT(...) do{ } while ( false )
+#define DEBUG_PRINT1(...) do{ } while ( false )
+#endif
 
 #ifdef __cplusplus
 }

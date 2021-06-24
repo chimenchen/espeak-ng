@@ -1101,6 +1101,7 @@ void SetPitch2(voice_t *voice, int pitch1, int pitch2, int *pitch_base, int *pit
 	int range;
 	int pitch_value;
 
+	DEBUG_PRINT("DEBUG pitch1 set 13, 1=%d, 2=%d\n", pitch1, pitch2);
 	if (pitch1 > pitch2) {
 		x = pitch1; // swap values
 		pitch1 = pitch2;
@@ -1116,11 +1117,18 @@ void SetPitch2(voice_t *voice, int pitch1, int pitch2, int *pitch_base, int *pit
 	base = (voice->pitch_base * pitch_adjust_tab[pitch_value])/128;
 	range =  (voice->pitch_range * embedded_value[EMBED_R])/50;
 
+	DEBUG_PRINT("DEBUG SetPitch2 voice->pitch_base=%d, pitch_value=%d, pitch_adjust_tab[pitch_value]=%d, voice->pitch_range=%d, base=%d,  range=%d\n",
+			voice->pitch_base, pitch_value, pitch_adjust_tab[pitch_value],
+			voice->pitch_range,
+			base, range);
+
 	// compensate for change in pitch when the range is narrowed or widened
 	base -= (range - voice->pitch_range)*18;
 
 	*pitch_base = base + (pitch1 * range)/2;
 	*pitch_range = base + (pitch2 * range)/2 - *pitch_base;
+	DEBUG_PRINT("DEBUG SetPitch2 end: base=%d, pitch_base=%d, pitch_range=%d, pitch1=%d, pitch2=%d\n",
+			base, *pitch_base, *pitch_range, pitch1, pitch2);
 }
 
 static void SetPitch(int length, unsigned char *env, int pitch1, int pitch2)
@@ -1142,6 +1150,8 @@ static void SetPitch(int length, unsigned char *env, int pitch1, int pitch2)
 	SetPitch2(wvoice, pitch1, pitch2, &wdata.pitch_base, &wdata.pitch_range);
 	// set initial pitch
 	wdata.pitch = ((wdata.pitch_env[0] * wdata.pitch_range) >>8) + wdata.pitch_base; // Hz << 12
+	DEBUG_PRINT("DEBUG 1153: length=%d, pitch=%d, pitch1=%d, pitch2=%d, base=%d, range=%d, env0=%d\n",
+			length, wdata.pitch, pitch1, pitch2, wdata.pitch_base, wdata.pitch_range, wdata.pitch_env[0]);
 
 	flutter_amp = wvoice->flutter;
 }
@@ -1193,6 +1203,7 @@ static void SetSynth(int length, int modn, frame_t *fr1, frame_t *fr2, voice_t *
 	length2 = (length + STEPSIZE/2) & ~0x3f;
 	if (length2 == 0)
 		length2 = STEPSIZE;
+	DEBUG_PRINT("DEBUG 1203: length=%d, length2=%d\n", length, length2);
 
 	// add this length to any left over from the previous synth
 	samplecount_start = samplecount;
@@ -1207,6 +1218,10 @@ static void SetSynth(int length, int modn, frame_t *fr1, frame_t *fr2, voice_t *
 		if (ix < 7) {
 			peaks[ix].freq1 = (fr1->ffreq[ix] * v->freq[ix] + v->freqadd[ix]*256) << 8;
 			peaks[ix].freq = (int)peaks[ix].freq1;
+
+			DEBUG_PRINT("DEBUG 1220: ix=%d, freq %d, freqadd %d, ffreq %d, => %d\n",
+					ix, v->freq[ix], v->freqadd[ix], fr1->ffreq[ix], peaks[ix].freq);
+
 			next = (fr2->ffreq[ix] * v->freq[ix] + v->freqadd[ix]*256) << 8;
 			peaks[ix].freq_inc =  ((next - peaks[ix].freq1) * (STEPSIZE/4)) / length4; // lower headroom for fixed point math
 		}
@@ -1231,6 +1246,10 @@ static void SetSynth(int length, int modn, frame_t *fr1, frame_t *fr2, voice_t *
 				peaks[ix].right = peaks[ix].left;
 		}
 	}
+	DEBUG_PRINT("DEBUG 1220: ix=%d, freq %d, freqadd %d => %d\n",
+			7, v->freq[7], v->freqadd[7], peaks[7].freq);
+	DEBUG_PRINT("DEBUG 1220: ix=%d, freq %d, freqadd %d => %d\n",
+			8, v->freq[8], v->freqadd[8], peaks[8].freq);
 }
 
 static int Wavegen2(int length, int modulation, bool resume, frame_t *fr1, frame_t *fr2)
@@ -1282,6 +1301,8 @@ static int WavegenFill2()
 		switch (q[0] & 0xff)
 		{
 		case WCMD_PITCH:
+			DEBUG_PRINT("DEBUG WCMD_PITCH: %d, q[2]=%d, q[3]=%d, %d, %d\n",
+					length, q[2], q[3], q[3] >> 16, q[3] & 0xffff);
 			SetPitch(length, (unsigned char *)q[2], q[3] >> 16, q[3] & 0xffff);
 			break;
 		case WCMD_PAUSE:
@@ -1320,6 +1341,8 @@ static int WavegenFill2()
 			wdata.n_mix_wavefile = 0; // ... and drop through to WCMD_SPECT case
 		case WCMD_SPECT:
 			echo_complete = echo_length;
+			// FIXME: length
+			// printf("DEBUG 1346: length=%d, length=%d\n", length, length & 0xffff);
 			result = Wavegen2(length & 0xffff, q[1] >> 16, resume, (frame_t *)q[2], (frame_t *)q[3]);
 			break;
 #ifdef INCLUDE_KLATT

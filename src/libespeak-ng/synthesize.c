@@ -148,12 +148,16 @@ static void DoAmplitude(int amp, unsigned char *amp_env)
 
 static void DoPitch(unsigned char *env, int pitch1, int pitch2)
 {
+	DEBUG_PRINT("DEBUG DoPitch: env=%c, pitch1=%d, pitch2=%d\n",
+			env, pitch1, pitch2);
+
 	intptr_t *q;
 
 	EndPitch(0);
 
-	if (pitch1 == 255) {
+	if (pitch1 == 8191) {  // was 255
 		// pitch was not set
+		DEBUG_PRINT("DEBUG pitch1 set 12\n");
 		pitch1 = 55;
 		pitch2 = 76;
 		env = envelope_data[PITCHfall];
@@ -873,6 +877,8 @@ int DoSpect2(PHONEME_TAB *this_ph, int which, FMT_PARAMS *fmt_params,  PHONEME_L
 
 	length_mod = plist->length;
 	if (length_mod == 0) length_mod = 256;
+	DEBUG_PRINT("DEBUG 880: plist->length=%d, length_mod=%d, %s\n", plist->length, length_mod,
+			WordToString(plist->ph->mnemonic));
 
 	length_min = (samplerate/70); // greater than one cycle at low pitch (Hz)
 	if (which == 2) {
@@ -887,6 +893,7 @@ int DoSpect2(PHONEME_TAB *this_ph, int which, FMT_PARAMS *fmt_params,  PHONEME_L
 				length_mod = len;
 		}
 	}
+	DEBUG_PRINT("DEBUG 895: plist->length=%d, length_mod=%d\n", plist->length, length_mod);
 
 	modn_flags = 0;
 	frames = LookupSpect(this_ph, which, fmt_params, &n_frames, plist);
@@ -965,6 +972,9 @@ int DoSpect2(PHONEME_TAB *this_ph, int which, FMT_PARAMS *fmt_params,  PHONEME_L
 		len = (len * length_factor)/256;
 		length_sum += len;
 		frame_lengths[frameix] = len;
+		DEBUG_PRINT("DEBUG 972: frame_lengths[%d]=%d, frame_length=%d, samplerate=%d, length_factor=%d, length_sum=%d\n",
+				frameix, len, frame_length, samplerate, length_factor, length_sum);
+
 	}
 
 	if ((length_sum > 0) && (length_sum < length_min)) {
@@ -1006,6 +1016,8 @@ int DoSpect2(PHONEME_TAB *this_ph, int which, FMT_PARAMS *fmt_params,  PHONEME_L
 				q = wcmdq[wcmdq_tail];
 				q[0] = wcmd_spect;
 				q[1] = len + (modulation << 16);
+				DEBUG_PRINT("DEBUG 1013: len=%d, modulation=%d, q[1]=%ld\n",
+						len, modulation, q[1]);
 				q[2] = (intptr_t)frame1;
 				q[3] = (intptr_t)frame2;
 
@@ -1262,6 +1274,7 @@ int Generate(PHONEME_LIST *phoneme_list, int *n_ph, bool resume)
 
 				if (last_pitch_cmd < 0) {
 					DoAmplitude(next->amp, NULL);
+					// DEBUG_PRINT("DEBUG DoPitch 1\n");
 					DoPitch(envelope_data[p->env], next->pitch1, next->pitch2);
 				}
 
@@ -1287,15 +1300,18 @@ int Generate(PHONEME_LIST *phoneme_list, int *n_ph, bool resume)
 			pre_voiced = false;
 			if (next->type == phVOWEL) {
 				DoAmplitude(p->amp, NULL);
+				// DEBUG_PRINT("DEBUG DoPitch 2\n");
 				DoPitch(envelope_data[p->env], p->pitch1, p->pitch2);
 				pre_voiced = true;
 			} else if ((next->type == phLIQUID) && !next->newword) {
 				DoAmplitude(next->amp, NULL);
+				// DEBUG_PRINT("DEBUG DoPitch 3\n");
 				DoPitch(envelope_data[next->env], next->pitch1, next->pitch2);
 				pre_voiced = true;
 			} else {
 				if (last_pitch_cmd < 0) {
 					DoAmplitude(next->amp, NULL);
+					// DEBUG_PRINT("DEBUG DoPitch 4\n");
 					DoPitch(envelope_data[p->env], p->pitch1, p->pitch2);
 				}
 			}
@@ -1338,13 +1354,16 @@ int Generate(PHONEME_LIST *phoneme_list, int *n_ph, bool resume)
 		case phVFRICATIVE:
 			if (next->type == phVOWEL) {
 				DoAmplitude(p->amp, NULL);
+				DEBUG_PRINT("DEBUG DoPitch 5\n");
 				DoPitch(envelope_data[p->env], p->pitch1, p->pitch2);
 			} else if (next->type == phLIQUID) {
 				DoAmplitude(next->amp, NULL);
+				DEBUG_PRINT("DEBUG DoPitch 6\n");
 				DoPitch(envelope_data[next->env], next->pitch1, next->pitch2);
 			} else {
 				if (last_pitch_cmd < 0) {
 					DoAmplitude(p->amp, NULL);
+					DEBUG_PRINT("DEBUG DoPitch 7\n");
 					DoPitch(envelope_data[p->env], p->pitch1, p->pitch2);
 				}
 			}
@@ -1369,6 +1388,7 @@ int Generate(PHONEME_LIST *phoneme_list, int *n_ph, bool resume)
 			memset(&fmtp, 0, sizeof(fmtp));
 			if (!(p->synthflags & SFLAG_SEQCONTINUE)) {
 				DoAmplitude(p->amp, NULL);
+				DEBUG_PRINT("DEBUG DoPitch 8\n");
 				DoPitch(envelope_data[p->env], p->pitch1, p->pitch2);
 			}
 
@@ -1400,6 +1420,7 @@ int Generate(PHONEME_LIST *phoneme_list, int *n_ph, bool resume)
 
 			if (!(p->synthflags & SFLAG_SEQCONTINUE)) {
 				DoAmplitude(p->amp, NULL);
+				DEBUG_PRINT("DEBUG DoPitch 9\n");
 				DoPitch(envelope_data[p->env], p->pitch1, p->pitch2);
 			}
 
@@ -1472,21 +1493,26 @@ int Generate(PHONEME_LIST *phoneme_list, int *n_ph, bool resume)
 
 			if (prev->type == phVSTOP || prev->type == phVFRICATIVE) {
 				DoAmplitude(p->amp, amp_env);
+				DEBUG_PRINT("DEBUG DoPitch 10\n");
 				DoPitch(pitch_env, p->pitch1, p->pitch2); // don't use prevocalic rising tone
 				DoSpect2(ph, 1, &fmtp, p, modulation);
 			} else if (prev->type == phLIQUID || prev->type == phNASAL) {
 				DoAmplitude(p->amp, amp_env);
 				DoSpect2(ph, 1, &fmtp, p, modulation); // continue with pre-vocalic rising tone
+				DEBUG_PRINT("DEBUG DoPitch 11\n");
 				DoPitch(pitch_env, p->pitch1, p->pitch2);
 			} else if (vowelstart_prev) {
 				// VowelStart from the previous phoneme, but not phLIQUID or phNASAL
+				DEBUG_PRINT("DEBUG DoPitch 12\n");
 				DoPitch(envelope_data[PITCHrise], p->pitch2 - 15, p->pitch2);
 				DoAmplitude(p->amp-1, amp_env);
 				DoSpect2(ph, 1, &fmtp, p, modulation); // continue with pre-vocalic rising tone
+				DEBUG_PRINT("DEBUG DoPitch 13\n");
 				DoPitch(pitch_env, p->pitch1, p->pitch2);
 			} else {
 				if (!(p->synthflags & SFLAG_SEQCONTINUE)) {
 					DoAmplitude(p->amp, amp_env);
+					// DEBUG_PRINT("DEBUG DoPitch 14\n");
 					DoPitch(pitch_env, p->pitch1, p->pitch2);
 				}
 

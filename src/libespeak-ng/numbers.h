@@ -28,13 +28,13 @@ extern "C"
 {
 #endif
 
-void LookupAccentedLetter(Translator *tr, unsigned int letter, char *ph_buf);
-void LookupLetter(Translator *tr, unsigned int letter, int next_byte, char *ph_buf1, int control);
+void LookupAccentedLetter(Translator *tr, unsigned int letter, int *ph_buf);
+void LookupLetter(Translator *tr, unsigned int letter, int next_byte, int *ph_buf1, int control);
 int IsSuperscript(int letter);
-void SetSpellingStress(Translator *tr, char *phonemes, int control, int n_chars);
-int TranslateRoman(Translator *tr, char *word, char *ph_out, WORD_TAB *wtab);
-int TranslateNumber(Translator *tr, char *word1, char *ph_out, unsigned int *flags, WORD_TAB *wtab, int control);
-int TranslateLetter(Translator *tr, char *word, char *phonemes, int control, ALPHABET *current_alphabet);
+void SetSpellingStress(Translator *tr, int *phonemes, int control, int n_chars);
+int TranslateRoman(Translator *tr, char *word, int *ph_out, WORD_TAB *wtab);
+int TranslateNumber(Translator *tr, char *word1, int *ph_out, unsigned int *flags, WORD_TAB *wtab, int control);
+int TranslateLetter(Translator *tr, char *word, int *phonemes, int control, ALPHABET *current_alphabet);
 
 
 #ifdef __cplusplus

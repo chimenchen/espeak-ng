@@ -1,0 +1,18 @@
+language variant
+name Chihiro2
+
+pitch 280 420
+
+formant 0 133 90 130
+formant 1 160 100 150
+formant 2 133 130 130
+formant 3 70 70 130
+formant 4 133 60 130
+formant 5 133 50 130
+formant 6 133 40 130
+formant 7 133 30 130
+formant 8 133 50 130
+
+voicing 70
+
+

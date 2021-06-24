@@ -244,8 +244,10 @@ static void SetToneAdjust(voice_t *voice, int *tone_pts)
 
 			for (ix = freq1; ix < freq2; ix++) {
 				y = height1 + (int)(rate * (ix-freq1));
-				if (y > 255)
+				if (y > 255) {
+					printf("y > 255, %d\n", y);
 					y = 255;
+				}
 				voice->tone_adjust[ix] = y;
 			}
 		}
@@ -448,6 +450,8 @@ static void VoiceFormant(char *p)
 	if (width >= 0)
 		voice->width[formant] = (int)(width * 2.56001);
 	voice->freqadd[formant] = freqadd;
+	DEBUG_PRINT("DEBUG 453: formant %d, freq %d, height %d, width %d, freqadd %d\n",
+			formant, freq, height, width, freqadd);
 }
 
 static void PhonemeReplacement(char *p)
@@ -1469,7 +1473,7 @@ static void GetVoices(const char *path, int len_path_voices, int is_language_fil
 
 ESPEAK_NG_API espeak_ng_STATUS espeak_ng_SetVoiceByFile(const char *filename)
 {
-	espeak_VOICE *v;
+	// espeak_VOICE *v;
 	int ix;
 	espeak_VOICE voice_selector;
 	char *variant_name;

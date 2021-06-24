@@ -1,0 +1,17 @@
+language variant
+name Chihiro3
+
+pitch 260 400
+
+formant 0 103 90 130
+formant 1 155 90 130
+formant 2 133 70 130
+formant 3 100 60 130
+formant 4 130 60 130
+formant 5 120 50 130
+formant 6 130 90 130
+formant 7 130 70 130
+formant 8 130 80 130
+
+
+

@@ -1549,6 +1549,7 @@ Translator *SelectTranslator(const char *name)
         tr->langopts.tone_language = 1; // Tone language, use  CalcPitches_Tone() rather than CalcPitches()
         tr->langopts.tone_numbers = 1; // a number after letters indicates a tone number (eg. pinyin or jyutping)
         tr->langopts.ideographs = 1;
+		tr->langopts.max_lengthmod = 1600;
         break;
     }
 	case L3('c', 'm', 'n'): // no break, just go to 'zh' case

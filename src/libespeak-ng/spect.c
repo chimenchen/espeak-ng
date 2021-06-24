@@ -242,6 +242,7 @@ SpectSeq *SpectSeqCreate()
 
 	spect->grid = 1;
 	spect->duration = 0;
+	// DEBUG_PRINT("DEBUG pitch1 set 10\n");
 	spect->pitch1 = 0;
 	spect->pitch2 = 0;
 	spect->bass_reduction = 0;
@@ -385,6 +386,7 @@ espeak_ng_STATUS LoadSpectSeq(SpectSeq *spect, const char *filename)
 	for (ix = 0; ix < spect->numframes; ix++)
 		spect->frames[ix]->time -= time_offset;
 
+	// DEBUG_PRINT("DEBUG pitch1 set 11\n");
 	spect->pitch1 = spect->pitchenv.pitch1;
 	spect->pitch2 = spect->pitchenv.pitch2;
 	spect->duration = (int)(spect->frames[spect->numframes-1]->time * 1000);

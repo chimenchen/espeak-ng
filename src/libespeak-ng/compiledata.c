@@ -700,8 +700,18 @@ static int LookupPhoneme(const char *string, int control)
 	if (use == 0) {
 		if (control == 0)
 			return -1;
-		if (n_phcodes >= N_PHONEME_TAB-1)
+		if (n_phcodes >= N_PHONEME_TAB-1) {
+			error("phoneme table is full");
+
+#ifdef DEBUG_CC
+			DEBUG_PRINT("DEBUG 706: %s, %x, use %d, n_phcodes %d\n", string, word, use, n_phcodes);
+			for (ix = 0; ix < n_phcodes; ix++) {
+				DEBUG_PRINT("DEBUG 706: Phoneme %d %s\n", ix, WordToString(phoneme_tab2[ix].mnemonic));
+			}
+#endif
+
 			return -1; // phoneme table is full
+		}
 		use = n_phcodes++;
 	}
 
@@ -771,6 +781,7 @@ static int NextItem(int type)
 	if (c == '(') {
 		if (type == tOPENBRACKET)
 			return 1;
+		error("got c: %c", c);
 		return -1;
 	}
 
@@ -835,6 +846,7 @@ static int NextItem(int type)
 			pk++;
 		}
 		item_type = -1;
+		// error("keyword not found %s", item_string);
 		return -1; // keyword not found
 	}
 	if (type == tPHONEMEMNEM)
@@ -1068,6 +1080,7 @@ static espeak_ng_STATUS LoadSpect(const char *path, int control, int *addr)
 		}
 	}
 	seq_out.length_total = (int)total;
+	DEBUG_PRINT("DEBUG 1083: total %f, seq_out.length_total=%d\n", total, seq_out.length_total);
 
 	if ((control & 1) && (marker1_set == 0)) {
 		// This is a vowel, but no Vowel Break marker is set
@@ -1543,8 +1556,8 @@ static void CompileToneSpec(void)
 
 	pitch1 = NextItemBrackets(tNUMBER, 2);
 	pitch2 = NextItemBrackets(tNUMBER, 3);
-    pitch1 += 20;
-    pitch2 += 20;
+    // pitch1 += 20;
+    // pitch2 += 20;
 
 	if (item_terminator == ',') {
 		NextItemBrackets(tSTRING, 3);
@@ -1880,7 +1893,7 @@ static PHONEME_TAB *FindPhoneme(const char *string)
 		return NULL; // phoneme table not found
 
 	mnem = StringToWord(phname);
-	for (ix = 1; ix < 256; ix++) {
+	for (ix = 1; ix < 256; ix++) {  // FIXME: 256
 		if (mnem == phtab->phoneme_tab_ptr[ix].mnemonic)
 			return &phtab->phoneme_tab_ptr[ix];
 	}
@@ -2073,13 +2086,18 @@ static int CompilePhoneme(int compile_phoneme)
 				DecThenCount();
 				break;
 			case i_SET_LENGTH:
-				value = NextItemMax(511);
+				// value = NextItemMax(511);
+				value = NextItemMax(99999999);  // FIXME why 511?
 				if (phoneme_out->type == phVOWEL)
 					value = (value * vowel_length_factor)/100;
 
 				if (after_if == false)
 					phoneme_out->std_length = value/2;
 				else {
+					if (value / 2 >= 256) {
+						printf("FIXME: value/2=%d for i_SET_LENGTH >= 256", value / 2);
+						value = 255 * 2;
+					}
 					*prog_out++ = (i_SET_LENGTH << 8) + value/2;
 					DecThenCount();
 				}
@@ -2347,7 +2365,16 @@ static void WritePhonemeTables()
 		}
 		phoneme_tab_list2[ix].n_phonemes = count+1;
 
+#if 0
 		fputc(count+1, f_phtab);
+#else
+		// using 2-bytes for n_phonemes, since n_phonemes may > 256
+		fputc((count+1) / 256, f_phtab);
+		fputc((count+1) % 256, f_phtab);
+
+		DEBUG_PRINT("DEBUG 2367: ix=%d, n_phonemes=%d, %s\n", ix, count+1, phoneme_tab_list2[ix].name);
+#endif
+
 		fputc(phoneme_tab_list2[ix].includes, f_phtab);
 		fputc(0, f_phtab);
 		fputc(0, f_phtab);
@@ -2497,8 +2524,10 @@ static void CompilePhonemeFiles()
 			CompilePhoneme(0);
 			break;
 		default:
-			if (!feof(f_in))
+			if (!feof(f_in)) {
+				error("item %d", item);
 				error("Keyword 'phoneme' expected");
+			}
 			break;
 		}
 	}

@@ -615,6 +615,7 @@ void CalcLengths(Translator *tr)
 					}
 				}
 
+				DEBUG_PRINT("DEBUG pitch1 set 7\n");
 				p->pitch1 = p->pitch2-16;
 				if (p->pitch2 < 16)
 					p->pitch1 = 0;
@@ -744,6 +745,11 @@ void CalcLengths(Translator *tr)
 			}
 			p->length = length_mod;
 
+			DEBUG_PRINT("DEBUG 748: p->length=%d, len=%d, %s, %s\n",
+					p->length, len,
+					WordToString(p->ph->mnemonic),
+					WordToString(phoneme_tab[p->tone_ph]->mnemonic));
+
 			if (p->env >= (N_ENVELOPE_DATA-1)) {
 				fprintf(stderr, "espeak: Bad intonation data\n");
 				p->env = 0;
@@ -769,6 +775,7 @@ void CalcLengths(Translator *tr)
 				if (pitch_start - last_pitch > 16)
 					last_pitch = pitch_start - 16;
 
+				DEBUG_PRINT("DEBUG pitch1 set 8\n");
 				prev->pitch1 = last_pitch;
 				prev->pitch2 = pitch_start;
 				if (last_pitch < pitch_start) {
@@ -802,6 +809,7 @@ void CalcLengths(Translator *tr)
 			}
 
 			if ((min_drop > 0) && ((p->pitch2 - p->pitch1) < min_drop)) {
+				DEBUG_PRINT("DEBUG pitch1 set 9, min_drop=%d, 1=%d, 2=%d\n", min_drop, p->pitch1, p->pitch2);
 				pitch1 = p->pitch2 - min_drop;
 				if (pitch1 < 0)
 					pitch1 = 0;

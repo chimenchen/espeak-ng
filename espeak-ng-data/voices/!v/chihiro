@@ -1,0 +1,15 @@
+language variant
+name Chihiro
+
+pitch 260 400
+formant 0 165 125 165
+formant 1 165 90 165
+formant 2 165 70 155
+formant 3 165 60 155
+formant 4 165 50 155
+formant 5 135 40 155
+formant 6 155 40 165
+formant 7 165 40 165
+formant 8 165 40 165
+voicing 90
+

@@ -267,9 +267,9 @@ typedef const char *constcharptr;
 typedef struct {
 	unsigned int flags;
 	unsigned short start;
-	unsigned char pre_pause;
+	unsigned short pre_pause;
 	unsigned short sourceix;
-	unsigned char length;
+	unsigned int length;
 } WORD_TAB;
 
 typedef struct {
@@ -584,7 +584,7 @@ typedef struct {
 	const char *transpose_map;
 	char dictionary_name[40];
 
-	char phonemes_repeat[20];
+	int phonemes_repeat[20];
 	int phonemes_repeat_count;
 	int phoneme_tab_ix;
 
@@ -716,12 +716,22 @@ void ProcessLanguageOptions(LANGUAGE_OPTIONS *langopts);
 
 void print_dictionary_flags(unsigned int *flags, char *buf, int buf_len);
 
-void ApplySpecialAttribute2(Translator *tr, char *phonemes, int dict_flags);
+void ApplySpecialAttribute2(Translator *tr, int *phonemes, int dict_flags);
 
 int TranslateWord(Translator *tr, char *word1, WORD_TAB *wtab, char *word_out);
 void TranslateClause(Translator *tr, int *tone, char **voice_change);
 
 void SetVoiceStack(espeak_VOICE *v, const char *variant_name);
+
+void ph_codes_ncpy0(int *to, const int *from, int size);
+void ph_codes_cpy(int *to, const int *from);
+void str_to_ph_codes(int *ph_codes, const char *word);
+int ph_codes_len(const int *ph_codes);
+int ph_codes_cmp(const int *a, const int *b);
+int ph_codes_strcmp(const int *a, const char *b);
+void ph_codes_to_str(char *word, const int *ph_codes);
+void ph_codes_cat(int *a, const int *b);
+const int* ph_codes_find(const int *ph_codes, int ph_code);
 
 extern FILE *f_trans; // for logging
 
