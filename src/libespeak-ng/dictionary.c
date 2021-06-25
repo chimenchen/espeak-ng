@@ -32,15 +32,14 @@
 #include <espeak-ng/encoding.h>
 
 #include "dictionary.h"
-#include "numbers.h"
-#include "readclause.h"
-#include "synthdata.h"
-
-#include "speech.h"
-#include "phoneme.h"
-#include "voice.h"
-#include "synthesize.h"
-#include "translate.h"
+#include "numbers.h"                       // for LookupAccentedLetter, Look...
+#include "phoneme.h"                       // for PHONEME_TAB, phVOWEL, phon...
+#include "readclause.h"                    // for WordToString2, is_str_tota...
+#include "speech.h"                        // for GetFileLength, path_home
+#include "compiledict.h"                   // for DecodeRule
+#include "synthdata.h"                     // for PhonemeCode, InterpretPhoneme
+#include "synthesize.h"                    // for STRESS_IS_PRIMARY, phoneme...
+#include "translate.h"                     // for Translator, utf8_in, LANGU...
 
 typedef struct {
 	int points;
@@ -150,8 +149,11 @@ static void InitGroups(Translator *tr)
 		if (p[0] == RULE_REPLACEMENTS) {
 			p = (char *)(((intptr_t)p+4) & ~3); // advance to next word boundary
 			tr->langopts.replace_chars = (unsigned char *)p;
-			while (*(unsigned int *)p != 0)
+
+			while ( !is_str_totally_null(p, 4) ) {
 				p++;
+			}
+
 			while (*p != RULE_GROUP_END) p++;
 			p++;
 			continue;
@@ -635,7 +637,7 @@ const char *GetTranslatedPhonemeString(int phoneme_mode)
 		for (p = phon_buf2; *p != 0;) {
 			p += utf8_in(&c, p);
 			if (use_tie != 0) {
-				// look for non-inital alphabetic character, but not diacritic, superscript etc.
+				// look for non-initial alphabetic character, but not diacritic, superscript etc.
 				if ((count > 0) && !(flags & (1 << (count-1))) && ((c < 0x2b0) || (c > 0x36f)) && iswalpha(c))
 					buf += utf8_out(use_tie, buf);
 			}
@@ -685,7 +687,7 @@ static int LetterGroupNo(char *rule)
 	 * Returns number of letter group
 	 */
 	int groupNo = *rule;
-	groupNo = groupNo - 'A'; // substracting 'A' makes letter_group equal to number in .Lxx definition
+	groupNo = groupNo - 'A'; // subtracting 'A' makes letter_group equal to number in .Lxx definition
 	if (groupNo < 0)         // fix sign if necessary
 		groupNo += 256;
 	return groupNo;
@@ -2339,9 +2341,9 @@ int TranslateRules(Translator *tr, char *p_start, int *phonemes, int ph_size, in
 
 						// is it a bracket ?
 						if (letter == 0xe000+'(') {
-							if (pre_pause < tr->langopts.param2[LOPT_BRACKET_PAUSE])
-								pre_pause = tr->langopts.param2[LOPT_BRACKET_PAUSE]; // a bracket, aleady spoken by AnnouncePunctuation()
-						}
+							if (pre_pause < tr->langopts.param[LOPT_BRACKET_PAUSE_ANNOUNCED])
+								pre_pause = tr->langopts.param[LOPT_BRACKET_PAUSE_ANNOUNCED]; // a bracket, already spoken by AnnouncePunctuation()
+						} 
 						if (IsBracket(letter)) {
 							if (pre_pause < tr->langopts.param[LOPT_BRACKET_PAUSE])
 								pre_pause = tr->langopts.param[LOPT_BRACKET_PAUSE];
@@ -2742,10 +2744,6 @@ static const char *LookupDict2(Translator *tr, const char *word, const char *wor
 			}
 		}
 
-		if (dictionary_flags2 & FLAG_HYPHENATED) {
-			if (!(wflags & FLAG_HYPHEN_AFTER))
-				continue;
-		}
 		if (dictionary_flags2 & FLAG_CAPITAL) {
 			if (!(wflags & FLAG_FIRST_UPPER))
 				continue;
@@ -3058,7 +3056,7 @@ int RemoveEnding(Translator *tr, char *word, int end_type, char *word_copy)
 	int len;
 	char ending[50] = {0};
 
-	// these lists are language specific, but are only relevent if the 'e' suffix flag is used
+	// these lists are language specific, but are only relevant if the 'e' suffix flag is used
 	static const char *add_e_exceptions[] = {
 		"ion", NULL
 	};

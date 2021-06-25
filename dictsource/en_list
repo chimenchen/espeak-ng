@@ -1,4 +1,4 @@
-﻿
+
 // You can use the en_extra file, rather than this one
 // to add your own pronunciation definitions.
 
@@ -127,7 +127,7 @@ _$	d0l3
 _%	p3s'Ent
 ?5 _%	pVRs'Ent
 _&	amp@sand
-_'	kwoUt
+_'	t'Ik
 _[	lEftbrakI2t
 _]	raItbrakI2t
 _(	lEftpa#rEn
@@ -980,6 +980,7 @@ assess		a#sEs
 astray		$alt3
 astride		$alt3
 asus		eIs@s
+atelier         at@lj'e
 atlas		atl@s
 atop		a#t0p
 atta		at@		$only
@@ -1095,7 +1096,7 @@ bijou		bi:Zu:
 bikini		bIk'i:ni
 bikiny		bIk'i:ni  // -ed
 binman		bInman
-binghamton      b'IN@mt@n $capital
+binghamton      b'IN@mt@n
 bio		baIoU
 biome		baIoUm
 biped		baIpEd
@@ -2024,6 +2025,7 @@ geyser		gi:z3
 ?3 geyser	gaIz3
 gi		gi:	$onlys
 gi		$abbrev $allcaps
+gif             g'If
 gig		gIg
 gilead		g'Iliad
 gimme		gImi
@@ -4590,7 +4592,7 @@ Deborah		dEb@r@
 Declan		dEkla#n
 Delia		di:li@
 Dimitris	dI#mi:trIs
-Dengler		d'ENgl3	$capital
+Dengler		d'ENgl3
 Denise		d@ni:s
 Dennis		dEnI2s
 Derek		dErIk

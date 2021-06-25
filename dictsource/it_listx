@@ -1,4 +1,4 @@
-﻿
+
 abazia $3
 abbadia $3
 abbain	ab:a'i:n
@@ -65,6 +65,7 @@ adit	$1
 admet  $alt
 adorn  $alt2
 adultere	$2
+adulter	$2
 aed  $alt
 aerea	a'E:Rea
 aeree	$2
@@ -496,7 +497,7 @@ belv	$alt2
 belvedere $3  $alt2
 belzebù	beldz,Eb'u
 bemb  $alt
-benemerito	$3
+benemerit	$3
 benessere  $alt
 benevol  $alt
 benton  $alt
@@ -534,6 +535,7 @@ biond	bj'ond
 biondine	$2
 biosintesi $2
 biotop $2
+bipartisan	$2
 bipede $1
 bipol $2
 bipost  $alt2
@@ -570,6 +572,7 @@ bonden  $alt2
 bonnanar $2
 bonos  $alt
 bontebok $1  $alt
+borbottio	$3
 bore  $alt
 borea $1
 borg  $alt2
@@ -622,6 +625,7 @@ bronzin	b@-*ondz'in
 brufoli	$1
 brugol $1
 brusi $2
+brusio	b@-*uz'io
 buccari $1
 buccin $1
 buccine	$2
@@ -633,7 +637,7 @@ buia  b'uja
 buio  b'u:jo
 buon	bw2,On	$only
 buona	bu'Ona
-buonasera	bw2,Ona_|s'eRa
+buonasera	bw2,Ona_||s'eRa
 buone	bu'One
 buoni	bu'Oni
 buono	bu'Ono
@@ -1004,8 +1008,8 @@ coniug	k'oniudZ
 conn  $alt2
 cons  $alt
 consci  $alt
-console  $alt
-conson $1  $alt
+console	k'Onsole
+consoli	k'Onsoli
 consuet  $alt
 contadine	$3
 contafili	$3
@@ -1187,6 +1191,7 @@ diacon $1
 diaconia $3
 diacronia	$3
 diadem  $alt
+diafisi	di'afizi
 diagnosi $1
 dialett  $alt
 dialisi	dI'a:lizi
@@ -1234,6 +1239,7 @@ diplomazie	diplomats'ie/
 dipol $2
 dipylon $1
 dirett  $alt
+disamina	$2
 disarmonia	$4
 disarmonie	diza@-*mon'ie
 disartrie	$3
@@ -1805,6 +1811,7 @@ gipsotec  $alt
 girasol	dZiRas'ol
 girellio	$3
 girostat $2
+girovago	$2
 giuggiol $1
 giulianov  $alt
 giuria $2
@@ -2160,6 +2167,7 @@ lodol	$1
 log  $alt
 loggia  $alt
 logli  $alt
+logopedia	$4
 logorio	$3
 lol  $alt
 lombrichi	$2
@@ -2702,6 +2710,7 @@ ossa		$alt2
 ossea	$1
 ossee	$1
 osseo $1
+ossei	$1
 ossequi  $alt
 osset  $alt
 ossia $2
@@ -2743,6 +2752,7 @@ palagonia $4
 palamede  $alt
 palemone  $alt
 palen  $alt2
+palindrom	$2
 palingenesi $3
 pallanuot  $alt
 pallare $1
@@ -2815,6 +2825,7 @@ pecor $1  $alt
 ped  $alt
 pedagog  $alt
 pedaven  $alt2
+pediatrici	$2
 pedodonzia	$4
 pedogenesi $3
 pegaso	p'E:gazo
@@ -2995,6 +3006,7 @@ polesia $2  $alt
 polesine	$2 $alt2
 polia $2
 poliammine	$4
+poliandria	$4
 policrate $2
 policrom $2
 poliedr  $alt
@@ -3122,7 +3134,7 @@ profughi	$1 $alt
 progenie  $alt
 progett  $alt
 prognosi $1  $alt
-proiett  $alt
+programmini	$3
 pronao  $alt
 propanol $3
 propedeutic $3
@@ -3960,7 +3972,7 @@ tolf  $alt
 tolmezz  $alt
 toltechi  $alt
 tolve  $alt
-tomi  $alt
+tom	$alt
 ton  $alt
 toni  $alt
 tonn  $alt2
@@ -4021,6 +4033,7 @@ trentenn	$alt
 treppied	$alt
 tres  $alt
 tresette	t@-*es'Et:e
+tremit	$1
 treveri $1  $alt
 treves  $alt
 treviri $1

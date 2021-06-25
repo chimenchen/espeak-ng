@@ -48,23 +48,22 @@
 #include <espeak-ng/speak_lib.h>
 #include <espeak-ng/encoding.h>
 
-#include "dictionary.h"
-#include "mbrola.h"
-#include "readclause.h"
-#include "synthdata.h"
-#include "wavegen.h"
-
 #include "speech.h"
-#include "phoneme.h"
-#include "voice.h"
-#include "synthesize.h"
-#include "translate.h"
-#include "espeak_command.h"
-#include "fifo.h"
-#include "event.h"
+#include "dictionary.h"           // for GetTranslatedPhonemeString, strncpy0
+#include "espeak_command.h"       // for delete_espeak_command, SetParameter
+#include "event.h"                // for event_declare, event_clear_all, eve...
+#include "fifo.h"                 // for fifo_add_command, fifo_add_commands
+#include "mbrola.h"               // for mbrola_delay
+#include "readclause.h"           // for PARAM_STACK, param_stack
+#include "synthdata.h"            // for FreePhData, LoadConfig, LoadPhData
+#include "synthesize.h"           // for SpeakNextClause, Generate, Synthesi...
+#include "translate.h"            // for p_decoder, InitText, translator
+#include "voice.h"                // for FreeVoiceList, VoiceReset, current_...
+#include "wavegen.h"              // for WavegenFill, WavegenInit, WcmdqUsed
 
 unsigned char *outbuf = NULL;
 int outbuf_size = 0;
+unsigned char *out_start;
 
 espeak_EVENT *event_list = NULL;
 int event_list_ix = 0;
@@ -74,12 +73,12 @@ long count_samples;
 struct audio_object *my_audio = NULL;
 #endif
 
-static const char *option_device = NULL;
 static unsigned int my_unique_identifier = 0;
 static void *my_user_data = NULL;
 static espeak_ng_OUTPUT_MODE my_mode = ENOUTPUT_MODE_SYNCHRONOUS;
 static int out_samplerate = 0;
 static int voice_samplerate = 22050;
+static int min_buffer_length = 60; // minimum buffer length in ms
 static espeak_ng_STATUS err = ENS_OK;
 
 t_espeak_callback *synth_callback = NULL;
@@ -267,7 +266,8 @@ static int check_data_path(const char *path, int allow_directory)
 
 ESPEAK_NG_API espeak_ng_STATUS espeak_ng_InitializeOutput(espeak_ng_OUTPUT_MODE output_mode, int buffer_length, const char *device)
 {
-	option_device = device;
+	(void)device; // unused if HAVE_PCAUDIOLIB_AUDIO_H is not defined
+
 	my_mode = output_mode;
 	out_samplerate = 0;
 
@@ -276,11 +276,15 @@ ESPEAK_NG_API espeak_ng_STATUS espeak_ng_InitializeOutput(espeak_ng_OUTPUT_MODE 
 		my_audio = create_audio_device_object(device, "eSpeak", "Text-to-Speech");
 #endif
 
-	// buffer_length is in mS, allocate 2 bytes per sample
-	if (buffer_length == 0)
-		buffer_length = 60;
 
-	outbuf_size = (buffer_length * samplerate)/500;
+	// Don't allow buffer be smaller than safe minimum
+	if (buffer_length < min_buffer_length)
+		buffer_length = min_buffer_length;
+
+	// allocate 2 bytes per sample
+	// Always round up to the nearest sample and the nearest byte.
+	int millisamples = buffer_length * samplerate;
+	outbuf_size = (millisamples + 1000 - millisamples % 1000) / 500;
 	out_start = (unsigned char *)realloc(outbuf, outbuf_size);
 	if (out_start == NULL)
 		return ENOMEM;

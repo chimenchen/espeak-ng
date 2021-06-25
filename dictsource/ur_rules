@@ -16,9 +16,6 @@
 ٨	8
 ٩	9
 ي	ی
-یٰ	ا
-ٰی	ا
-
 
 // vowel signs, alif acts as consonants  at start of word if these follow
 .L01  َ ِ ُ و ی ع ا ے آ ٰ ٗ
@@ -71,6 +68,7 @@
 
 .group ٰ
 	ٰ	a:
+	ٰی	a:
 
 .group ا
 	ا	a:
@@ -132,7 +130,7 @@ _) ای	e:
 	اصلاح	,Is.l'a:H
 	امداد	,Imd'a:d
 استعف	Ist'i:f
-	L03L03) ات (_S2	'a:t
+	L03L03) ات (_S2	a:t
 	_) انتظ	'Int,Iz.
 	_)اخت(L02ا	,IxtI
 	_)اقت(L02ا	,IqtI
@@ -203,16 +201,17 @@ _) ای	e:
 	_)ال(L06L06L06P2	al
 	_L05)اب(L04_	a:bI
 	_L05)ات(L04_	a:tI
-	_L05)اق(L04_	a:qI
-	_L05)ال(L04_	a:lI
-	_L05)اج(L04_	a:JI
+	L05)اق(L04_	a:qI
+	L05)اش(L04	a:SI
+	L05)ال(L04_	a:lI
+	L05)اج(L04_	a:JI
 	L05)اح(L04_	a:HI
 	_L05)ام(L04_	a:mI
 	_L05)اط(L04_	a:tI
 	_L05)اس(L04_	a:sI
-	_L05)اف(L04_	a:fI
+	L05)اف(L04_	a:fI
 	_L05)ار(L04_	a:RI
-	_L05)اظ(L04_	a:z.I
+	L05)اظ(L04_	a:z.I
 	L05)اص(L04_	a:s.I
 	_)اولوال(L06L06L06P6	UlUl
 	_)استاد	Usta:d
@@ -262,9 +261,56 @@ _) ای	e:
 	_)است(صا	IstI
 	L05)اد(L04_	a:dI
 	L05)اع(L04	a:I
-	L06L07_)ال(L06L06L06P2	Ul
+	L06L07_)ال(L06L06_P2	Ul
 	_)اقرب	aqRab
 	L02)ای(L02	a:ja
+	_)استوا	Istava:
+	_)استوار	Ustava:R
+	اع(_	a:
+	_)افسرد	afsURd
+	_)اتحاد	ItIHa:d
+	_)اثبات	Isba:t
+	_)ادھور	ad#u:R
+	_)ادھیل	ad#e:l
+	_)ارجمند	aRJUmand
+	_)ازال	Iza:l
+	_)اس(پL03	Is
+	_)اسپیش(L03	Ispe:Sa
+	_)اسراف	IsRa:f
+	_)اسمگ	Ismag
+	_)اسٹی(ن	Ist.e:
+	_)اسک(و	Isk
+	_)اشارت	ISa:Rat
+	_)اشتی(L03	IStI
+	_)اشرف	aSRaf
+	_)اطاعت	It'a:at
+	_)اظہار	Iz.Ha:R
+	_)افا(د	Ifa:
+	_)افزو(L03	afzu:
+	_)اتوا	IltIva:
+	_)التیا	IltIa:
+	_)اناسی	Una:si:
+	_)انتعاش	IntIa:S
+	_)انجینیر	InJi:ni;aR
+	_)انچاس	Unca:s
+	_)اندرون	andRu:n
+	_)انگشت	angUSt
+	_)انگور	angu:R
+	_)انٹیلی	Int.e:li:
+	اعت(_	'a:at
+	_)اونٹ	u:nt.
+	_)اوور	o:vaR
+	_)اٹکھیل	at.k#e:l
+	_)اکاون	Ika:van
+	_)اکتالیس	Ikta:li:s
+	_)انج(ی	InJ
+	_)استانی	Usta:ni:
+	L03)ایہ	a:ja
+	_)ان(_دیکھ	an
+	L03)ایتی(_	'a:jati:
+	_)ایجاد	i:Ja:d
+	_)ایما	i:ma:
+	_)ایڈمنسٹر(L01	e:d.mInIst.R
 
 .group آ
 	آ	a:
@@ -276,7 +322,15 @@ _) ای	e:
 	_)آور	a:vaR
 	آبرو	a:bRu:
 	_)آلو	a:lu:
-
+	آئڈیل	'a:Id.i;al
+	_)آبنوس	a:bnu:s
+	_)آزرد	a:zURd
+	_)آسود	'a:su:d
+	_)آسیب	a:se:b
+	_)آگہ(L03	a:gaH
+	_)آنو(ل	a~:vV
+	_)آرگن	a:Rgan
+	آشفت	a:SUft
 
 .group ع
 	ع	a:
@@ -301,6 +355,22 @@ _) ای	e:
 	_)عرض	aRz
 	_)عزت(L03	Izat
 	_)علما	Ulama:
+	_)عبرت	IbRat
+	_)عجز	IJz
+	_)عجلت	UJlat
+	_)عجوب	aJu:b
+	_)عرو(س	URu:
+	_)علت	Il:at
+	L02)عی(L02	ai:
+	_)عقاب	Uqa:b
+	_)عرفان	IRfa:n
+	_)عصمت	as.mat
+	_)عطر	ItR
+	_)عبارت	Iba:Rat
+	_)عثمان	Usma:n
+	_)عصب	as.b
+	_)عیب	E:b
+	_)عیش	E:S
 
 .group و
 	و	o:
@@ -321,6 +391,15 @@ _) ای	e:
 	وں	o~:
 	L07عL07)و(L07	u:
 	L03L03)واتیں	va:ti~:
+	_)وزرا	vUzaRa:
+	_)وقعت	vUqat
+	_)ویران	vi:Ra:n
+	وابست	va:bast
+	_)وز(ٹ	vIzI
+	_)وسوس	vasvas
+	_)وسعت	vUsat
+	_L02)وّ(L01	av:
+	_)وعید	vai:d
 
 .group ی
 	ی	e:
@@ -331,7 +410,9 @@ _) ای	e:
 	@) ی	i:
 	@) یں (_	e~:
 	یّ	j:
-	@) یت (_S2	i:;'at
+	@)یت(_S2	i:;at
+	L03L02)یتیں	iate~:
+	L03L02)یتی(_	iati:
 	_) یو	jO
 	ی (و	e:
 	L02)یوں	i;o~:
@@ -341,6 +422,12 @@ _) ای	e:
 	L03L01)یا(_S2	ja:
 	L03)یشنل(_	e:Snal
 	_L02)یاIa:
+	_)یاقوت	ja:qu:t
+	_)یہود	jaHu:d
+	L02)یجیے	i:Ji;e:
+	L03L03)یشن(_	e:San
+	L03L03)یشنز	e:Sanz
+	یٰ	a:
 
 .group ے		// yeh barree
 	ے	e:
@@ -351,9 +438,13 @@ _) ای	e:
 // with hamza
 .group ئ
 	ئ
+	ئیے	ie:
 
 .group ؤ
 	ؤ	o:
+
+.group ﺅ
+	ﺅ	o:
 
 .group أ
 	أ	// ??
@@ -389,7 +480,7 @@ _) ای	e:
 	بغاوت	b,aQa:v'at
 	_) بہ (L02	b'EH
 	بزرگ	b'UzUR,g
-	_) بدل (L02	bad'al
+	_) بدل (L02	badal
 	بوڑھ	b'u:r.h
 	_)بے(P2	be:
 	بحران	b,OHR'a:n
@@ -412,7 +503,22 @@ _) ای	e:
 	_)بستر	bIstaR
 	_)بھکا(ر	b#Ika:
 	_)بڈھ(L01	bUd.#
-
+	_)برکت	baRkat
+	_)برہان	bURHa:n
+	_)باسکٹ	ba:skIt.
+	_)بری(ک	bRe:
+	_)بریکٹ	bRe:kIt.
+	_)بست(گ	bast
+	_)بوند	bu:nd
+	_)بوٹ	bu:t.
+	_)بٹیر	bat.e:R
+	_)بڑھ	bar.h
+	_)بکتر	baktaR
+	_)بکھیر	bIk#e:R
+	_)بکھیڑ	bak#e:r.
+	_)برادر	bIRa:daR
+	_)بدعت	bIdat
+	_)بھنبھن	b#Inb#In
 
 .group پ
 	پ	pV
@@ -437,6 +543,31 @@ _) ای	e:
 	_)پرند	paRInd
 	_)پھوپھ	p#u:p#
 	_)پارسل	pa:Rsal
+	_)پوائن	pUa:In
+	_)پھوٹ	p#u:t.
+	_)پبل(ش	pablI
+	_)پرمٹ	paRmIt.
+	_)پگھل(L01	pIg#l
+	_)پونج	pu:nJ
+	_)پیوند	pe:vand
+	_)پیوست	pE:vast
+	_)پردیس	paRde:s
+	_)پیٹت(L01_	pi:t.t
+	_)پیٹن(L01_	pi:t.n
+	_)پو(ج	pu:
+	پرہیز	paRHe:z
+	_)پرور	paRvaR
+	_)پرورش	paRvaRIS
+	_)پرو(ف	pRo:
+	_)پروفیسر	pRo:fe:saR
+	_)پروگر	pRogR
+	_)پروم	pRo:m
+	_)پکار	pUka:R
+	_)پنہا	pInHa:
+	_)پرن(ٹ	pRIn
+	_)پروڈیو(س	pRo:d.ju:
+	L03L03)پنگ(_	pIng
+	_)پنڈت	pand.It
 
 .group ت
 	ت	tV
@@ -469,6 +600,22 @@ _) ای	e:
 	_)تمہید	tamHi:d
 	_)تبصر	tabs.aR
 	_)تغیر	taQai:jUR
+	_)تفرق	tafaR:Uq
+	_)تذکر(L03	tazkIR
+	_)تجلی	taJal:i:
+	_)تجوری	tIJo:Ri:
+	_)تربت	tURbat
+	_)تخیل	taxai:jUl
+	_)تلمل	tIlmIl
+	_)تنقل	tanaq:Ul
+	تہذیب	tEHzi:b
+	_)تہمت	tOHmat
+	_)تجارت	tIJ'a:Rat
+	L02L02)تیں(_S3	ti~:
+	_)تیکھ	ti:k#
+	_)تتلا	tUtla:
+	_)تتلی	tItli:
+	_)تیما	ti:ma:	
 
 .group ٹ
 	ٹ	t.V
@@ -487,7 +634,18 @@ _) ای	e:
 	L03L03)ٹ(س_	t.
 	L03)ٹنگ	t.Ing
 	_)ٹر(L01	t.R
-
+	_)ٹوٹ(L01	t.u:t.
+	_)ٹھٹھر(L01	t.#It.#R
+	_)ٹھٹھک(L01	t.#It.#k
+	_)ٹکٹک	t.Ikt.Ik
+	_)ٹکنک	t.IknIk
+	_)ٹھاکر	t.#'a:kUR
+	_)ٹھمر	t.#UmR
+	_)ٹمک(L01	t.#Umk
+	_)ٹھکان	t.#Ika:n
+	_)ٹھہر(L01	t.#EHR
+	_)ٹہن	t.EHn
+	_)ٹیچر	t.'i:caR		
 
 .group ث
 	ث	sV
@@ -496,6 +654,7 @@ _) ای	e:
 	ثّ(L01	s:
 	ثْ	s
 	ثبوت	sUbu:t
+	_)ثروت	saRvat
 
 
 .group ج
@@ -527,6 +686,17 @@ _) ای	e:
 	_)جتوا	JItva:
 	_)جاسوس	Ja:su:s
 	_)جہنم	JaHan:Um
+	_)جرنیل	JaRne:l
+	_)جزئ	JUz
+	_)جارح	Ja:RIH
+	_)جاسک	Ja:sak
+	_)جنتر	JantaR
+	_)جھلس(L01	J#Uls
+	_)جاود	Ja:vId
+	_)جاوید	Ja:ve:d
+	_)جگال	JUga:l
+	_)جگجگ	JagJag
+	_)جگمگ	Jagmag	
 
 .group چ
 	چ	cV
@@ -542,9 +712,26 @@ _) ای	e:
 	چْ	c
 	چپقلش	capqalIS
 	@)چہ(_	ca
-	_)چکنا	cIkna:
+	_)چکن(L01	cIkn
 	_)چیخ	ci:x
 	_)چبھ	cUb#
+	_)چاکلیٹ	ca:kle:t.
+	_)چھین	c#i:n
+	_)چٹکی	cUt.ki:
+	_)چپڑ(L01	cUpr.
+	_)چپک(L01	cIpk
+	_)چپیٹ	cape:t.
+	_)چچیر	cace:R
+	_)چتکبر	cItkabR
+	_)چابک	ca:bUk
+	_)چوس(L01	cu:s
+	_)چوسٹھ	cO:sat.#
+	_)چولھ	cu:lh
+	_)چھٹکار	c#Ut.ka:R
+	_)چٹھی	cIt.#:i:
+	_)چڑچڑ	cIr.cIr.
+	_)چڑی	cIr.i:
+	_)چڑیل	cUr.e:l
 
 .group ح
 	ح	HV
@@ -558,14 +745,23 @@ _) ای	e:
 	حْ	H
 	_)حماقت	HIma:qat
 	_)حسرت	HasRat
-
-
+	_)حور	Hu:R
+	_)حکمت	HIkmat
+	_)حشمت	HaSmat
+	_)حصار	HIs.a:R
+	_)حجر	HaJR
+	_)حضور	HUzu:R
 	حّ	H:V
 	حّ(L01	H:
 	_)حیا	Haja:
 	_)حرکت	HaRkat
 	حرمت	HURmat
 	_)حویل	Have:l
+	_)حرفت	HIRfat
+	_)حریت	HURi;at
+	_)حکای(L02	HIk'a:ja
+	_)حیل	Hi:l
+	_)حیلت	Hi:lat
 
 .group خ
 	خ	xV
@@ -587,6 +783,14 @@ _) ای	e:
 	_)خض(ر	xIz
 	_)خمار	xUma:R
 	_)خورد	xURd
+	_)خردبین	xURdi:n
+	_)خروج	xURu:J
+	_)خوشبو	xUSbu:
+	_)خوشنود	xUSnu:d
+	_)خلوت	xIlvat
+	_)خلافت	xIla:fat
+	خوشگوار	xUSgava:R
+	_)خسرو	xUsRo:
 
 
 .group د
@@ -624,6 +828,16 @@ _) ای	e:
 	_)دلوا	dIlva:
 	_)دکان	dUka:n
 	_)دید	di:d
+	_)دستر	dastaR
+	_)دقت	dIq:at
+	_)دوات	dava:t
+	_)دہر(L03	dOHR
+	_)دلاس	dIla:s
+	دانست	da:nIst
+	دستاویز	dasta:ve:z
+	_)دبل(L01	dUbl
+	_)دختر	dUxtaR
+	_)درانداز	daRanda:z
 
 .group ڈ
 	ڈ	d.V
@@ -641,12 +855,29 @@ _) ای	e:
 	_)ڈاکٹر	d.a:kt.aR
 	L03)ڈنگ	d.Ing
 	_)ڈوب	d.u:b
+	_)ڈھٹا	d.#It.a:
+	_)ڈائرک(ٹ	d.a:IRIk
+	_)ڈگری	d.IgRi:
+	_)ڈگمگ	d.agmag
+	_)ڈگڈگ	d.Ugd.Ug
+	_)ڈلیور	d.Ili:vaR
+	_)ڈکشنری	d.IkSnaRi:
+	_)ڈکٹی(L02	d.Ikt.e:
+	_)ڈکیت	d.ake:t
+	_)ڈھیل	d.#i:l
+	_)ڈیوٹی	d.ju:t.i:
+	_)ڈسٹ(ر	d.Ist.
+	_)ڈسٹل	d.Ist.Il
+	_)ڈش	d.IS
+	_)ڈسک	d.Isk
 
 .group ذ
 	ذ	zV
 	ذ (L01	z
 	_) ذہ (L02	z'EH
 	ذْ	z
+	_)ذوال(L03L03P4	zUl
+	_)ذلت	zIl:at
 
 .group ر
 	ر	RV
@@ -672,6 +903,35 @@ _) ای	e:
 	_)رجوع	RUJu:
 	_)رفعت	RIfat
 	_)رتب	RUtb
+	_)رزق	RIzq
+	_)رخن(L03	Raxn
+	L03L03L03)رنگ(_	RIng
+	_)رکاوٹ	RUka:vat.
+	_)رپبل(ک	RIpablI
+	_)رپور	RIpo:R
+	_)رعایت	RIa:jat
+	_)ریڈر	R'i:d.aR
+	رزسٹر	RizIst.aR
+	_)رزم	Razm
+	_)رسال	RIs'a:l
+	_)رسوا	RUsva:
+	_)رسک	RIsk
+	_)رشت	RISt
+	_)رشد	RUSd
+	_)رعونت	Rau:nat
+	_)رفقا	RUfaq'a:
+	_)روای(L02	RIv'a:ja
+	_)رسول	Rasu:l
+	_)ربط	Rabt
+	_)رپہل	RUpEHl
+	_)رجسٹر	RIJIst.aR
+	_)رجسٹر(L01	RIJIst.R
+	_)رجعت	RUJat
+	_)رضوان	RIzva:n
+	_)رعئت	RIa:It
+	_)رغبت	RaQbat
+	رفریجریٹر	RIfRi:JRe:t.aR
+	رفوگر	Rafu:gaR
 
 .group ڑ
 	ڑ	r.V
@@ -691,6 +951,7 @@ _) ای	e:
 	_) زہ (L02	z'EH
 	_) زلزل	z,alz'al
 	زْ	z
+	_)زلف	zUlf
 
 .group ژ
 	ژ	ZV
@@ -703,7 +964,7 @@ _) ای	e:
 	سّ	ssV
 	سّ (L01	ss
 	_) سرخ	s'URx
-	_) سن (L01	s'Un
+	_)سن(L01_	s'Un
 	_) سلجھ	sUl'aJh
 	_) سلجھ (L01	sUlJh
 	_) سدھر	sUdh'aR
@@ -729,6 +990,62 @@ _) ای	e:
 	_)سانح	sa:nIH
 	_)سبک	sUbUk
 	_)سفید	safe:d
+	_)سگریٹ	sIgRe:t.
+	_)سپاہ	sIpa:H
+	_)سہولت	saHu:lat
+	سیرت	si:Rat
+	_)سسک(L01	sIsk
+	_)سلائ(L02	sla:I
+	_)سلطان	sUlta:n
+	L03L03)سنگ(_	sIng
+	_)سکرین	skRi:n
+	_)سکڑ(L01	sUkr.
+	_)سمت	sImt
+	_)سمٹ(L01	sImt.
+	_)سنتر(L01	santR
+	_)سندر	sUndaR
+	_)سیڑھ	si:r.h
+	_)سنٹر	sInt.aR
+	_)سنہر	sUnEHR
+	_)سرجن	saRJan
+	_)سرمد	saRmad
+	_)سرنگ	sURang
+	_)سرونٹ	saRvant.
+	_)سرود	sURu:d
+	_)سرکش	saRkaS
+	_)سریل	sURi:l
+	_)سرفروش	saRfaRo:S
+	_)سرگرد	saRgaRd
+	_)سرکنڈ	saRkand.
+	_)سرشت	saRISt
+	_)سعادت	s'a:dat
+	_)سفارت	sIf'a:Rat
+	_)سکونت	sUku:nat
+	_)سکیڑ	sUke:r.
+	_)سہان	sUHa:n
+	_)سہیل(L01	saHe:l
+	_)سیئ	si:
+	_)سیا(ح	saia:
+	_)سیپ(L01	si:p
+	_)سیخ	si:x
+	_)سانور(L03	sa~:vR
+	_)سانول(L03	sa~:vl
+	_)سویر	save:R
+	_)سویلا	sIvi:la:
+	_)سوی(ٹ	svi:
+	_)سٹپٹ	sat.pat.
+	_)سرپرست	saRpaRast
+	_)سرسر	saRsaR
+	_)سرفراز	saRfaRa:z
+	_)سرنشین	saRnaSi:n
+	_)سرہنگ	saRHang
+	_)سطر	satR
+	_)سپر(وا	sUpaR
+	_)سپنج	spanJ
+	_)سپوت	sapu:t
+	_)سپہدار	sIpEHda:R
+	_)سپیکر	spi:kaR
+	_)سپیر(L01	sape:R
 
 .group ش
 	ش	SV
@@ -755,6 +1072,19 @@ _) ای	e:
 	_)شربت	SaRbat
 	_)شکران	SUkRa:n
 	_)شکنج	SIkanJ
+	_)شگاف	SIga:f
+	_)شکر(_گزار	SUkr
+	_)شفٹ	SIft.
+	_)شاستر	Sa:stR
+	_)شاگرد	Sa:gIRd
+	_)شعاع	SUa:
+	شگفت	SagUft
+	_)شگوف	Sagu:f
+	شگون	Sagu:n
+	شمارند	SUm'a:Rand
+	_)شعار	SIa:R
+	_)شکن(L01	SIkn
+	شنوا	SUnva:
 
 .group ص
 	ص	s.V
@@ -766,6 +1096,8 @@ _) ای	e:
 	_)صفت	s.Ifat
 	صْ	s.
 	_)صاحب	s.a:HIb
+	_)صنعت	s.anat
+	صورت	s.u:Rat
 
 .group ض
 	ض	zV
@@ -786,6 +1118,8 @@ _) ای	e:
 	_)طوف(ا	tu:f
 	_)طول	tu:l
 	_)طیار	tai;a:R
+	_)طلسم	tIlIsm
+	_)طفل	tIfl
 
 .group ظ
 	ظ	z.V
@@ -804,7 +1138,8 @@ _) ای	e:
 	_)غذا	QIza:
 	_)غبار	QUba:R
 	_)غفلت	Qaflat
-	
+	_)غرور	QURu:R
+	_)غلام	QUla:m
 
 .group ف
 	ف	fV
@@ -818,6 +1153,23 @@ _) ای	e:
 	فْ	f
 	_)فلسف	falsaf
 	_)فقر(L03	fIqR
+	_)فیاض	fai;a:z
+	_)فلی(L02	fle:
+	_)فٹ(_نوٹ	fUt.
+	_)فراست	faRa:sat
+	_)فراڈ	fRa:d.
+	فطرت	fItRat
+	_)فطر	fITR
+	_)ففٹی	fIft.i:
+	_)فگار	fIga:R
+	_)فرشت	faRISt
+	_)فشا	fISa:
+	_)فنک(شن	fank
+	_)فلٹر	fIlt.aR
+	_)فرعون	fIRaUn
+	_)فرہنگ	faRHang
+	_)فرفر	faRfaR
+	_)فیت	fi:t
 
 .group ق
 	ق	qV
@@ -833,6 +1185,8 @@ _) ای	e:
 	_)قانون	q'a:nu:n
 	قسمت	qIsmat
 	_)قدوس	qUdu:s
+	_)قریش	qURe:S
+	_)قدرت	qUdRat
 
 .group ک
 	ک	kV
@@ -863,6 +1217,47 @@ _) ای	e:
 	L03)کنگ(_	kIng
 	_)کلینڈر	kalend.aR
 	_)کھلا(ڑ	k#Ila:
+	_)کنگل	kangl
+	_)کن(ٹ	kan
+	_)کنٹر(L03	kant.R
+	_)کنڈک	kandak
+	_)کنکر	kankaR
+	_)کوا(ل	kUa:
+	_)کواڑ	kIva:r.
+	L03L03)کٹر	kt.aR
+	_)کوز(L03	ku:z
+	_)کٹکٹ	kat.kat.
+	_)کھدیڑ	k#ade:r.
+	_)کھسک(L01	k#Isk
+	_)کھلبل	k#albal
+	_)کھونٹ	k#u:nt.
+	_)کھڑکی	k#Ir.ki:
+	_)کھیر	k#i:R
+	_)کہر	kOHR
+	_)کیمیا	ki:mia:
+	_)کلی(ن	kli:
+	_)کروٹ	kaRvat.
+	_)کفر	kUfR
+	_)کرچی	kIRci:
+	_)کچیل	kUce:l
+	_)کرید	kURe:d
+	_)کریل	kaRe:l
+	_)کریڈٹ	kRe:d.It.
+	کشائی	kUSa:i:
+	_)کشاد	kUSa:d
+	_)کشور	kISvaR
+	_)کلیج	kale:J
+	کارکرد	ka:RkaRd
+	_)کنند	kUnand
+	_)کلاس	kla:s
+	_)کلبل	kalbal
+	_)کلو(م	kIlo:
+	_)کلکار	kIlka:R
+	_)کلک(L02L01	kalak
+	_)کلکٹر	kalIkt.aR
+	_)کلہاڑ	kUlha:r.
+	_)کلوٹ	kalu:t.
+	_)کمار	kUma:R
 
 .group گ
 	گ	gV
@@ -877,7 +1272,7 @@ _) ای	e:
 	گئے	g'ae:
 	گئی	g'ai:
 	گمشد	g'UmS,Ud
-	_) گھما	g#'Uma:
+	_)گھما	g#'Uma:
 	_) گہ (L02	g'EH
 	گزارش	gUz'a:RIS
 	_) گیت	g'i:t
@@ -890,6 +1285,25 @@ _) ای	e:
 	گْ	g
 	_)گناہ	gUna:H
 	_)گروہ	gIRo:H
+	_)گھل	g#Ul
+	_)گذا	gUza:
+	_)گذشت	gUzaSt
+	_)گل(L04L03	gUl
+	_)گرت(L01	gIRt
+	_)گرن(L01_	gIRn
+	_)گونگ(L01	gu:ng
+	_)گیل(L01	gi:l
+	_)گما	gUma:
+	گداز	gUda:z
+	_)گلاب	gUla:b
+	_)گلاس	gla:s
+	_)گلال	gUla:l
+	_)گلستان	gUlIsta:n
+	_)گتھ	gUt#
+	_)گریز	gURe:z
+	_)گچھ	gUc#
+	_)گجرات	gUJRa:t
+	_)گدگدا	gUdgUda:
 
 .group ل
 	ل	lV
@@ -906,6 +1320,11 @@ _) ای	e:
 	_)لیڈر	li:d.aR
 	_)لفٹ	lIft.
 	L03L03L03)لنگ	lIng
+	_)لپیٹ	lape:t.
+	L03L01)لٹ(_	lt.
+	_)لسان	lIsa:n
+	_)لشکر	laSkaR
+	_)لیکچر	le:kcaR
 
 .group م
 	م	mV
@@ -957,7 +1376,7 @@ _) ای	e:
 	_)محور	mEHvaR
 	_)منت(L02L02	mUnta
 	_)منصب	mans.ab
-	_)منصف	mUns.If
+	منصف	mUns.If
 	_)منطق	mantIq
 	_)مثال	mIsa:l
 	_)مرغ	mURQ
@@ -1009,11 +1428,93 @@ _) ای	e:
 	_)متع(L02L03	mUta:
 	مشقت	mUSaq:at
 	مہذب	mUHaz:ab
+	ملاقات	mUla:qa:t
+	_)ملت(L02L03	mUlta
+	_)مصط(L02L03	mUs.ta
+	_)مدبر	mUdab:IR
+	_)محاف(ظ	mUHa:fI
+	_)مخا(L02L02	mUxa:
+	_)مسند	masnad
+	_)مسود	mUsav:Id
+	_)مسوڑ	masu:r.
+	_)مسکان	mUska:n
+	_)مشار(L02	mUSa:RI
+	_)مشاع(L02	mUSa:I
+	_)مشفق	mUSfIq
+	_)ملوا	mIlva:
+	_)معظم	mUaz.am
+	_)مضطرب	mUztaRIb
+	_)مطالع(L03	mUta:l
+	_)مسافر	mUsa:fIR
+	_)مساوات	masa:va:t
+	_)مسخر(L03	masxaR
+	_)متوکل	mUtavak:Il
+	_)متکلم	mUtakal:Im
+	_)مخلص	mUxlIs.
+	_)مظہر	maz.HaR
+	_)معاند	mUa:nId
+	_)مجوز	mUJav:Iz
+	_)ممی(ر	mame:
+	_)مدیر	mUdi:R
+	_)مترجم	mUtaRaJ:Im
+	_)متشدد	mUtaSad:Id
+	_)متفکر	mUtafak:IR
+	_)مروت	mURav:at
+	_)معزز	mUaz:Iz
+	_)معذرت	ma:zRat
+	_)معرف	ma:RIf
+	_)معرفت	ma:RIfat
+	_)موند	mu:nd
+	_)مونس	mu:nIs
+	_)مونگ	mu:ng
+	_)منمن	mInmIn
+	_)منڈ(وا	mUnd.
+	_)منڈیر	mUnd.e:R
+	_)منکر	mUnkIR
+	ملائ(م	mUla:I
+	_)مخمل	maxmal
+	_)مرچ(ی	mIRc
+	_)مہربان	mEHERba:n
+	_)مہلت	mOHlat
+	_)میزان	mi:za:ni:
+	_)میع	mi:
+	_)میق	mi:q
+	_)میلاد	mi:la:d
+	_)مینا	mi:na:
+	_)معین	mUai:an
+	_)مفاہ(م	mUfa:HI
+	_)مصالحت	mUs.a:lIHat
+	_)مومن	mo:mIn
+	_)مونچھ	mu:nc#
+	_)مجسم(L03	mUJasm
+	_)مجسٹریٹ	maJIst.Re:t.
+	_)موکل	mUak:Il
+	_)مرحل	maRHal
+	_)میٹرک	me:t.RIk
+	_)مماثلت	mUma:xIlat
+	_)مخت(L02L03	mUxta
+	مخفف	mUxaf:af
+	متغیر	mUtQaiaR
+	_)ممیز	mUmaiaz
+	_)مرید	mURi:d
+	_)موروث	mo:Ru:s
+	_)مڑ(وا	mUr.
+	_)مقیم	mUqi:m
+	_)مودب	mUad:ab
+	_)موخر	mUax:aR
+	_)مورخ	mUaR:Ix
+	ملاحظ	mUl'a:HIz.
+	_)مقید	mUqai:ad
+	_)مکرم	mUkaR:am
+	_)متصل	mUtas.Il
+	_)مبالغ	mUba:lIQ
+	_)مرغول	maRQu:l
+	مولود	mO:lu:d
 
 .group ن
 	ن	nV
 	ن (L01	n
-	@) ن (گ	n
+	@) نگ(_	ng
 	@) ن (د	n
 	@) ن (ب	n
 	@) ن (س	n
@@ -1059,6 +1560,25 @@ _) ای	e:
 	_)نبھ	nIb#
 	_)نعمت	ne:mat
 	L03L02)ننگ	nIng
+	_)نرسر	naRsaR
+	_)نسخ(L03	nUsx
+	L03)ننگ(_	nIng
+	_)ناشکر	na:SUkR
+	_)نچوڑ	nIco:r.
+	_)ندا(ئ	nIda:
+	_)نگہ(د	nIgEH
+	_)نخل	naxl
+	_)نورد	navaRd
+	_)نصاب	nIs.a:b
+	نگہبان	nIgEHba:n
+	نادہند	na:daHInd
+	_)نارسید	na:Rasi:d
+	_)نہاد	nIHa:d
+	_)نشست	naSIst
+	_)نشیب	naSe:b
+	_)نازیب	na:ze:b
+	_)نشاط	nISa:t
+	_)نغم	naQm
 
 .group ں
 	ں	n    // this should nasalize the vowel
@@ -1088,6 +1608,12 @@ _) ای	e:
 	ہْ	H
 	_)ہجرت	HIJRat
 	ی_)ہوا	Hava:
+	_)ہچکچ	HIckIc
+	_)ہچک(L01	HIck
+	_)ہس(ٹ	HIs
+	_)ہمت	HIm:at
+	_)ہنہن	HInHIn
+	_)ہیئت	He:at
 
 .group ۃ
 	ۃ	t

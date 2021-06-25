@@ -7,7 +7,76 @@
 
 The espeak-ng project is a fork of the espeak project.
 
-### 1.49.3 - (In Development)
+### 1.51 (In Development)
+
+*  Add support for speechPlayer.
+*  Add more tests to check the various parts of espeak-ng.
+*  Various changes to clean up the codebase (Juho Hiltunen)
+*  Restructure "option brackets" language option to "brackets" and "bracketsAnnounced".
+*  Restructure "stressLength" and "stressAdd" language option
+*  New Language option: "lowercaseSentence" for ending a sentence if a period is followed by a lower case letter.
+*  Added voice variants
+*  Renamed zh to cmn (Mandarin)
+*  Renamed zhy to yue (Cantonese)
+*  cmn (Mandarin) now assumes all latin characters all English text. 
+   Use cmn-latn-pinyin for interpreting latin characters as pinyin.
+
+
+
+bug fixes:
+*  Fix reading malformed SSML (Christopher Brannon)
+*  Fix memory allocation (Christopher Brannon)
+*  Fix building and phoneme compilation (John Bowler)
+
+documentation:
+* Add documentation about voice and language options.
+* Add documentation about dictionary flags.
+
+updated languages:
+*  ba (Bashkir) -- boracasli98, Valdis Vitolins, Juho Hiltunen
+*  de (German) -- Karl Eick, Henry Krumb
+*  el (Modern Greek) -- Reece Dunn (support for variant Greek letter forms)
+*  en (English) -- Steven Presser, Ben Talagan
+*  fa (Farsi/Persian) -- Shadyar Khodayari
+*  ga (Gaelic (Irish)) Chen, Chien-ting 
+*  grc (Ancient Greek) -- Reece Dunn (support for variant Greek letter forms)
+*  hak (Hakka Chinese) -- Juho Hiltunen
+*  haw (Hawaiian) -- Juho Hiltunen
+*  ka (Georgian) -- Juho Hiltunen
+*  kok (Konkani) -- Juho Hiltunen
+*  nb (Norwegian Bokmål) -- Juho Hiltunen
+*  nci (Classical Nahuatl) -- Juho Hiltunen
+*  hy (Armenian) -- tigransimonyan
+*  ia (Interlingua) -- nesrad
+*  it (Italian) -- Christian Leo
+*  ja (Japanese) -- fukuen, Juho Hiltunen
+*  jbo (Lojban) -- Juho Hiltunen, xunsku
+*  lv (Latvian) -- Valdis Vitolins
+*  mi (Māori) -- boracasli98
+*  shn (Shan Tay Yai) -- ronaldaug
+*  tr (Turkish) -- boracasli98, SeanTolstoyevski
+*  ur (Urdu) -- Ejaz Shah
+*  uz (Uzbek) -- boracasli98, Valdis Vitolins
+*  zh (Chinese) -- Silas S. Brown, Rongcui Dong, Icenowy Zheng, Juho Hiltunen
+
+new languages:
+*  chr (Cherokee) -- Michael Conrad
+*  cu (Chuvash) -- boracasli98, Valdis Vitolins
+*  haw (Hawaiian) -- Valdis Vitolins
+*  he (Hebrew) -- boracasli98, Valdis Vitolins
+*  io (Ido) -- José Miguel López, Valdis Vitolins
+*  ltg (Latgalian) -- Valdis Vitolins
+*  nog (Nogai) -- boracasli98, Valdis Vitolins
+*  piqd (Klingon) -- Valdis Vitolins
+*  qu (Quechua) -- Valdis Vitolins
+*  qdb (Lang Belta) -- Da Def, Valdis Vitolins
+*  smj (Lule Saami) -- Katri Hiovain, Sebastien Le Maguer
+*  th (Thai) -- Valdis Vitolins
+*  tk (Turkmen) -- boracasli98, Valdis Vitolins
+*  ug (Uyghur) -- boracasli98, Valdis Vitolins
+*  uk (Ukrainian) -- Valdis Vitolins
+
+### 1.50 - 2019-11-29
 
 *  Add a `--disable-rpath` option to prevent libtool hardcoding rpaths in the executable.
 *  Renamed the `hy-arevmda` language to `hyw`, following the 2018-03-30 change to the
@@ -45,6 +114,7 @@ emoji:
 
 new languages:
 
+*  ba (Bashkir) -- tc-dl, Valdis Vitolins
 *  hak (Hakka Chinese) -- Chen Chien-ting
 *  ht (Haitian Creole) -- Valdis Vitolins
 *  kk (Kazakh) -- boracasli14, Valdis Vitolins
@@ -52,11 +122,13 @@ new languages:
 *  quc (K'iche') -- Valdis Vitolins
 *  ru-lv (Russian Latvia) -- Valdis Vitolins
 *  shn (Shan Tay Yai) -- ronaldaug
+*  uz (Uzbek) -- Valdis Vitolins
 
 updated languages:
 
 *  af (Afrikaans) -- Christo de Klerk
 *  ar (Arabic) -- Valdis Vitolins, Mark Readdie, Hesham Assabahi
+*  cmn (Chinese Mandarin) -- materia-cccp
 *  de (German) -- Reece Dunn, Karl Eick
 *  en (English) -- Reece Dunn
 *  fa (Farsi/Persian) -- Shadyar Khodayari

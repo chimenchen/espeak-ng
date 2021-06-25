@@ -32,19 +32,18 @@
 #include <espeak-ng/speak_lib.h>
 #include <espeak-ng/encoding.h>
 
-#include "dictionary.h"
-#include "intonation.h"
-#include "mbrola.h"
-#include "setlengths.h"
-#include "synthdata.h"
-#include "wavegen.h"
-
-#include "phoneme.h"
-#include "voice.h"
 #include "synthesize.h"
-#include "translate.h"
+#include "dictionary.h"           // for WritePhMnemonic, GetTranslatedPhone...
+#include "intonation.h"           // for CalcPitches
+#include "mbrola.h"               // for MbrolaGenerate, mbrola_name
+#include "phoneme.h"              // for PHONEME_TAB, phVOWEL, phLIQUID, phN...
+#include "setlengths.h"           // for CalcLengths
+#include "soundicon.h"               // for soundicon_tab, n_soundicon
+#include "synthdata.h"            // for InterpretPhoneme, GetEnvelope, Inte...
+#include "translate.h"            // for translator, LANGUAGE_OPTIONS, Trans...
+#include "voice.h"                // for voice_t, voice, LoadVoiceVariant
+#include "wavegen.h"              // for WcmdqInc, WcmdqFree, WcmdqStop
 
-extern FILE *f_log;
 static void SmoothSpect(void);
 
 // list of phonemes in a clause
@@ -68,16 +67,9 @@ static int syllable_centre;
 
 static voice_t *new_voice = NULL;
 
-int n_soundicon_tab = N_SOUNDICON_SLOTS;
-SOUND_ICON soundicon_tab[N_SOUNDICON_TAB];
-
 #define RMS_GLOTTAL1 35   // vowel before glottal stop
 #define RMS_START 28  // 28
-
 #define VOWEL_FRONT_LENGTH  50
-
-// a dummy phoneme_list entry which looks like a pause
-static PHONEME_LIST next_pause;
 
 const char *WordToString(unsigned int word)
 {
@@ -97,10 +89,6 @@ void SynthesizeInit()
 	last_amp_cmd = 0;
 	last_frame = NULL;
 	syllable_centre = -1;
-
-	// initialise next_pause, a dummy phoneme_list entry
-	next_pause.type = phPAUSE;
-	next_pause.newword = 0;
 }
 
 static void EndAmplitude(void)
@@ -114,7 +102,7 @@ static void EndAmplitude(void)
 
 static void EndPitch(int voice_break)
 {
-	// posssible end of pitch envelope, fill in the length
+	// possible end of pitch envelope, fill in the length
 	if ((pitch_length > 0) && (last_pitch_cmd >= 0)) {
 		if (wcmdq[last_pitch_cmd][1] == 0)
 			wcmdq[last_pitch_cmd][1] = pitch_length;
@@ -127,7 +115,6 @@ static void EndPitch(int voice_break)
 		syllable_end = wcmdq_tail;
 		SmoothSpect();
 		syllable_centre = -1;
-		memset(vowel_transition, 0, sizeof(vowel_transition));
 	}
 }
 
@@ -143,6 +130,14 @@ static void DoAmplitude(int amp, unsigned char *amp_env)
 	q[1] = 0; // fill in later from amp_length
 	q[2] = (intptr_t)amp_env;
 	q[3] = amp;
+	WcmdqInc();
+}
+
+static void DoPhonemeAlignment(char* pho, int type)
+{
+	wcmdq[wcmdq_tail][0] = WCMD_PHONEME_ALIGNMENT;
+	wcmdq[wcmdq_tail][1] = (intptr_t)pho;
+	wcmdq[wcmdq_tail][2] = type;
 	WcmdqInc();
 }
 
@@ -912,14 +907,7 @@ int DoSpect2(PHONEME_TAB *this_ph, int which, FMT_PARAMS *fmt_params,  PHONEME_L
 	if (voice->klattv[0])
 		wcmd_spect = WCMD_KLATT;
 
-	wavefile_ix = fmt_params->wav_addr;
-
-	if (fmt_params->wav_amp == 0)
-		wavefile_amp = 32;
-	else
-		wavefile_amp = (fmt_params->wav_amp * 32)/100;
-
-	if (wavefile_ix == 0) {
+	if (fmt_params->wav_addr == 0) {
 		if (wave_flag) {
 			// cancel any wavefile that was playing previously
 			wcmd_spect = WCMD_SPECT2;
@@ -989,9 +977,15 @@ int DoSpect2(PHONEME_TAB *this_ph, int which, FMT_PARAMS *fmt_params,  PHONEME_L
 		if ((fmt_params->wav_addr != 0) && ((frame1->frflags & FRFLAG_DEFER_WAV) == 0)) {
 			// there is a wave file to play along with this synthesis
 			seq_len_adjust = 0;
+	
+			int wavefile_amp;
+			if (fmt_params->wav_amp == 0)
+				wavefile_amp = 32;
+			else
+				wavefile_amp = (fmt_params->wav_amp * 32)/100;
+
 			DoSample2(fmt_params->wav_addr, which+0x100, 0, fmt_params->fmt_control, 0, wavefile_amp);
 			wave_flag = 1;
-			wavefile_ix = 0;
 			fmt_params->wav_addr = 0;
 		}
 
@@ -1143,6 +1137,8 @@ void DoEmbedded(int *embix, int sourceix)
 	} while ((word & 0x80) == 0);
 }
 
+extern espeak_ng_OUTPUT_HOOKS* output_hooks;
+
 int Generate(PHONEME_LIST *phoneme_list, int *n_ph, bool resume)
 {
 	static int ix;
@@ -1192,13 +1188,20 @@ int Generate(PHONEME_LIST *phoneme_list, int *n_ph, bool resume)
 		syllable_end = wcmdq_tail;
 		syllable_centre = -1;
 		last_pitch_cmd = -1;
-		memset(vowel_transition, 0, sizeof(vowel_transition));
 		memset(&worddata, 0, sizeof(worddata));
 		DoPause(0, 0); // isolate from the previous clause
 	}
 
 	while ((ix < (*n_ph)) && (ix < N_PHONEME_LIST-2)) {
 		p = &phoneme_list[ix];
+		
+		if(output_hooks && output_hooks->outputPhoSymbol)
+		{
+			char buf[30];
+			int dummy=0;
+			WritePhMnemonic(buf, p->ph, p, 0, &dummy);
+			DoPhonemeAlignment(strdup(buf),p->type);
+		}
 
 		if (p->type == phPAUSE)
 			free_min = 10;

@@ -1,0 +1,7 @@
+#!/bin/sh
+# include common script
+. "`dirname $0`/common"
+
+##### Voice options
+test_phon ka "s'asi,amovn,oa t#k#v'eni g'ats#noba
+r'ogor brdz'andebit#" "სასიამოვნოა თქვენი გაცნობა. როგორ ბრძანდებით" "lowercaseSentence" #872

@@ -1,7 +1,7 @@
 
 // Italian translation rules
 // This file is UTF-8 encoded
-// Last update: 2019 febbruary 3 by Christian Leo Mameli <llajta2012@gmail.com>
+// Last update: 2021 May 10 by Christian Leo Mameli <llajta2012@gmail.com>
 // letter groups
 // A  any vowel
 // C  any consonant
@@ -49,6 +49,9 @@
 	_L04Z) auguri (_	'awguRI
 	astano (_	'astano   // verbs
 	ass) aggia (L07_	'adZ:a/
+	acchi) appa (L07_	'ap:a
+	accord) ata (L04_	'ata
+
 .group à
 	à	''a
 	ài (K	''aI
@@ -71,7 +74,7 @@
 	c (Y	tS
 	cc (Y	tS:
 	ch (Y	k
-		cch (Y	k:
+	cch (Y	k:
 	s) ch (A	k
 	ch (a	tS
 	ch (o	tS
@@ -107,6 +110,11 @@
 	cerca (L07_	tS'e@-*ka
 	conta (L07_	k'onta
 	ra) cconta (L07_	k:'Onta
+	asse) conda (L04_	k'onda
+	compier (L04_	k'ompie@-*
+	compila (L07_	komp'ila
+	consulta (L07_	kons'ulta
+	eti) chetta (L07_	k'Et:a
 
 .group d
 	d	d
@@ -124,6 +132,7 @@
 	i) dano (_	=dano  // verbs
 	i) dino (_	=dino
 	_) data (L07_	d'ata
+	diriger (L04_	diR'idZe@-*
 	due (_	d'ue   // numbers
 	dieci (_	dj'EtSi
 	day (_	d'eI   // foreign
@@ -196,6 +205,8 @@
 	AC) erano (_	=eR,ano
 	@s) ero (_	=ERO
 	e (lano_	'e
+	_) entra (L07_	'Ent@-*a
+	ri) entra (L07_	'Ent@-*a
 
 .group è
 	_) è (_	,E
@@ -217,6 +228,7 @@
 	ferma (L07_	f'e@-*ma/
 	_) fatt (AL04_	f'at:
 	_ri) fatt (AL04_	f'at:
+	_) firma (L07_	f'i@-*ma
 
 .group g
 	g	g
@@ -344,6 +356,8 @@
 	imer (L04_	'Ime@-*
 	ass) ister (L04_	'iste@-*
 	r) ider (L04_	'ide@-*
+	cons) idera (L07_	'ide@-*a
+	reg) istra (L07_	'i:st@-*a
 	ivano (_	'ivano   // verbs
 	i (ficano_	'i
 	ifichino (_	'ifikino
@@ -483,10 +497,14 @@
 	l) oqui (A	Okwj
 	C) orda (L05_	'O@-*da   // pron. verbs
 	r) omper (L04_	'ompe@-*
-		C) onder (L04_	'ondE@-*
-		over (L04_	'ovE@-*
+	C) onder (L04_	'ondE@-*
+	over (L04_	'ovE@-*
 	d) over (L04_	Ov'E@-*
 	m) order (L04_	'O:@-*de@-*
+	s) ogna (L07_	'on^a
+	ign) ora (L07_	'ORa
+	inc) olla (L07_	'ol:a
+	ris) olver (L04_	'Olve@-*
 	ovano (_ 'ovano   // verbs
 	osano (_	'ozano
 	o (CCano_	'O
@@ -514,6 +532,10 @@
 	tro) pi (A_	p'i
 	pensa (L07_	p'Ensa
 	premer (L04_	p@-*'Eme@-*
+	pervader (L07_	pe@-*v'ade@-*
+	picchia (L07_	p'ik:i,a
+	_) poni (L07_ p'oni
+	pro) poni (L07_ p'oni
 
 .group q
 	q	k
@@ -595,6 +617,10 @@
 	ssiono (_	ssi'ono
 	C) siono (_	si'ono
 	A) ssano (_	=ssano
+	a) sciuga (L07_	S'uga
+	_) scola (L07_	sk'ola
+	_ri) scola (L07_	sk'ola
+	_) stacca (L07_	st'ak:a
 	L02) sei (_	_s'Ej // numbers
 
 .group t
@@ -647,6 +673,8 @@
 	C) uo (tano_	U'O
 	uomini (_	w2'Omini
 	fanc) u (lA_	'u:
+	f) uma (L07_	'u:ma
+	com) unica (L07_	'u:nika
 
 .group v
 	v	v
@@ -654,6 +682,7 @@
 	vvi (A	v:i
 	C) vi (A	vi
 	C) vi (A_	=vi
+	_) v' (P2t	v
 	A) vino (_	=vino  // verbs
 	@) vo (cano_	=vo
 	in) via (toL04_	vI'a
@@ -665,7 +694,10 @@
 	s) veglia (L07_	v'el^a
 	volta (L07_	v'Olta
 	venut (AL04_	ven'ut
-	_) v' (P2t	v
+	in) viata (L04_	vi'a:ta
+	a) vvinghia (L07_	v:'ingja
+	_) versa (L07_	v'e@-*sa
+	_ri) versa (L07_ v'e@-*sa
 
 .group w
 	w	w2

@@ -1,13 +1,44 @@
 #!/bin/sh
+# include common script
+. "`dirname $0`/common"
+# and run needed checks before
+is_hash
 
-test_ssml() {
-	INPUT=$1
-	echo "testing ${INPUT}"
-	cp $(dirname $INPUT)/$(basename ${INPUT%.*}).expected expected.txt
+test_ssml_audio() {
+	TEST_NAME=$1
+	EXPECTED=$2
+	TEST_TEXT=$3
+
+	echo "testing ${TEST_NAME}"
 	ESPEAK_DATA_PATH=`pwd` LD_LIBRARY_PATH=src:${LD_LIBRARY_PATH} \
-		src/espeak-ng -m -q -v en-US --ipa=2 -f ${INPUT} > actual.txt
+		src/espeak-ng --stdout -m "${TEST_TEXT}" | \
+		$sha1sum | awk '{ print $1 }' > actual.txt
+	echo "${EXPECTED}" > expected.txt
 	diff expected.txt actual.txt || exit 1
 }
 
-for i in `ls tests/ssml/*.ssml` ; do test_ssml $i ; done
+test_ssml() {
+	INPUT=$1
 
+	if [ "$2" = "punct" ]
+	then
+	PARAMETERS="--punct -x"
+	else
+	PARAMETERS="-v en-US --ipa=2"
+	fi
+
+	echo "testing ${INPUT}"
+	cp $(dirname $INPUT)/$(basename ${INPUT%.*}).expected expected.txt
+	ESPEAK_DATA_PATH=`pwd` LD_LIBRARY_PATH=src:${LD_LIBRARY_PATH} \
+		src/espeak-ng -m -q $PARAMETERS -f ${INPUT} > actual.txt
+	diff expected.txt actual.txt || exit 1
+}
+
+for i in `ls tests/ssml/*.ssml` ; do test_ssml $i; done
+for i in `ls tests/ssml/*.ssml2` ; do test_ssml $i punct; done
+
+test_ssml_audio "<prosody>" fcb28f00670959980038171ceda3c6bdec61b884 "<speak><prosody rate=\"x-slow\" pitch=\"low\"> Slow and low </prosody><prosody rate=\"x-fast\" pitch=\"x-high\"> Fast and high.</prosody></speak>"
+# #410 is a bug in SSML. Sentence termination causes prosody stack to misfunction. 
+# Hash 00879af is the buggy version and should fail:
+test_ssml_audio "<prosody> bug #410" 00879aff11dc28a352736ca397ce9567e6f39029 "<speak><prosody rate=\"x-slow\" pitch=\"low\"> Slow and low. </prosody><prosody rate=\"x-fast\" pitch=\"x-high\"> Fast and high.</prosody></speak>"
+test_ssml_audio "<audio>" 5134c1db757b2d6b8d1f3f2416124462e401b4c6 "<speak>ha: <audio src=\"$PWD/phsource/h/ha.wav\"></audio></speak>"

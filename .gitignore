@@ -101,6 +101,7 @@ src/espeakedit
 src/speak-ng
 
 tests/*.test
+tests/*.check
 !tests/language-phonemes.test
 !tests/language-pronunciation.test
 !tests/language-numbers-cardinal.test
@@ -108,6 +109,16 @@ tests/*.test
 !tests/language-replace.test
 !tests/ssml.test
 !tests/translate.test
+!tests/variants.test
+!tests/non-executable-files-with-executable-bit.test
+!tests/bom.test
+!tests/klatt.test
+!tests/mbrola.test
+!tests/dictionary.test
+!tests/cmd_options.test
+!tests/windows-data.test
+!tests/windows-installer.test
+!tests/voices.test
 
 espeak-ng.pc
 
@@ -183,8 +194,8 @@ dictsource/*_extra
 dictsource/dict_log
 dictsource/dict_phonemes
 dictsource/ru_listx
-dictsource/zh_listx
-dictsource/zhy_list
+dictsource/cmn_listx
+dictsource/yue_listx
 
 phsource/compile_prog_log
 phsource/compile_report
@@ -204,3 +215,6 @@ espeak-ng-data/phontab
 
 espeak-ng-data/mbrola/
 espeak-ng-data/mbrola_ph/*_phtrans
+
+# fastlane metadata
+!fastlane/metadata/android/*/*.txt

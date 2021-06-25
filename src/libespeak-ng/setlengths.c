@@ -149,7 +149,6 @@ void SetSpeed(int control)
 	int wpm_value;
 	double sonic;
 
-	speed.loud_consonants = 0;
 	speed.min_sample_len = espeakRATE_MAXIMUM;
 	speed.lenmod_factor = 110; // controls the effect of FRFLAG_LEN_MOD reduce length change
 	speed.lenmod2_factor = 100;
@@ -166,7 +165,7 @@ void SetSpeed(int control)
 
 	if (control & 2)
 		DoSonicSpeed(1 * 1024);
-	if ((wpm_value >= espeakRATE_MAXIMUM) || ((wpm_value > speed.fast_settings[0]) && (wpm > 350))) {
+	if ((wpm_value >= espeakRATE_MAXIMUM) || ((wpm_value > speed.fast_settings) && (wpm > 350))) {
 		wpm2 = wpm;
 		wpm = espeakRATE_NORMAL;
 
@@ -194,9 +193,6 @@ void SetSpeed(int control)
 
 	if (wpm > espeakRATE_MAXIMUM)
 		wpm = espeakRATE_MAXIMUM;
-
-	if (wpm > 360)
-		speed.loud_consonants = (wpm - 360) / 8;
 
 	wpm2 = wpm;
 	if (wpm > 359) wpm2 = 359;
@@ -281,7 +277,6 @@ void SetSpeed(int control)
 	int wpm;
 	int wpm2;
 
-	speed.loud_consonants = 0;
 	speed.min_sample_len = espeakRATE_MAXIMUM;
 	speed.lenmod_factor = 110; // controls the effect of FRFLAG_LEN_MOD reduce length change
 	speed.lenmod2_factor = 100;
@@ -294,9 +289,6 @@ void SetSpeed(int control)
 		wpm = (wpm * voice->speed_percent)/100;
 	if (wpm > espeakRATE_MAXIMUM)
 		wpm = espeakRATE_MAXIMUM;
-
-	if (wpm > 360)
-		speed.loud_consonants = (wpm - 360) / 8;
 
 	wpm2 = wpm;
 	if (wpm > 359) wpm2 = 359;
@@ -377,7 +369,7 @@ espeak_ng_STATUS SetParameter(int parameter, int value, int relative)
 
 	int new_value = value;
 	int default_value;
-	extern const int *param_defaults;
+	extern const int param_defaults[N_SPEECH_PARAM];
 
 	if (relative) {
 		if (parameter < 5) {

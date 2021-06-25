@@ -50,6 +50,7 @@ BOOL load_MBR()
 	init_MBR = (void *)GetProcAddress(hinstDllMBR, "init_MBR");
 	write_MBR = (void *)GetProcAddress(hinstDllMBR, "write_MBR");
 	flush_MBR = (void *)GetProcAddress(hinstDllMBR, "flush_MBR");
+	getFreq_MBR = (void *)GetProcAddress(hinstDllMBR, "getFreq_MBR");
 	read_MBR = (void *)GetProcAddress(hinstDllMBR, "read_MBR");
 	close_MBR = (void *)GetProcAddress(hinstDllMBR, "close_MBR");
 	reset_MBR = (void *)GetProcAddress(hinstDllMBR, "reset_MBR");
@@ -347,7 +348,11 @@ static int mbrola_has_errors(void)
 			    strncmp(buf_ptr, "Input Flush Signal", 18) == 0)
 				continue;
 			*lf = 0;
-			fprintf(stderr, "mbrola: %s\n", buf_ptr);
+			if (strstr(buf_ptr, "mbrola: No such file or directory") != NULL)
+				fprintf(stderr,
+						"mbrola executable was not found. Please install MBROLA!\n");
+			else
+				fprintf(stderr, "mbrola: %s\n", buf_ptr);
 			// is this the last line?
 			if (lf == &buf_ptr[result - 1]) {
 				snprintf(mbr_errorbuf, sizeof(mbr_errorbuf),
@@ -526,6 +531,11 @@ static int init_mbrola(char *voice_path)
 	error = start_mbrola(voice_path);
 	if (error)
 		return -1;
+
+	// Allow mbrola time to start when running on Windows Subsystem for
+	// Linux (WSL). Otherwise, the receive_from_mbrola call to read the
+	// wav header from mbrola will fail.
+	usleep(100);
 
 	result = send_to_mbrola("#\n");
 	if (result != 2) {

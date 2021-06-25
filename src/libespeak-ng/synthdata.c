@@ -31,15 +31,15 @@
 #include <espeak-ng/speak_lib.h>
 #include <espeak-ng/encoding.h>
 
-#include "readclause.h"
 #include "synthdata.h"
-
-#include "error.h"
-#include "speech.h"
-#include "phoneme.h"
-#include "voice.h"
-#include "synthesize.h"
-#include "translate.h"
+#include "error.h"                    // for create_file_error_context, crea...
+#include "phoneme.h"                  // for PHONEME_TAB, PHONEME_TAB_LIST
+#include "speech.h"                   // for path_home, GetFileLength, PATHSEP
+#include "mbrola.h"                   // for mbrola_name
+#include "soundicon.h"               // for soundicon_tab
+#include "synthesize.h"               // for PHONEME_LIST, frameref_t, PHONE...
+#include "translate.h"                // for Translator, LANGUAGE_OPTIONS
+#include "voice.h"                    // for ReadTonePoints, tone_points, voice
 
 const int version_phdata  = 0x014801;
 
@@ -47,7 +47,6 @@ const int version_phdata  = 0x014801;
 int n_phoneme_tab;
 int current_phoneme_table;
 PHONEME_TAB *phoneme_tab[N_PHONEME_TAB];
-unsigned char phoneme_tab_flags[N_PHONEME_TAB];   // bit 0: not inherited
 
 unsigned short *phoneme_index = NULL;
 char *phondata_ptr = NULL;
@@ -58,11 +57,7 @@ int n_phoneme_tables;
 PHONEME_TAB_LIST phoneme_tab_list[N_PHONEME_TABS];
 int phoneme_tab_number = 0;
 
-int wavefile_ix; // a wavefile to play along with the synthesis
-int wavefile_amp;
-
 int seq_len_adjust;
-int vowel_transition[4];
 
 static espeak_ng_STATUS ReadPhFile(void **ptr, const char *fname, int *size, espeak_ng_ERROR_CONTEXT *context)
 {
@@ -299,7 +294,6 @@ frameref_t *LookupSpect(PHONEME_TAB *this_ph, int which, FMT_PARAMS *fmt_params,
 			}
 			nf++;
 		}
-		wavefile_ix = 0;
 	}
 
 	if (length1 > 0) {
@@ -355,19 +349,16 @@ unsigned char *GetEnvelope(int index)
 	return (unsigned char *)&phondata_ptr[index];
 }
 
-static void SetUpPhonemeTable(int number, bool recursing)
+static void SetUpPhonemeTable(int number)
 {
 	int ix;
 	int includes;
 	int ph_code;
 	PHONEME_TAB *phtab;
 
-	if (recursing == false)
-		memset(phoneme_tab_flags, 0, sizeof(phoneme_tab_flags));
-
 	if ((includes = phoneme_tab_list[number].includes) > 0) {
 		// recursively include base phoneme tables
-		SetUpPhonemeTable(includes-1, true);
+		SetUpPhonemeTable(includes - 1);
 	}
 
 	// now add the phonemes from this table
@@ -377,19 +368,13 @@ static void SetUpPhonemeTable(int number, bool recursing)
 		phoneme_tab[ph_code] = &phtab[ix];
 		if (ph_code > n_phoneme_tab)
 			n_phoneme_tab = ph_code;
-
-		if (recursing == 0)
-			phoneme_tab_flags[ph_code] |= 1; // not inherited
-
-		DEBUG_PRINT("DEBUG 379: phoneme_tab[%d] = &phtab[%d], %s\n", ph_code, ix,
-				WordToString(phtab[ix].mnemonic));
 	}
 }
 
 void SelectPhonemeTable(int number)
 {
 	n_phoneme_tab = 0;
-	SetUpPhonemeTable(number, false); // recursively for included phoneme tables
+	SetUpPhonemeTable(number); // recursively for included phoneme tables
 	n_phoneme_tab++;
 	current_phoneme_table = number;
 }
@@ -434,11 +419,6 @@ void LoadConfig(void)
 	char c1;
 	char string[200];
 
-	for (ix = 0; ix < N_SOUNDICON_SLOTS; ix++) {
-		soundicon_tab[ix].filename = NULL;
-		soundicon_tab[ix].data = NULL;
-	}
-
 	sprintf(buf, "%s%c%s", path_home, PATHSEP, "config");
 	if ((f = fopen(buf, "r")) == NULL)
 		return;
@@ -451,6 +431,8 @@ void LoadConfig(void)
 		else if (memcmp(buf, "soundicon", 9) == 0) {
 			ix = sscanf(&buf[10], "_%c %s", &c1, string);
 			if (ix == 2) {
+				// add sound file information to soundicon array
+				// the file will be loaded to memory by LoadSoundFile2()
 				soundicon_tab[n_soundicon_tab].name = c1;
 				soundicon_tab[n_soundicon_tab].filename = strdup(string);
 				soundicon_tab[n_soundicon_tab++].length = 0;
@@ -459,8 +441,6 @@ void LoadConfig(void)
 	}
 	fclose(f);
 }
-
-PHONEME_DATA this_ph_data;
 
 static void InvalidInstn(PHONEME_TAB *ph, int instn)
 {
@@ -743,7 +723,7 @@ static void SwitchOnVowelType(PHONEME_LIST *plist, PHONEME_DATA *phdata, unsigne
 	*p_prog += 12;
 }
 
-int NumInstnWords(unsigned short *prog)
+static int NumInstnWords(unsigned short *prog)
 {
 	int instn;
 	int instn2;

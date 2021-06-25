@@ -1,5 +1,5 @@
-// *   Farsi Language fa (or Parsi or Persian) fa_list Version 3.135
-// *   This file writen by Shadyar Khodayari and Ehsan Esmaili who has managed  collecting exceptional words. 04-05-2018
+// *   Farsi Language fa (or Parsi or Persian) fa_list Version 3.137
+// *   This file writen by Shadyar Khodayari and Ehsan Esmaili who has managed  collecting exceptional words. 02-19-2020
 //*********
 // *   This program is free software; you can redistribute it and/or modify  *
 // *   it under the terms of the GNU General Public License as published by  *
@@ -28,10 +28,11 @@
 
 // letter names, as they are spoken as a single character in text
 // precede by _  to distinguish from pronunciation as a language word
-// Special Persian Simbles.
+// Special Persian Symbls.
 ﷼	RijAl
 
 //Farsi Alphabet
+// character names  (An underscore added before characters means, if there is space after and before it which , should not spoken during normal reading of text)
 آ	'A
 ا	'alef
 ب	'be:
@@ -75,9 +76,6 @@ _و	'vAv
 ً	'an
 ٌ	'on
 ٍ	'en
-،	viRgul
-؛	noqteviRgul
-ـ	'keSidane_hoRuf
 ئ	'je,hamze:
 ؤ	'vAv,hamze:
 ۀ	'hehamze:
@@ -87,11 +85,34 @@ _و	'vAv
 ة	'tAje-,ta?nis
 ي	'je_aRabi
 
+// Punctuations
+.	noqte:
+:	'donoqte:
+،	viRgul
+؛	noqteviRgul
+؟	alAmatesoAl
+!	alAmate'ta?adZdZob
+ـ	'keSide_
+
 // symbols used in Standard Persian keybord layout
-٬	namAde_RAst_be_tSap
-٫	'viRgule_fArsije_estAndArd
-٪	darsade _fArsije_estAndArd
+٬	'dZodAkonandeje_hezArgAn
+٫	'momajez
+٪	'darsad
 ٔ	hamzeje_bAlA   //this character "ٔ" is defrent of "ء" and "ۀ" for example "دانشنامهٔ "
+×	'zaRbdaR
+‍	'taq1simbaR
+
+//Farsi Numbers used in Standard Persian keybord layout
+۰	'sefRe_fARsi
+۱	'jeke_fARsi
+۲	'doe_fARsi
+۳	'seje_fARsi
+۴	'tSAhARe_fARsi
+۵	'pandZe_fARsi
+۶	'SeSe_fARsi
+۷	'hafte_fARsi
+۸	'haSte_fARsi
+۹	'nohe_fARsi
 
 
 // Urdu for Persian users added by users
@@ -190,29 +211,26 @@ _#st	om
 _#nd	vom
 _#rd	om
 _#th	om
-
-
-// character names.  (An underscore added before characters which should not spoken during normal reading of text)
 ÷	taqsimbaR
 ×	zaRbdaR
-؟	alAmatesoAl
-!	alAmate'ta?adZdZob
 $	dolAR
 %	daR'sad
 [	beRAketbAz
 ]	beRAketbaste:
+{	AkulAdbAz
+}	AkulAdbaste:
 (	paRAntezbAz
-_)	paRAntezbaste:
+)	paRAntezbaste:
 *	setARe:
 //this code is recognized as (ZWNJ) U+200c (half space) at eSpeak 1.46.22 and later (ZWNJ) is recognized as hyphen
-	_-	nim_fAsele:
-.	noqte:
-:	'donoqte:
+U+200C	nim_fAsele:
+//this code is recognized as Space
+U+20	fAsele_
 <	alAmate'kutSektaR
 =	:alAmate'mosAvi
 >	alAmate'bozoRgtaR
-{	g:ijumebAz
-}	g:ijumebaste:
+»	g:ijumebAz
+«	g:ijumebaste:
 
 
 //characters and numbers and words with English alphabet is translated by English phonemes
@@ -221,16 +239,12 @@ _)	paRAntezbaste:
 
 		// ABBREVIATIONS
 //**************
-قظ	q::abl_az_:zohR	$only
 ق‌ظ	q::abl_az_:zohR	$only
 ق.ظ	q::abl_az_:zohR	$only
-بظ	ba:?d_az_:zohR	$only
 ب‌ظ	ba:?d_az_:zohR	$only
 ب.ظ	ba:?d_az_:zohR	$only
-هش	hedZRije_:Samsi	$only
 ه‌ش	hedZRije_:Samsi	$only
 ه.ش	hedZRije_:Samsi	$only
-هق	hedZRije_:qamaRi	$only
 ه‌ق	hedZRije_:qamaRi	$only
 ه.ق	hedZRije_:qamaRi	$only
 ق‌م	q::abl_az_:milAd	$only
@@ -254,6 +268,11 @@ _)	paRAntezbaste:
 //*********************
 
 // exceptional words with flags
+// exceptional words with flags
+// $only - The rule does not apply if a prefix or suffix has already been removed.
+// $stem - The rule only applies if a suffix has already been removed. 
+// $atend - Use this pronunciation if it's at the end of a clause.
+
 روی	Ruje	$only
 اف	ef	$only
 ایچ	ejtS	$only
@@ -289,6 +308,9 @@ _)	paRAntezbaste:
 بده	bedah	$stem
 کند	konad	$only
 کند	kand	$stem
+شو	So:	$only
+شو	Su:	$stem
+گه	ge:	$stem
 
 
 // The list of unstressed words
@@ -2388,6 +2410,7 @@ _)	paRAntezbaste:
 ببست	bebast
 ببعی	baba?i
 ببین	bebin
+ببیند	bebinad
 ببینه	bebine:
 بت	bot
 بتا	betA
@@ -2406,7 +2429,7 @@ _)	paRAntezbaste:
 بجد	bedZed
 بجرات	bedZoRat
 بجز	bedZoz
-بجنب	bejonb
+بجنب	bedZonb
 بجنورد	bodZnuRd
 بجنگی	bedZangi
 بجنگیم	bedZangim
@@ -2760,6 +2783,7 @@ _)	paRAntezbaste:
 برکن	baRkan
 برکه	beRke:
 برگ	baRg
+برگه	baRge:
 برگر	beRgeR
 برگزید	baRgozid
 برگزیده	baRgozide:
@@ -2876,6 +2900,7 @@ _)	paRAntezbaste:
 بشکند	beSekanad
 بشکه	boSke:
 بشکۀ	boSkeje
+بشیند	beSinad
 بشیر	baSiR
 بصر	basaR
 بصره	basRe
@@ -3074,7 +3099,7 @@ _)	paRAntezbaste:
 بنکدار	bonakdAR
 بنگاب	bangAb
 بنگال	bangAl
-بنگاه	bongA:
+بنگاه	bongA:h
 بنگدانه	bangdAne
 بنگر	bengaR
 بنگرد	bengaRad
@@ -5509,6 +5534,7 @@ _)	paRAntezbaste:
 دیکشنری	dikSeneRi
 دیکنز	dikenz
 دیگر	digaR
+دیگه	dige:
 دیگرآزار	digaRAzAR
 دیگربار	digaRbAR
 دیگری	'digaRi
@@ -6823,7 +6849,6 @@ _)	paRAntezbaste:
 شدیدا	Sadidan
 شدیداللحن	Sadidollahn
 شدیم	Sodim
-شراادی	SA:_d:jA:_R
 شرافت	SeRAfat
 شراپنل	SeRApnel
 شراکت	SeRAkat
@@ -6966,7 +6991,6 @@ _)	paRAntezbaste:
 شهوتران	SahvatRAn
 شهوی	Sahavi
 شهویه	Sahavije
-شو	tSo
 شوالیه	SovAlije:
 شوالیۀ	SovAlijeje
 شود	Sa'vad
@@ -10606,6 +10630,7 @@ _)	paRAntezbaste:
 نوشاند	nuSAnd
 نوشانید	nuSAnid
 نوشت	neveSt
+نوشتنی	neveStani
 نوشتار	neveStAR
 نوشتجات	neveStedZAt
 نوشد	nuSad
@@ -11006,6 +11031,7 @@ _)	paRAntezbaste:
 هوسران	havasRAn
 هوش	huS
 هوشنگ	huSang
+هوشنگی	huSangi
 هول	ho:l
 هولاکو	holAku
 هولاکوخان	holAkuxAn
@@ -12158,7 +12184,7 @@ _)	paRAntezbaste:
 چگل	tSegel
 چگن	tSegen
 چگون	tSegun
-چگونگی	tSegunegi
+-چگونگی	tSegunegi
 چگین	tSegin
 چگینی	tSegini
 چیذر	tSizaR

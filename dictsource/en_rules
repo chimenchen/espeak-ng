@@ -63,6 +63,7 @@
    ϋ   υ
    ΰ   υ
    ώ   ω
+   ʻ   '     // Replace Hawaiian okina to apostrophe FIXME — that should be done globally for all languages
 
 .group a
         a          a
@@ -6100,6 +6101,7 @@ multip) ly         laI
    _pi) t (ia      t
      s) t (l 
      s) t (ly      t   // lier
+     _) tolkien    tol'ki:n // Tolkien and derivative adj.
         to (morr   t@
      _) to (nn     tV
         t (ooth    t2
