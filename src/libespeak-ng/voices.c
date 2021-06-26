@@ -28,12 +28,6 @@
 #include <string.h>
 #include <strings.h>
 
-#if defined(_WIN32) || defined(_WIN64)
-#include <windows.h>
-#else
-#include <dirent.h>
-#endif
-
 #include <espeak-ng/espeak_ng.h>
 #include <espeak-ng/speak_lib.h>
 #include <espeak-ng/encoding.h>
@@ -48,6 +42,12 @@
 #include "synthesize.h"               // for SetSpeed, SPEED_FACTORS, speed
 #include "translate.h"                // for LANGUAGE_OPTIONS, DeleteTranslator
 #include "wavegen.h"                  // for InitBreath
+
+#if defined(_WIN32) || defined(_WIN64)
+#include <windows.h>
+#else
+#include <dirent.h>
+#endif
 
 MNEM_TAB genders[] = {
 	{ "male", ENGENDER_MALE },

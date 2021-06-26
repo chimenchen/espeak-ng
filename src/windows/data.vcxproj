@@ -21,27 +21,28 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8C406BE8-2F85-426B-8009-A2DD540DF7CD}</ProjectGuid>
     <Keyword>MakeFileProj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Makefile</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Makefile</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -325,5 +326,8 @@
   <Target Name="yue" Inputs="$(ProjectDir)..\..\dictsource\yue_rules;$(ProjectDir)..\..\dictsource\yue_list" Outputs="$(ProjectDir)..\..\espeak-ng-data\yue_dict" DependsOnTargets="Phonemes">
     <Exec Command="cd $(ProjectDir)..\..\dictsource &amp;&amp; $(TargetDir)espeak-ng.exe --path=$(ProjectDir)..\.. --compile=yue" />
   </Target>
-  <Target Name="Dictionaries" DependsOnTargets="af;am;an;ar;as;az;bg;bn;bs;ca;cmn;cs;cy;da;de;el;en;eo;es;et;eu;fa;fi;fr;ga;gd;gn;grc;gu;hi;hr;hu;hy;ia;id;is;it;jbo;ja;ka;kl;kn;ko;ku;ky;la;lfn;lt;lv;mk;ml;mr;ms;mt;my;nci;ne;nl;no;om;or;pa;pap;pl;pt;ro;ru;si;sk;sl;sq;sr;sv;sw;ta;te;tn;tr;tt;ur;vi;yue" />
+  <Target Name="ipa" Inputs="$(ProjectDir)..\..\dictsource\ipa_rules;$(ProjectDir)..\..\dictsource\ipa_list" Outputs="$(ProjectDir)..\..\espeak-ng-data\ipa_dict" DependsOnTargets="Phonemes">
+    <Exec Command="cd $(ProjectDir)..\..\dictsource &amp;&amp; $(TargetDir)espeak-ng.exe --path=$(ProjectDir)..\.. --compile=ipa" />
+  </Target>
+  <Target Name="Dictionaries" DependsOnTargets="af;am;an;ar;as;az;bg;bn;bs;ca;cmn;cs;cy;da;de;el;en;eo;es;et;eu;fa;fi;fr;ga;gd;gn;grc;gu;hi;hr;hu;hy;ia;id;is;it;jbo;ja;ka;kl;kn;ko;ku;ky;la;lfn;lt;lv;mk;ml;mr;ms;mt;my;nci;ne;nl;no;om;or;pa;pap;pl;pt;ro;ru;si;sk;sl;sq;sr;sv;sw;ta;te;tn;tr;tt;ur;vi;yue;ipa" />
 </Project>

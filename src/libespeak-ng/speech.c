@@ -37,6 +37,12 @@
 #include <pcaudiolib/audio.h>
 #endif
 
+#include <espeak-ng/espeak_ng.h>
+#include <espeak-ng/speak_lib.h>
+#include <espeak-ng/encoding.h>
+
+#include "speech.h"
+
 #if defined(_WIN32) || defined(_WIN64)
 #include <fcntl.h>
 #include <io.h>
@@ -44,11 +50,7 @@
 #include <winreg.h>
 #endif
 
-#include <espeak-ng/espeak_ng.h>
-#include <espeak-ng/speak_lib.h>
-#include <espeak-ng/encoding.h>
 
-#include "speech.h"
 #include "dictionary.h"           // for GetTranslatedPhonemeString, strncpy0
 #include "espeak_command.h"       // for delete_espeak_command, SetParameter
 #include "event.h"                // for event_declare, event_clear_all, eve...

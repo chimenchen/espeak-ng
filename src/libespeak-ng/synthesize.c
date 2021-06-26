@@ -83,6 +83,18 @@ const char *WordToString(unsigned int word)
 	return buf;
 }
 
+const char* WordToString_2(unsigned int word)
+{
+	// Convert a phoneme mnemonic word into a string
+	int ix;
+	static char buf[5];
+
+	for (ix = 0; ix < 4; ix++)
+		buf[ix] = word >> (ix * 8);
+	buf[4] = 0;
+	return buf;
+}
+
 void SynthesizeInit()
 {
 	last_pitch_cmd = 0;
@@ -143,8 +155,8 @@ static void DoPhonemeAlignment(char* pho, int type)
 
 static void DoPitch(unsigned char *env, int pitch1, int pitch2)
 {
-	DEBUG_PRINT("DEBUG DoPitch: env=%c, pitch1=%d, pitch2=%d\n",
-			env, pitch1, pitch2);
+	DEBUG_PRINT("DEBUG DoPitch: pitch1=%d, pitch2=%d\n",
+			pitch1, pitch2);
 
 	intptr_t *q;
 
@@ -872,8 +884,12 @@ int DoSpect2(PHONEME_TAB *this_ph, int which, FMT_PARAMS *fmt_params,  PHONEME_L
 
 	length_mod = plist->length;
 	if (length_mod == 0) length_mod = 256;
-	DEBUG_PRINT("DEBUG 880: plist->length=%d, length_mod=%d, %s\n", plist->length, length_mod,
-			WordToString(plist->ph->mnemonic));
+	DEBUG_PRINT("DEBUG 880: plist->length=%d, length_mod=%d, %d, %s, tone_ph=%d, %s\n",
+			plist->length, length_mod,
+			plist->phcode,
+			WordToString(plist->ph->mnemonic),
+			plist->tone_ph,
+			WordToString_2(phoneme_tab[plist->tone_ph]->mnemonic));
 
 	length_min = (samplerate/70); // greater than one cycle at low pitch (Hz)
 	if (which == 2) {

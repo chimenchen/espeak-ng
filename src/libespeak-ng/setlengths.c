@@ -737,10 +737,31 @@ void CalcLengths(Translator *tr)
 			}
 			p->length = length_mod;
 
+			if (tr->translator_name == L3('i', 'p', 'a') && ix > 0 && !p->newword) {
+				char tone_str[5];
+				strcpy(tone_str, WordToString(phoneme_tab[p->tone_ph]->mnemonic));
+				if (tone_str[0] >= '6' && tone_str[1] <= '9') {
+					PHONEME_LIST *prev1 = &phoneme_list[ix - 1];
+					if (prev1->type == phVOWEL) {
+						DEBUG_PRINT("DEBUG 746: prev1 length=%d, std_length=%d, length_mod=%d\n",
+							prev1->length, prev1->ph->std_length, prev1->ph->length_mod);
+						DEBUG_PRINT("DEBUG 746: cur   length=%d, std_length=%d, length_mod=%d\n",
+							p->length, p->ph->std_length, p->ph->length_mod);
+						int prev_len = prev1->ph->std_length;
+						int cur_len = p->ph->std_length;
+						int new_prev_len = (int)(p->length * prev_len * 1.0 / (prev_len + cur_len));
+						int new_cur_len = (int)(p->length * cur_len * 1.0 / (prev_len + cur_len));
+						p->length = new_cur_len;
+						prev1->length = new_prev_len;
+						DEBUG_PRINT("DEBUG 746: new length prev=%d, cur=%d\n", new_prev_len, new_cur_len);
+					}
+				}
+			}
+
 			DEBUG_PRINT("DEBUG 748: p->length=%d, len=%d, %s, %s\n",
 					p->length, len,
 					WordToString(p->ph->mnemonic),
-					WordToString(phoneme_tab[p->tone_ph]->mnemonic));
+					WordToString_2(phoneme_tab[p->tone_ph]->mnemonic));
 
 			if (p->env >= (N_ENVELOPE_DATA-1)) {
 				fprintf(stderr, "espeak: Bad intonation data\n");
@@ -808,10 +829,21 @@ void CalcLengths(Translator *tr)
 				p->pitch1 = pitch1;
 			}
 
+			if (tr->translator_name == L3('i', 'p', 'a') && ix > 0 && !p->newword) {
+				PHONEME_LIST* prev1 = &phoneme_list[ix - 1];
+				if (prev1->type == phVOWEL) {
+					prev1->pitch1 = p->pitch1;
+					prev1->pitch2 = p->pitch1;
+				}
+			}
+
 			last_pitch = p->pitch1 + ((p->pitch2-p->pitch1)*envelope_data[p->env][127])/256;
 			pre_sonorant = false;
 			pre_voiced = false;
 			break;
 		}
+		DEBUG_PRINT("DEBUG 837: p->length=%d, %s\n",
+			p->length,
+			WordToString(p->ph->mnemonic));
 	}
 }
