@@ -1,7 +1,7 @@
 language variant
 name Chihiro2
 
-pitch 280 420
+pitch 260 400
 
 formant 0 133 90 130
 formant 1 160 100 150
@@ -15,4 +15,6 @@ formant 8 133 50 130
 
 voicing 70
 
+echo 20 10
+breath 0 2  3   3   3   3  0 5
 

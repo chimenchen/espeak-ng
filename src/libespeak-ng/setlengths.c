@@ -23,6 +23,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include <espeak-ng/espeak_ng.h>
 #include <espeak-ng/speak_lib.h>
@@ -737,27 +738,6 @@ void CalcLengths(Translator *tr)
 			}
 			p->length = length_mod;
 
-			if (tr->translator_name == L3('i', 'p', 'a') && ix > 0 && !p->newword) {
-				char tone_str[5];
-				strcpy(tone_str, WordToString(phoneme_tab[p->tone_ph]->mnemonic));
-				if (tone_str[0] >= '6' && tone_str[1] <= '9') {
-					PHONEME_LIST *prev1 = &phoneme_list[ix - 1];
-					if (prev1->type == phVOWEL) {
-						DEBUG_PRINT("DEBUG 746: prev1 length=%d, std_length=%d, length_mod=%d\n",
-							prev1->length, prev1->ph->std_length, prev1->ph->length_mod);
-						DEBUG_PRINT("DEBUG 746: cur   length=%d, std_length=%d, length_mod=%d\n",
-							p->length, p->ph->std_length, p->ph->length_mod);
-						int prev_len = prev1->ph->std_length;
-						int cur_len = p->ph->std_length;
-						int new_prev_len = (int)(p->length * prev_len * 1.0 / (prev_len + cur_len));
-						int new_cur_len = (int)(p->length * cur_len * 1.0 / (prev_len + cur_len));
-						p->length = new_cur_len;
-						prev1->length = new_prev_len;
-						DEBUG_PRINT("DEBUG 746: new length prev=%d, cur=%d\n", new_prev_len, new_cur_len);
-					}
-				}
-			}
-
 			DEBUG_PRINT("DEBUG 748: p->length=%d, len=%d, %s, %s\n",
 					p->length, len,
 					WordToString(p->ph->mnemonic),
@@ -842,8 +822,61 @@ void CalcLengths(Translator *tr)
 			pre_voiced = false;
 			break;
 		}
-		DEBUG_PRINT("DEBUG 837: p->length=%d, %s\n",
-			p->length,
-			WordToString(p->ph->mnemonic));
+
+		DEBUG_PRINT1("DEBUG 837: ix=%d, p->length=%d, newword=%d, %s, %s\n",
+			ix, p->length, p->newword,
+			WordToString(p->ph->mnemonic),
+			WordToString_2(phoneme_tab[p->tone_ph]->mnemonic));
+
+		if (tr->translator_name == L3('i', 'p', 'a') && next && next->newword > 0) {
+			bool is_singing = false;
+			int singing_length = 0;
+			int kk;
+			PHONEME_LIST* temp_p;
+			char tone_str[5];
+			int new_len;
+
+			kk = ix;
+			while (kk >= 1) {
+				temp_p = &phoneme_list[kk];
+				strcpy(tone_str, WordToString(phoneme_tab[temp_p->tone_ph]->mnemonic));
+				if (tone_str[0] >= '6' && tone_str[1] <= '9') {
+					is_singing = true;
+					DEBUG_PRINT1("tone_length=%d, speed2=%d\n", phoneme_tab[temp_p->tone_ph]->std_length, speed2);
+					singing_length = (int)(phoneme_tab[temp_p->tone_ph]->std_length * speed2 * 2.5 / 128);
+					break;
+				}
+				if ((kk < ix && temp_p->newword > 0) || p->newword > 0)
+					break;
+				kk--;
+			}
+
+			int total_orig_len = 0;
+			if (is_singing) {
+				kk = ix;
+				while (kk >= 1) {
+					temp_p = &phoneme_list[kk];
+					total_orig_len += temp_p->length;
+					if ((kk < ix && temp_p->newword > 0) || p->newword > 0)
+						break;
+					kk--;
+				}
+
+				kk = ix;
+				while (kk >= 1) {
+					temp_p = &phoneme_list[kk];
+					new_len = (int)(singing_length * temp_p->length * 1.0 / total_orig_len);
+					DEBUG_PRINT1("DEBUG_PRINT 870: %d, old_len=%d, std=%d, new_len=%d, total=%d->%d, %s\n",
+							kk, temp_p->length, temp_p->ph->std_length, new_len,
+							total_orig_len, singing_length,
+							WordToString(temp_p->ph->mnemonic));
+					temp_p->length = new_len;
+					if ((kk < ix && temp_p->newword > 0) || p->newword > 0)
+						break;
+					kk--;
+				}
+			}
+		}
+
 	}
 }
