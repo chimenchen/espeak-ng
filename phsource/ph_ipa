@@ -2814,7 +2814,7 @@ endphoneme
 phoneme ng
   vwl //  starttype ng  endtype ng
   length 250
-  FMT(nn/nn2_, 150) addWav(vowel/u#_2, 80)
+  FMT(nn/nn2_, 250) addWav(vowel/u#_2, 100)
 endphoneme
 
 phoneme ?'  // FIXME
@@ -3987,6 +3987,16 @@ phoneme *.  // copied from Japanese phoneme r`
   Vowelin  f1=2 f2=1400 -400 300  f3=-400 80 len=20
 
   FMT(r3/@tap_rfx)
+endphoneme
+
+// used together with music tones, like
+// la55++7104
+// to control the length of a word
+// without changing the tone
+phoneme ++
+  vwl  starttype #@  endtype #@
+  length 1
+  WAV(NULL)
 endphoneme
 
 // 1: 36

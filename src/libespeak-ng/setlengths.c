@@ -466,6 +466,17 @@ void CalcLengths(Translator *tr)
 	unsigned char *pitch_env = NULL;
 	PHONEME_DATA phdata_tone;
 
+	if (tr->translator_name == L3('i', 'p', 'a')) {
+		for (ix = 1; ix < n_phoneme_list; ix++) {
+			p = &phoneme_list[ix];
+			if (0 == strcmp("++", WordToString(p->ph->mnemonic))) {
+				p->length = 0;
+				p->phcode = phonPAUSE;
+				p->type = phPAUSE;
+			}
+		}
+	}
+
 	for (ix = 1; ix < n_phoneme_list; ix++) {
 		prev = &phoneme_list[ix-1];
 		p = &phoneme_list[ix];
@@ -809,7 +820,8 @@ void CalcLengths(Translator *tr)
 				p->pitch1 = pitch1;
 			}
 
-			if (tr->translator_name == L3('i', 'p', 'a') && ix > 0 && !p->newword) {
+			if (tr->translator_name == L3('i', 'p', 'a') && ix > 0 && !p->newword &&
+					0 != strcmp("++", WordToString(p->ph->mnemonic))) {
 				PHONEME_LIST* prev1 = &phoneme_list[ix - 1];
 				if (prev1->type == phVOWEL) {
 					prev1->pitch1 = p->pitch1;
@@ -823,10 +835,11 @@ void CalcLengths(Translator *tr)
 			break;
 		}
 
-		DEBUG_PRINT1("DEBUG 837: ix=%d, p->length=%d, newword=%d, %s, %s\n",
+		DEBUG_PRINT1("DEBUG 837: ix=%d, p->length=%d, newword=%d, phoneme=%s, tone=%s, type=%d\n",
 			ix, p->length, p->newword,
 			WordToString(p->ph->mnemonic),
-			WordToString_2(phoneme_tab[p->tone_ph]->mnemonic));
+			WordToString_2(phoneme_tab[p->tone_ph]->mnemonic),
+			p->type);
 
 		if (tr->translator_name == L3('i', 'p', 'a') && next && next->newword > 0) {
 			bool is_singing = false;
@@ -842,8 +855,9 @@ void CalcLengths(Translator *tr)
 				strcpy(tone_str, WordToString(phoneme_tab[temp_p->tone_ph]->mnemonic));
 				if (tone_str[0] >= '6' && tone_str[1] <= '9') {
 					is_singing = true;
-					DEBUG_PRINT1("tone_length=%d, speed2=%d\n", phoneme_tab[temp_p->tone_ph]->std_length, speed2);
 					singing_length = (int)(phoneme_tab[temp_p->tone_ph]->std_length * speed2 * 2.5 / 128);
+					DEBUG_PRINT1("tone_length=%d, speed2=%d, singing_length=%d\n",
+							phoneme_tab[temp_p->tone_ph]->std_length, speed2, singing_length);
 					break;
 				}
 				if ((kk < ix && temp_p->newword > 0) || p->newword > 0)
@@ -856,20 +870,63 @@ void CalcLengths(Translator *tr)
 				kk = ix;
 				while (kk >= 1) {
 					temp_p = &phoneme_list[kk];
+					if (0 == strcmp("++", WordToString(temp_p->ph->mnemonic))) {
+						DEBUG_PRINT1("++ to pause: length=%d, type=%d\n",
+								temp_p->length, temp_p->type);
+						temp_p->length = 0;
+						temp_p->phcode = phonPAUSE;
+						temp_p->type = phPAUSE;
+					}
 					total_orig_len += temp_p->length;
 					if ((kk < ix && temp_p->newword > 0) || p->newword > 0)
 						break;
 					kk--;
 				}
+				DEBUG_PRINT1("[1]total_orig_len=%d, singing_length=%d\n",
+						total_orig_len, singing_length);
 
 				kk = ix;
 				while (kk >= 1) {
 					temp_p = &phoneme_list[kk];
-					new_len = (int)(singing_length * temp_p->length * 1.0 / total_orig_len);
-					DEBUG_PRINT1("DEBUG_PRINT 870: %d, old_len=%d, std=%d, new_len=%d, total=%d->%d, %s\n",
+					if (0 == strcmp("++", WordToString(temp_p->ph->mnemonic))) {
+						temp_p->length = 0;
+						temp_p->phcode = phonPAUSE;
+						temp_p->type = phPAUSE;
+					}
+					if (temp_p->type == phNASAL) {
+						total_orig_len -= temp_p->length;
+						if (temp_p->length > singing_length * 0.5) {
+							temp_p->length = (int)(singing_length * 0.5);
+						}
+						singing_length -= temp_p->length;
+					}
+					if ((kk < ix && temp_p->newword > 0) || p->newword > 0)
+						break;
+					kk--;
+				}
+				DEBUG_PRINT1("[2]total_orig_len=%d, singing_length=%d\n",
+						total_orig_len, singing_length);
+
+				kk = ix;
+				while (kk >= 1) {
+					temp_p = &phoneme_list[kk];
+					if (total_orig_len == 0) {
+						new_len = singing_length;
+					} else if (temp_p->type == phNASAL) {
+						new_len = temp_p->length;
+					} else if (temp_p->type != phNASAL) {
+						new_len = (int)(singing_length * temp_p->length * 1.0 / total_orig_len);
+						if (temp_p->type == phFRICATIVE) {
+							if (new_len < temp_p->length * 0.8) {
+								new_len = (int)(temp_p->length * 0.8);
+							}
+						}
+					}
+					DEBUG_PRINT1("DEBUG_PRINT 870: %d, old_len=%d, std=%d, new_len=%d, total=%d->%d, %s, type=%d, pitch1=%d, pitch2=%d\n",
 							kk, temp_p->length, temp_p->ph->std_length, new_len,
 							total_orig_len, singing_length,
-							WordToString(temp_p->ph->mnemonic));
+							WordToString(temp_p->ph->mnemonic),
+							temp_p->type, temp_p->pitch1, temp_p->pitch2);
 					temp_p->length = new_len;
 					if ((kk < ix && temp_p->newword > 0) || p->newword > 0)
 						break;

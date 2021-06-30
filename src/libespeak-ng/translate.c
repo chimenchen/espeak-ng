@@ -2737,7 +2737,14 @@ void TranslateClause(Translator *tr, int *tone_out, char **voice_change)
 		// terminate the clause with 2 PAUSE phonemes
 		PHONEME_LIST2 *p2;
 		p2 = &ph_list2[n_ph_list2 + ix];
-		p2->phcode = phonPAUSE;
+
+		if (tr->translator_name == L3('i', 'p', 'a')) {
+			p2->phcode = phonPAUSE_VSHORT;
+		}
+		else {
+			p2->phcode = phonPAUSE;
+		}
+
 		p2->stresslevel = 0;
 		p2->sourceix = source_index;
 		p2->synthflags = 0;
