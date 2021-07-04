@@ -835,7 +835,7 @@ void CalcLengths(Translator *tr)
 			break;
 		}
 
-		DEBUG_PRINT1("DEBUG 837: ix=%d, p->length=%d, newword=%d, phoneme=%s, tone=%s, type=%d\n",
+		DEBUG_PRINT("DEBUG 837: ix=%d, p->length=%d, newword=%d, phoneme=%s, tone=%s, type=%d\n",
 			ix, p->length, p->newword,
 			WordToString(p->ph->mnemonic),
 			WordToString_2(phoneme_tab[p->tone_ph]->mnemonic),
@@ -855,8 +855,11 @@ void CalcLengths(Translator *tr)
 				strcpy(tone_str, WordToString(phoneme_tab[temp_p->tone_ph]->mnemonic));
 				if (tone_str[0] >= '6' && tone_str[1] <= '9') {
 					is_singing = true;
+					// * 2.5 比较适合普通曲子
+					// * 5 比较适合慢节奏的古曲
+					// singing_length = (int)(phoneme_tab[temp_p->tone_ph]->std_length * speed2 * 5 / 128);
 					singing_length = (int)(phoneme_tab[temp_p->tone_ph]->std_length * speed2 * 2.5 / 128);
-					DEBUG_PRINT1("tone_length=%d, speed2=%d, singing_length=%d\n",
+					DEBUG_PRINT("tone_length=%d, speed2=%d, singing_length=%d\n",
 							phoneme_tab[temp_p->tone_ph]->std_length, speed2, singing_length);
 					break;
 				}
@@ -871,40 +874,26 @@ void CalcLengths(Translator *tr)
 				while (kk >= 1) {
 					temp_p = &phoneme_list[kk];
 					if (0 == strcmp("++", WordToString(temp_p->ph->mnemonic))) {
-						DEBUG_PRINT1("++ to pause: length=%d, type=%d\n",
+						DEBUG_PRINT("++ to pause: length=%d, type=%d\n",
 								temp_p->length, temp_p->type);
 						temp_p->length = 0;
 						temp_p->phcode = phonPAUSE;
 						temp_p->type = phPAUSE;
 					}
-					total_orig_len += temp_p->length;
-					if ((kk < ix && temp_p->newword > 0) || p->newword > 0)
-						break;
-					kk--;
-				}
-				DEBUG_PRINT1("[1]total_orig_len=%d, singing_length=%d\n",
-						total_orig_len, singing_length);
-
-				kk = ix;
-				while (kk >= 1) {
-					temp_p = &phoneme_list[kk];
-					if (0 == strcmp("++", WordToString(temp_p->ph->mnemonic))) {
-						temp_p->length = 0;
-						temp_p->phcode = phonPAUSE;
-						temp_p->type = phPAUSE;
-					}
 					if (temp_p->type == phNASAL) {
-						total_orig_len -= temp_p->length;
-						if (temp_p->length > singing_length * 0.5) {
-							temp_p->length = (int)(singing_length * 0.5);
-						}
-						singing_length -= temp_p->length;
+						total_orig_len += (int)(temp_p->length * 0.30);
+					} else if (0 == strcmp("w\"", WordToString(temp_p->ph->mnemonic))) {
+						total_orig_len += 50;  // FIXME: how to get the actual length?
+					} else if (temp_p->type == phVOWEL) {
+						total_orig_len += temp_p->length;
+					} else {
+						total_orig_len += 50;  // FIXME: how to get the actual length?
 					}
 					if ((kk < ix && temp_p->newword > 0) || p->newword > 0)
 						break;
 					kk--;
 				}
-				DEBUG_PRINT1("[2]total_orig_len=%d, singing_length=%d\n",
+				DEBUG_PRINT("[1]total_orig_len=%d, singing_length=%d\n",
 						total_orig_len, singing_length);
 
 				kk = ix;
@@ -912,18 +901,20 @@ void CalcLengths(Translator *tr)
 					temp_p = &phoneme_list[kk];
 					if (total_orig_len == 0) {
 						new_len = singing_length;
-					} else if (temp_p->type == phNASAL) {
+					} else if (0 == strcmp("w\"", WordToString(temp_p->ph->mnemonic))) {
 						new_len = temp_p->length;
-					} else if (temp_p->type != phNASAL) {
+					} else if (temp_p->type == phVOWEL) {
 						new_len = (int)(singing_length * temp_p->length * 1.0 / total_orig_len);
-						if (temp_p->type == phFRICATIVE) {
-							if (new_len < temp_p->length * 0.8) {
-								new_len = (int)(temp_p->length * 0.8);
-							}
-						}
+					} else {
+						new_len = temp_p->length;
 					}
-					DEBUG_PRINT1("DEBUG_PRINT 870: %d, old_len=%d, std=%d, new_len=%d, total=%d->%d, %s, type=%d, pitch1=%d, pitch2=%d\n",
-							kk, temp_p->length, temp_p->ph->std_length, new_len,
+					DEBUG_PRINT("DEBUG_PRINT 870: %d, old_len=%d, std=%d/%d/%d/%d, new_len=%d, total=%d->%d, %s, type=%d, pitch1=%d, pitch2=%d\n",
+							kk, temp_p->length,
+							temp_p->ph->std_length,
+							temp_p->ph->start_type,
+							temp_p->ph->end_type,
+							temp_p->std_length,
+							new_len,
 							total_orig_len, singing_length,
 							WordToString(temp_p->ph->mnemonic),
 							temp_p->type, temp_p->pitch1, temp_p->pitch2);
