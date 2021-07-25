@@ -2,1679 +2,1917 @@
 // music
 //============================================================
 
+// _1,,
+phoneme 6100
+  stress
+  length 50
+  Tone(1, 1, envelope/p_level, NULL)
+endphoneme
+
+// _1,
+phoneme 6101
+  stress
+  length 100
+  Tone(1, 1, envelope/p_level, NULL)
+endphoneme
+
+// _1
+phoneme 6102
+  stress
+  length 200
+  Tone(1, 1, envelope/p_level, NULL)
+endphoneme
+
+// _1.
+phoneme 6103
+  stress
+  length 300
+  Tone(1, 1, envelope/p_level, NULL)
+endphoneme
+
+// _1=
+phoneme 6104
+  stress
+  length 400
+  Tone(1, 1, envelope/p_level, NULL)
+endphoneme
+
+// _1==
+phoneme 6106
+  stress
+  length 600
+  Tone(1, 1, envelope/p_level, NULL)
+endphoneme
+
+// _1===
+phoneme 6108
+  stress
+  length 800
+  Tone(1, 1, envelope/p_level, NULL)
+endphoneme
+
+// _#1,,
+phoneme 6150
+  stress
+  length 50
+  Tone(7, 7, envelope/p_level, NULL)
+endphoneme
+
+// _#1,
+phoneme 6151
+  stress
+  length 100
+  Tone(7, 7, envelope/p_level, NULL)
+endphoneme
+
+// _#1
+phoneme 6152
+  stress
+  length 200
+  Tone(7, 7, envelope/p_level, NULL)
+endphoneme
+
+// _#1.
+phoneme 6153
+  stress
+  length 300
+  Tone(7, 7, envelope/p_level, NULL)
+endphoneme
+
+// _#1=
+phoneme 6154
+  stress
+  length 400
+  Tone(7, 7, envelope/p_level, NULL)
+endphoneme
+
+// _#1==
+phoneme 6156
+  stress
+  length 600
+  Tone(7, 7, envelope/p_level, NULL)
+endphoneme
+
+// _#1===
+phoneme 6158
+  stress
+  length 800
+  Tone(7, 7, envelope/p_level, NULL)
+endphoneme
+
+// _2,,
+phoneme 6200
+  stress
+  length 50
+  Tone(14, 14, envelope/p_level, NULL)
+endphoneme
+
+// _2,
+phoneme 6201
+  stress
+  length 100
+  Tone(14, 14, envelope/p_level, NULL)
+endphoneme
+
+// _2
+phoneme 6202
+  stress
+  length 200
+  Tone(14, 14, envelope/p_level, NULL)
+endphoneme
+
+// _2.
+phoneme 6203
+  stress
+  length 300
+  Tone(14, 14, envelope/p_level, NULL)
+endphoneme
+
+// _2=
+phoneme 6204
+  stress
+  length 400
+  Tone(14, 14, envelope/p_level, NULL)
+endphoneme
+
+// _2==
+phoneme 6206
+  stress
+  length 600
+  Tone(14, 14, envelope/p_level, NULL)
+endphoneme
+
+// _2===
+phoneme 6208
+  stress
+  length 800
+  Tone(14, 14, envelope/p_level, NULL)
+endphoneme
+
+// _#2,,
+phoneme 6250
+  stress
+  length 50
+  Tone(21, 21, envelope/p_level, NULL)
+endphoneme
+
+// _#2,
+phoneme 6251
+  stress
+  length 100
+  Tone(21, 21, envelope/p_level, NULL)
+endphoneme
+
+// _#2
+phoneme 6252
+  stress
+  length 200
+  Tone(21, 21, envelope/p_level, NULL)
+endphoneme
+
+// _#2.
+phoneme 6253
+  stress
+  length 300
+  Tone(21, 21, envelope/p_level, NULL)
+endphoneme
+
+// _#2=
+phoneme 6254
+  stress
+  length 400
+  Tone(21, 21, envelope/p_level, NULL)
+endphoneme
+
+// _#2==
+phoneme 6256
+  stress
+  length 600
+  Tone(21, 21, envelope/p_level, NULL)
+endphoneme
+
+// _#2===
+phoneme 6258
+  stress
+  length 800
+  Tone(21, 21, envelope/p_level, NULL)
+endphoneme
+
+// _3,,
+phoneme 6300
+  stress
+  length 50
+  Tone(28, 28, envelope/p_level, NULL)
+endphoneme
+
+// _3,
+phoneme 6301
+  stress
+  length 100
+  Tone(28, 28, envelope/p_level, NULL)
+endphoneme
+
+// _3
+phoneme 6302
+  stress
+  length 200
+  Tone(28, 28, envelope/p_level, NULL)
+endphoneme
+
+// _3.
+phoneme 6303
+  stress
+  length 300
+  Tone(28, 28, envelope/p_level, NULL)
+endphoneme
+
+// _3=
+phoneme 6304
+  stress
+  length 400
+  Tone(28, 28, envelope/p_level, NULL)
+endphoneme
+
+// _3==
+phoneme 6306
+  stress
+  length 600
+  Tone(28, 28, envelope/p_level, NULL)
+endphoneme
+
+// _3===
+phoneme 6308
+  stress
+  length 800
+  Tone(28, 28, envelope/p_level, NULL)
+endphoneme
+
+// _4,,
+phoneme 6350
+  stress
+  length 50
+  Tone(35, 35, envelope/p_level, NULL)
+endphoneme
+
+// _4,
+phoneme 6351
+  stress
+  length 100
+  Tone(35, 35, envelope/p_level, NULL)
+endphoneme
+
+// _4
+phoneme 6352
+  stress
+  length 200
+  Tone(35, 35, envelope/p_level, NULL)
+endphoneme
+
+// _4.
+phoneme 6353
+  stress
+  length 300
+  Tone(35, 35, envelope/p_level, NULL)
+endphoneme
+
+// _4=
+phoneme 6354
+  stress
+  length 400
+  Tone(35, 35, envelope/p_level, NULL)
+endphoneme
+
+// _4==
+phoneme 6356
+  stress
+  length 600
+  Tone(35, 35, envelope/p_level, NULL)
+endphoneme
+
+// _4===
+phoneme 6358
+  stress
+  length 800
+  Tone(35, 35, envelope/p_level, NULL)
+endphoneme
+
+// _#4,,
+phoneme 6400
+  stress
+  length 50
+  Tone(43, 43, envelope/p_level, NULL)
+endphoneme
+
+// _#4,
+phoneme 6401
+  stress
+  length 100
+  Tone(43, 43, envelope/p_level, NULL)
+endphoneme
+
+// _#4
+phoneme 6402
+  stress
+  length 200
+  Tone(43, 43, envelope/p_level, NULL)
+endphoneme
+
+// _#4.
+phoneme 6403
+  stress
+  length 300
+  Tone(43, 43, envelope/p_level, NULL)
+endphoneme
+
+// _#4=
+phoneme 6404
+  stress
+  length 400
+  Tone(43, 43, envelope/p_level, NULL)
+endphoneme
+
+// _#4==
+phoneme 6406
+  stress
+  length 600
+  Tone(43, 43, envelope/p_level, NULL)
+endphoneme
+
+// _#4===
+phoneme 6408
+  stress
+  length 800
+  Tone(43, 43, envelope/p_level, NULL)
+endphoneme
+
 // _5,,
 phoneme 6450
   stress
   length 50
-  Tone(1, 1, envelope/p_level, NULL)
+  Tone(52, 52, envelope/p_level, NULL)
 endphoneme
 
 // _5,
 phoneme 6451
   stress
   length 100
-  Tone(1, 1, envelope/p_level, NULL)
+  Tone(52, 52, envelope/p_level, NULL)
 endphoneme
 
 // _5
 phoneme 6452
   stress
   length 200
-  Tone(1, 1, envelope/p_level, NULL)
+  Tone(52, 52, envelope/p_level, NULL)
 endphoneme
 
 // _5.
 phoneme 6453
   stress
   length 300
-  Tone(1, 1, envelope/p_level, NULL)
+  Tone(52, 52, envelope/p_level, NULL)
 endphoneme
 
 // _5=
 phoneme 6454
   stress
   length 400
-  Tone(1, 1, envelope/p_level, NULL)
+  Tone(52, 52, envelope/p_level, NULL)
 endphoneme
 
 // _5==
 phoneme 6456
   stress
   length 600
-  Tone(1, 1, envelope/p_level, NULL)
+  Tone(52, 52, envelope/p_level, NULL)
 endphoneme
 
 // _5===
 phoneme 6458
   stress
   length 800
-  Tone(1, 1, envelope/p_level, NULL)
+  Tone(52, 52, envelope/p_level, NULL)
 endphoneme
 
 // _#5,,
 phoneme 6500
   stress
   length 50
-  Tone(7, 7, envelope/p_level, NULL)
+  Tone(61, 61, envelope/p_level, NULL)
 endphoneme
 
 // _#5,
 phoneme 6501
   stress
   length 100
-  Tone(7, 7, envelope/p_level, NULL)
+  Tone(61, 61, envelope/p_level, NULL)
 endphoneme
 
 // _#5
 phoneme 6502
   stress
   length 200
-  Tone(7, 7, envelope/p_level, NULL)
+  Tone(61, 61, envelope/p_level, NULL)
 endphoneme
 
 // _#5.
 phoneme 6503
   stress
   length 300
-  Tone(7, 7, envelope/p_level, NULL)
+  Tone(61, 61, envelope/p_level, NULL)
 endphoneme
 
 // _#5=
 phoneme 6504
   stress
   length 400
-  Tone(7, 7, envelope/p_level, NULL)
+  Tone(61, 61, envelope/p_level, NULL)
 endphoneme
 
 // _#5==
 phoneme 6506
   stress
   length 600
-  Tone(7, 7, envelope/p_level, NULL)
+  Tone(61, 61, envelope/p_level, NULL)
 endphoneme
 
 // _#5===
 phoneme 6508
   stress
   length 800
-  Tone(7, 7, envelope/p_level, NULL)
+  Tone(61, 61, envelope/p_level, NULL)
 endphoneme
 
 // _6,,
 phoneme 6550
   stress
   length 50
-  Tone(14, 14, envelope/p_level, NULL)
+  Tone(71, 71, envelope/p_level, NULL)
 endphoneme
 
 // _6,
 phoneme 6551
   stress
   length 100
-  Tone(14, 14, envelope/p_level, NULL)
+  Tone(71, 71, envelope/p_level, NULL)
 endphoneme
 
 // _6
 phoneme 6552
   stress
   length 200
-  Tone(14, 14, envelope/p_level, NULL)
+  Tone(71, 71, envelope/p_level, NULL)
 endphoneme
 
 // _6.
 phoneme 6553
   stress
   length 300
-  Tone(14, 14, envelope/p_level, NULL)
+  Tone(71, 71, envelope/p_level, NULL)
 endphoneme
 
 // _6=
 phoneme 6554
   stress
   length 400
-  Tone(14, 14, envelope/p_level, NULL)
+  Tone(71, 71, envelope/p_level, NULL)
 endphoneme
 
 // _6==
 phoneme 6556
   stress
   length 600
-  Tone(14, 14, envelope/p_level, NULL)
+  Tone(71, 71, envelope/p_level, NULL)
 endphoneme
 
 // _6===
 phoneme 6558
   stress
   length 800
-  Tone(14, 14, envelope/p_level, NULL)
+  Tone(71, 71, envelope/p_level, NULL)
 endphoneme
 
 // _#6,,
 phoneme 6600
   stress
   length 50
-  Tone(21, 21, envelope/p_level, NULL)
+  Tone(81, 81, envelope/p_level, NULL)
 endphoneme
 
 // _#6,
 phoneme 6601
   stress
   length 100
-  Tone(21, 21, envelope/p_level, NULL)
+  Tone(81, 81, envelope/p_level, NULL)
 endphoneme
 
 // _#6
 phoneme 6602
   stress
   length 200
-  Tone(21, 21, envelope/p_level, NULL)
+  Tone(81, 81, envelope/p_level, NULL)
 endphoneme
 
 // _#6.
 phoneme 6603
   stress
   length 300
-  Tone(21, 21, envelope/p_level, NULL)
+  Tone(81, 81, envelope/p_level, NULL)
 endphoneme
 
 // _#6=
 phoneme 6604
   stress
   length 400
-  Tone(21, 21, envelope/p_level, NULL)
+  Tone(81, 81, envelope/p_level, NULL)
 endphoneme
 
 // _#6==
 phoneme 6606
   stress
   length 600
-  Tone(21, 21, envelope/p_level, NULL)
+  Tone(81, 81, envelope/p_level, NULL)
 endphoneme
 
 // _#6===
 phoneme 6608
   stress
   length 800
-  Tone(21, 21, envelope/p_level, NULL)
+  Tone(81, 81, envelope/p_level, NULL)
 endphoneme
 
 // _7,,
 phoneme 6650
   stress
   length 50
-  Tone(28, 28, envelope/p_level, NULL)
+  Tone(92, 92, envelope/p_level, NULL)
 endphoneme
 
 // _7,
 phoneme 6651
   stress
   length 100
-  Tone(28, 28, envelope/p_level, NULL)
+  Tone(92, 92, envelope/p_level, NULL)
 endphoneme
 
 // _7
 phoneme 6652
   stress
   length 200
-  Tone(28, 28, envelope/p_level, NULL)
+  Tone(92, 92, envelope/p_level, NULL)
 endphoneme
 
 // _7.
 phoneme 6653
   stress
   length 300
-  Tone(28, 28, envelope/p_level, NULL)
+  Tone(92, 92, envelope/p_level, NULL)
 endphoneme
 
 // _7=
 phoneme 6654
   stress
   length 400
-  Tone(28, 28, envelope/p_level, NULL)
+  Tone(92, 92, envelope/p_level, NULL)
 endphoneme
 
 // _7==
 phoneme 6656
   stress
   length 600
-  Tone(28, 28, envelope/p_level, NULL)
+  Tone(92, 92, envelope/p_level, NULL)
 endphoneme
 
 // _7===
 phoneme 6658
   stress
   length 800
-  Tone(28, 28, envelope/p_level, NULL)
+  Tone(92, 92, envelope/p_level, NULL)
 endphoneme
 
 // 1,,
 phoneme 7100
   stress
   length 50
-  Tone(36, 36, envelope/p_level, NULL)
+  Tone(103, 103, envelope/p_level, NULL)
 endphoneme
 
 // 1,
 phoneme 7101
   stress
   length 100
-  Tone(36, 36, envelope/p_level, NULL)
+  Tone(103, 103, envelope/p_level, NULL)
 endphoneme
 
 // 1
 phoneme 7102
   stress
   length 200
-  Tone(36, 36, envelope/p_level, NULL)
+  Tone(103, 103, envelope/p_level, NULL)
 endphoneme
 
 // 1.
 phoneme 7103
   stress
   length 300
-  Tone(36, 36, envelope/p_level, NULL)
+  Tone(103, 103, envelope/p_level, NULL)
 endphoneme
 
 // 1=
 phoneme 7104
   stress
   length 400
-  Tone(36, 36, envelope/p_level, NULL)
+  Tone(103, 103, envelope/p_level, NULL)
 endphoneme
 
 // 1==
 phoneme 7106
   stress
   length 600
-  Tone(36, 36, envelope/p_level, NULL)
+  Tone(103, 103, envelope/p_level, NULL)
 endphoneme
 
 // 1===
 phoneme 7108
   stress
   length 800
-  Tone(36, 36, envelope/p_level, NULL)
-endphoneme
-
-// 1=======
-phoneme 7109
-  stress
-  length 1600
-  Tone(36, 36, envelope/p_level, NULL)
+  Tone(103, 103, envelope/p_level, NULL)
 endphoneme
 
 // #1,,
 phoneme 7150
   stress
   length 50
-  Tone(44, 44, envelope/p_level, NULL)
+  Tone(115, 115, envelope/p_level, NULL)
 endphoneme
 
 // #1,
 phoneme 7151
   stress
   length 100
-  Tone(44, 44, envelope/p_level, NULL)
+  Tone(115, 115, envelope/p_level, NULL)
 endphoneme
 
 // #1
 phoneme 7152
   stress
   length 200
-  Tone(44, 44, envelope/p_level, NULL)
+  Tone(115, 115, envelope/p_level, NULL)
 endphoneme
 
 // #1.
 phoneme 7153
   stress
   length 300
-  Tone(44, 44, envelope/p_level, NULL)
+  Tone(115, 115, envelope/p_level, NULL)
 endphoneme
 
 // #1=
 phoneme 7154
   stress
   length 400
-  Tone(44, 44, envelope/p_level, NULL)
+  Tone(115, 115, envelope/p_level, NULL)
 endphoneme
 
 // #1==
 phoneme 7156
   stress
   length 600
-  Tone(44, 44, envelope/p_level, NULL)
+  Tone(115, 115, envelope/p_level, NULL)
 endphoneme
 
 // #1===
 phoneme 7158
   stress
   length 800
-  Tone(44, 44, envelope/p_level, NULL)
+  Tone(115, 115, envelope/p_level, NULL)
 endphoneme
 
 // 2,,
 phoneme 7200
   stress
   length 50
-  Tone(52, 52, envelope/p_level, NULL)
+  Tone(128, 128, envelope/p_level, NULL)
 endphoneme
 
 // 2,
 phoneme 7201
   stress
   length 100
-  Tone(52, 52, envelope/p_level, NULL)
+  Tone(128, 128, envelope/p_level, NULL)
 endphoneme
 
 // 2
 phoneme 7202
   stress
   length 200
-  Tone(52, 52, envelope/p_level, NULL)
+  Tone(128, 128, envelope/p_level, NULL)
 endphoneme
 
 // 2.
 phoneme 7203
   stress
   length 300
-  Tone(52, 52, envelope/p_level, NULL)
+  Tone(128, 128, envelope/p_level, NULL)
 endphoneme
 
 // 2=
 phoneme 7204
   stress
   length 400
-  Tone(52, 52, envelope/p_level, NULL)
+  Tone(128, 128, envelope/p_level, NULL)
 endphoneme
 
 // 2==
 phoneme 7206
   stress
   length 600
-  Tone(52, 52, envelope/p_level, NULL)
+  Tone(128, 128, envelope/p_level, NULL)
 endphoneme
 
 // 2===
 phoneme 7208
   stress
   length 800
-  Tone(52, 52, envelope/p_level, NULL)
+  Tone(128, 128, envelope/p_level, NULL)
 endphoneme
 
 // #2,,
 phoneme 7250
   stress
   length 50
-  Tone(61, 61, envelope/p_level, NULL)
+  Tone(142, 142, envelope/p_level, NULL)
 endphoneme
 
 // #2,
 phoneme 7251
   stress
   length 100
-  Tone(61, 61, envelope/p_level, NULL)
+  Tone(142, 142, envelope/p_level, NULL)
 endphoneme
 
 // #2
 phoneme 7252
   stress
   length 200
-  Tone(61, 61, envelope/p_level, NULL)
+  Tone(142, 142, envelope/p_level, NULL)
 endphoneme
 
 // #2.
 phoneme 7253
   stress
   length 300
-  Tone(61, 61, envelope/p_level, NULL)
+  Tone(142, 142, envelope/p_level, NULL)
 endphoneme
 
 // #2=
 phoneme 7254
   stress
   length 400
-  Tone(61, 61, envelope/p_level, NULL)
+  Tone(142, 142, envelope/p_level, NULL)
 endphoneme
 
 // #2==
 phoneme 7256
   stress
   length 600
-  Tone(61, 61, envelope/p_level, NULL)
+  Tone(142, 142, envelope/p_level, NULL)
 endphoneme
 
 // #2===
 phoneme 7258
   stress
   length 800
-  Tone(61, 61, envelope/p_level, NULL)
+  Tone(142, 142, envelope/p_level, NULL)
 endphoneme
 
 // 3,,
 phoneme 7300
   stress
   length 50
-  Tone(71, 71, envelope/p_level, NULL)
+  Tone(156, 156, envelope/p_level, NULL)
 endphoneme
 
 // 3,
 phoneme 7301
   stress
   length 100
-  Tone(71, 71, envelope/p_level, NULL)
+  Tone(156, 156, envelope/p_level, NULL)
 endphoneme
 
 // 3
 phoneme 7302
   stress
   length 200
-  Tone(71, 71, envelope/p_level, NULL)
+  Tone(156, 156, envelope/p_level, NULL)
 endphoneme
 
 // 3.
 phoneme 7303
   stress
   length 300
-  Tone(71, 71, envelope/p_level, NULL)
+  Tone(156, 156, envelope/p_level, NULL)
 endphoneme
 
 // 3=
 phoneme 7304
   stress
   length 400
-  Tone(71, 71, envelope/p_level, NULL)
+  Tone(156, 156, envelope/p_level, NULL)
 endphoneme
 
 // 3==
 phoneme 7306
   stress
   length 600
-  Tone(71, 71, envelope/p_level, NULL)
+  Tone(156, 156, envelope/p_level, NULL)
 endphoneme
 
 // 3===
 phoneme 7308
   stress
   length 800
-  Tone(71, 71, envelope/p_level, NULL)
+  Tone(156, 156, envelope/p_level, NULL)
 endphoneme
 
 // 4,,
 phoneme 7350
   stress
   length 50
-  Tone(81, 81, envelope/p_level, NULL)
+  Tone(171, 171, envelope/p_level, NULL)
 endphoneme
 
 // 4,
 phoneme 7351
   stress
   length 100
-  Tone(81, 81, envelope/p_level, NULL)
+  Tone(171, 171, envelope/p_level, NULL)
 endphoneme
 
 // 4
 phoneme 7352
   stress
   length 200
-  Tone(81, 81, envelope/p_level, NULL)
+  Tone(171, 171, envelope/p_level, NULL)
 endphoneme
 
 // 4.
 phoneme 7353
   stress
   length 300
-  Tone(81, 81, envelope/p_level, NULL)
+  Tone(171, 171, envelope/p_level, NULL)
 endphoneme
 
 // 4=
 phoneme 7354
   stress
   length 400
-  Tone(81, 81, envelope/p_level, NULL)
+  Tone(171, 171, envelope/p_level, NULL)
 endphoneme
 
 // 4==
 phoneme 7356
   stress
   length 600
-  Tone(81, 81, envelope/p_level, NULL)
+  Tone(171, 171, envelope/p_level, NULL)
 endphoneme
 
 // 4===
 phoneme 7358
   stress
   length 800
-  Tone(81, 81, envelope/p_level, NULL)
+  Tone(171, 171, envelope/p_level, NULL)
 endphoneme
 
 // #4,,
 phoneme 7400
   stress
   length 50
-  Tone(92, 92, envelope/p_level, NULL)
+  Tone(187, 187, envelope/p_level, NULL)
 endphoneme
 
 // #4,
 phoneme 7401
   stress
   length 100
-  Tone(92, 92, envelope/p_level, NULL)
+  Tone(187, 187, envelope/p_level, NULL)
 endphoneme
 
 // #4
 phoneme 7402
   stress
   length 200
-  Tone(92, 92, envelope/p_level, NULL)
+  Tone(187, 187, envelope/p_level, NULL)
 endphoneme
 
 // #4.
 phoneme 7403
   stress
   length 300
-  Tone(92, 92, envelope/p_level, NULL)
+  Tone(187, 187, envelope/p_level, NULL)
 endphoneme
 
 // #4=
 phoneme 7404
   stress
   length 400
-  Tone(92, 92, envelope/p_level, NULL)
+  Tone(187, 187, envelope/p_level, NULL)
 endphoneme
 
 // #4==
 phoneme 7406
   stress
   length 600
-  Tone(92, 92, envelope/p_level, NULL)
+  Tone(187, 187, envelope/p_level, NULL)
 endphoneme
 
 // #4===
 phoneme 7408
   stress
   length 800
-  Tone(92, 92, envelope/p_level, NULL)
+  Tone(187, 187, envelope/p_level, NULL)
 endphoneme
 
 // 5,,
 phoneme 7450
   stress
   length 50
-  Tone(103, 103, envelope/p_level, NULL)
+  Tone(204, 204, envelope/p_level, NULL)
 endphoneme
 
 // 5,
 phoneme 7451
   stress
   length 100
-  Tone(103, 103, envelope/p_level, NULL)
+  Tone(204, 204, envelope/p_level, NULL)
 endphoneme
 
 // 5
 phoneme 7452
   stress
   length 200
-  Tone(103, 103, envelope/p_level, NULL)
+  Tone(204, 204, envelope/p_level, NULL)
 endphoneme
 
 // 5.
 phoneme 7453
   stress
   length 300
-  Tone(103, 103, envelope/p_level, NULL)
+  Tone(204, 204, envelope/p_level, NULL)
 endphoneme
 
 // 5=
 phoneme 7454
   stress
   length 400
-  Tone(103, 103, envelope/p_level, NULL)
+  Tone(204, 204, envelope/p_level, NULL)
 endphoneme
 
 // 5==
 phoneme 7456
   stress
   length 600
-  Tone(103, 103, envelope/p_level, NULL)
+  Tone(204, 204, envelope/p_level, NULL)
 endphoneme
 
 // 5===
 phoneme 7458
   stress
   length 800
-  Tone(103, 103, envelope/p_level, NULL)
+  Tone(204, 204, envelope/p_level, NULL)
 endphoneme
 
 // #5,,
 phoneme 7500
   stress
   length 50
-  Tone(115, 115, envelope/p_level, NULL)
+  Tone(223, 223, envelope/p_level, NULL)
 endphoneme
 
 // #5,
 phoneme 7501
   stress
   length 100
-  Tone(115, 115, envelope/p_level, NULL)
+  Tone(223, 223, envelope/p_level, NULL)
 endphoneme
 
 // #5
 phoneme 7502
   stress
   length 200
-  Tone(115, 115, envelope/p_level, NULL)
+  Tone(223, 223, envelope/p_level, NULL)
 endphoneme
 
 // #5.
 phoneme 7503
   stress
   length 300
-  Tone(115, 115, envelope/p_level, NULL)
+  Tone(223, 223, envelope/p_level, NULL)
 endphoneme
 
 // #5=
 phoneme 7504
   stress
   length 400
-  Tone(115, 115, envelope/p_level, NULL)
+  Tone(223, 223, envelope/p_level, NULL)
 endphoneme
 
 // #5==
 phoneme 7506
   stress
   length 600
-  Tone(115, 115, envelope/p_level, NULL)
+  Tone(223, 223, envelope/p_level, NULL)
 endphoneme
 
 // #5===
 phoneme 7508
   stress
   length 800
-  Tone(115, 115, envelope/p_level, NULL)
+  Tone(223, 223, envelope/p_level, NULL)
 endphoneme
 
 // 6,,
 phoneme 7550
   stress
   length 50
-  Tone(128, 128, envelope/p_level, NULL)
+  Tone(242, 242, envelope/p_level, NULL)
 endphoneme
 
 // 6,
 phoneme 7551
   stress
   length 100
-  Tone(128, 128, envelope/p_level, NULL)
+  Tone(242, 242, envelope/p_level, NULL)
 endphoneme
 
 // 6
 phoneme 7552
   stress
   length 200
-  Tone(128, 128, envelope/p_level, NULL)
+  Tone(242, 242, envelope/p_level, NULL)
 endphoneme
 
 // 6.
 phoneme 7553
   stress
   length 300
-  Tone(128, 128, envelope/p_level, NULL)
+  Tone(242, 242, envelope/p_level, NULL)
 endphoneme
 
 // 6=
 phoneme 7554
   stress
   length 400
-  Tone(128, 128, envelope/p_level, NULL)
+  Tone(242, 242, envelope/p_level, NULL)
 endphoneme
 
 // 6==
 phoneme 7556
   stress
   length 600
-  Tone(128, 128, envelope/p_level, NULL)
+  Tone(242, 242, envelope/p_level, NULL)
 endphoneme
 
 // 6===
 phoneme 7558
   stress
   length 800
-  Tone(128, 128, envelope/p_level, NULL)
+  Tone(242, 242, envelope/p_level, NULL)
 endphoneme
 
 // #6,,
 phoneme 7600
   stress
   length 50
-  Tone(142, 142, envelope/p_level, NULL)
+  Tone(262, 262, envelope/p_level, NULL)
 endphoneme
 
 // #6,
 phoneme 7601
   stress
   length 100
-  Tone(142, 142, envelope/p_level, NULL)
+  Tone(262, 262, envelope/p_level, NULL)
 endphoneme
 
 // #6
 phoneme 7602
   stress
   length 200
-  Tone(142, 142, envelope/p_level, NULL)
+  Tone(262, 262, envelope/p_level, NULL)
 endphoneme
 
 // #6.
 phoneme 7603
   stress
   length 300
-  Tone(142, 142, envelope/p_level, NULL)
+  Tone(262, 262, envelope/p_level, NULL)
 endphoneme
 
 // #6=
 phoneme 7604
   stress
   length 400
-  Tone(142, 142, envelope/p_level, NULL)
+  Tone(262, 262, envelope/p_level, NULL)
 endphoneme
 
 // #6==
 phoneme 7606
   stress
   length 600
-  Tone(142, 142, envelope/p_level, NULL)
+  Tone(262, 262, envelope/p_level, NULL)
 endphoneme
 
 // #6===
 phoneme 7608
   stress
   length 800
-  Tone(142, 142, envelope/p_level, NULL)
+  Tone(262, 262, envelope/p_level, NULL)
 endphoneme
 
 // 7,,
 phoneme 7650
   stress
   length 50
-  Tone(156, 156, envelope/p_level, NULL)
+  Tone(284, 284, envelope/p_level, NULL)
 endphoneme
 
 // 7,
 phoneme 7651
   stress
   length 100
-  Tone(156, 156, envelope/p_level, NULL)
+  Tone(284, 284, envelope/p_level, NULL)
 endphoneme
 
 // 7
 phoneme 7652
   stress
   length 200
-  Tone(156, 156, envelope/p_level, NULL)
+  Tone(284, 284, envelope/p_level, NULL)
 endphoneme
 
 // 7.
 phoneme 7653
   stress
   length 300
-  Tone(156, 156, envelope/p_level, NULL)
+  Tone(284, 284, envelope/p_level, NULL)
 endphoneme
 
 // 7=
 phoneme 7654
   stress
   length 400
-  Tone(156, 156, envelope/p_level, NULL)
+  Tone(284, 284, envelope/p_level, NULL)
 endphoneme
 
 // 7==
 phoneme 7656
   stress
   length 600
-  Tone(156, 156, envelope/p_level, NULL)
+  Tone(284, 284, envelope/p_level, NULL)
 endphoneme
 
 // 7===
 phoneme 7658
   stress
   length 800
-  Tone(156, 156, envelope/p_level, NULL)
+  Tone(284, 284, envelope/p_level, NULL)
 endphoneme
 
 // ^1,,
 phoneme 8100
   stress
   length 50
-  Tone(172, 172, envelope/p_level, NULL)
+  Tone(307, 307, envelope/p_level, NULL)
 endphoneme
 
 // ^1,
 phoneme 8101
   stress
   length 100
-  Tone(172, 172, envelope/p_level, NULL)
+  Tone(307, 307, envelope/p_level, NULL)
 endphoneme
 
 // ^1
 phoneme 8102
   stress
   length 200
-  Tone(172, 172, envelope/p_level, NULL)
+  Tone(307, 307, envelope/p_level, NULL)
 endphoneme
 
 // ^1.
 phoneme 8103
   stress
   length 300
-  Tone(172, 172, envelope/p_level, NULL)
+  Tone(307, 307, envelope/p_level, NULL)
 endphoneme
 
 // ^1=
 phoneme 8104
   stress
   length 400
-  Tone(172, 172, envelope/p_level, NULL)
+  Tone(307, 307, envelope/p_level, NULL)
 endphoneme
 
 // ^1==
 phoneme 8106
   stress
   length 600
-  Tone(172, 172, envelope/p_level, NULL)
+  Tone(307, 307, envelope/p_level, NULL)
 endphoneme
 
 // ^1===
 phoneme 8108
   stress
   length 800
-  Tone(172, 172, envelope/p_level, NULL)
+  Tone(307, 307, envelope/p_level, NULL)
 endphoneme
 
 // ^#1,,
 phoneme 8150
   stress
   length 50
-  Tone(188, 188, envelope/p_level, NULL)
+  Tone(331, 331, envelope/p_level, NULL)
 endphoneme
 
 // ^#1,
 phoneme 8151
   stress
   length 100
-  Tone(188, 188, envelope/p_level, NULL)
+  Tone(331, 331, envelope/p_level, NULL)
 endphoneme
 
 // ^#1
 phoneme 8152
   stress
   length 200
-  Tone(188, 188, envelope/p_level, NULL)
+  Tone(331, 331, envelope/p_level, NULL)
 endphoneme
 
 // ^#1.
 phoneme 8153
   stress
   length 300
-  Tone(188, 188, envelope/p_level, NULL)
+  Tone(331, 331, envelope/p_level, NULL)
 endphoneme
 
 // ^#1=
 phoneme 8154
   stress
   length 400
-  Tone(188, 188, envelope/p_level, NULL)
+  Tone(331, 331, envelope/p_level, NULL)
 endphoneme
 
 // ^#1==
 phoneme 8156
   stress
   length 600
-  Tone(188, 188, envelope/p_level, NULL)
+  Tone(331, 331, envelope/p_level, NULL)
 endphoneme
 
 // ^#1===
 phoneme 8158
   stress
   length 800
-  Tone(188, 188, envelope/p_level, NULL)
+  Tone(331, 331, envelope/p_level, NULL)
 endphoneme
 
 // ^2,,
 phoneme 8200
   stress
   length 50
-  Tone(205, 205, envelope/p_level, NULL)
+  Tone(357, 357, envelope/p_level, NULL)
 endphoneme
 
 // ^2,
 phoneme 8201
   stress
   length 100
-  Tone(205, 205, envelope/p_level, NULL)
+  Tone(357, 357, envelope/p_level, NULL)
 endphoneme
 
 // ^2
 phoneme 8202
   stress
   length 200
-  Tone(205, 205, envelope/p_level, NULL)
+  Tone(357, 357, envelope/p_level, NULL)
 endphoneme
 
 // ^2.
 phoneme 8203
   stress
   length 300
-  Tone(205, 205, envelope/p_level, NULL)
+  Tone(357, 357, envelope/p_level, NULL)
 endphoneme
 
 // ^2=
 phoneme 8204
   stress
   length 400
-  Tone(205, 205, envelope/p_level, NULL)
+  Tone(357, 357, envelope/p_level, NULL)
 endphoneme
 
 // ^2==
 phoneme 8206
   stress
   length 600
-  Tone(205, 205, envelope/p_level, NULL)
+  Tone(357, 357, envelope/p_level, NULL)
 endphoneme
 
 // ^2===
 phoneme 8208
   stress
   length 800
-  Tone(205, 205, envelope/p_level, NULL)
+  Tone(357, 357, envelope/p_level, NULL)
 endphoneme
 
 // ^#2,,
 phoneme 8250
   stress
   length 50
-  Tone(223, 223, envelope/p_level, NULL)
+  Tone(384, 384, envelope/p_level, NULL)
 endphoneme
 
 // ^#2,
 phoneme 8251
   stress
   length 100
-  Tone(223, 223, envelope/p_level, NULL)
+  Tone(384, 384, envelope/p_level, NULL)
 endphoneme
 
 // ^#2
 phoneme 8252
   stress
   length 200
-  Tone(223, 223, envelope/p_level, NULL)
+  Tone(384, 384, envelope/p_level, NULL)
 endphoneme
 
 // ^#2.
 phoneme 8253
   stress
   length 300
-  Tone(223, 223, envelope/p_level, NULL)
+  Tone(384, 384, envelope/p_level, NULL)
 endphoneme
 
 // ^#2=
 phoneme 8254
   stress
   length 400
-  Tone(223, 223, envelope/p_level, NULL)
+  Tone(384, 384, envelope/p_level, NULL)
 endphoneme
 
 // ^#2==
 phoneme 8256
   stress
   length 600
-  Tone(223, 223, envelope/p_level, NULL)
+  Tone(384, 384, envelope/p_level, NULL)
 endphoneme
 
 // ^#2===
 phoneme 8258
   stress
   length 800
-  Tone(223, 223, envelope/p_level, NULL)
+  Tone(384, 384, envelope/p_level, NULL)
 endphoneme
 
 // ^3,,
 phoneme 8300
   stress
   length 50
-  Tone(242, 242, envelope/p_level, NULL)
+  Tone(413, 413, envelope/p_level, NULL)
 endphoneme
 
 // ^3,
 phoneme 8301
   stress
   length 100
-  Tone(242, 242, envelope/p_level, NULL)
+  Tone(413, 413, envelope/p_level, NULL)
 endphoneme
 
 // ^3
 phoneme 8302
   stress
   length 200
-  Tone(242, 242, envelope/p_level, NULL)
+  Tone(413, 413, envelope/p_level, NULL)
 endphoneme
 
 // ^3.
 phoneme 8303
   stress
   length 300
-  Tone(242, 242, envelope/p_level, NULL)
+  Tone(413, 413, envelope/p_level, NULL)
 endphoneme
 
 // ^3=
 phoneme 8304
   stress
   length 400
-  Tone(242, 242, envelope/p_level, NULL)
+  Tone(413, 413, envelope/p_level, NULL)
 endphoneme
 
 // ^3==
 phoneme 8306
   stress
   length 600
-  Tone(242, 242, envelope/p_level, NULL)
+  Tone(413, 413, envelope/p_level, NULL)
 endphoneme
 
 // ^3===
 phoneme 8308
   stress
   length 800
-  Tone(242, 242, envelope/p_level, NULL)
+  Tone(413, 413, envelope/p_level, NULL)
 endphoneme
 
 // ^4,,
 phoneme 8350
   stress
   length 50
-  Tone(263, 263, envelope/p_level, NULL)
+  Tone(443, 443, envelope/p_level, NULL)
 endphoneme
 
 // ^4,
 phoneme 8351
   stress
   length 100
-  Tone(263, 263, envelope/p_level, NULL)
+  Tone(443, 443, envelope/p_level, NULL)
 endphoneme
 
 // ^4
 phoneme 8352
   stress
   length 200
-  Tone(263, 263, envelope/p_level, NULL)
+  Tone(443, 443, envelope/p_level, NULL)
 endphoneme
 
 // ^4.
 phoneme 8353
   stress
   length 300
-  Tone(263, 263, envelope/p_level, NULL)
+  Tone(443, 443, envelope/p_level, NULL)
 endphoneme
 
 // ^4=
 phoneme 8354
   stress
   length 400
-  Tone(263, 263, envelope/p_level, NULL)
+  Tone(443, 443, envelope/p_level, NULL)
 endphoneme
 
 // ^4==
 phoneme 8356
   stress
   length 600
-  Tone(263, 263, envelope/p_level, NULL)
+  Tone(443, 443, envelope/p_level, NULL)
 endphoneme
 
 // ^4===
 phoneme 8358
   stress
   length 800
-  Tone(263, 263, envelope/p_level, NULL)
+  Tone(443, 443, envelope/p_level, NULL)
 endphoneme
 
 // ^#4,,
 phoneme 8400
   stress
   length 50
-  Tone(284, 284, envelope/p_level, NULL)
+  Tone(475, 475, envelope/p_level, NULL)
 endphoneme
 
 // ^#4,
 phoneme 8401
   stress
   length 100
-  Tone(284, 284, envelope/p_level, NULL)
+  Tone(475, 475, envelope/p_level, NULL)
 endphoneme
 
 // ^#4
 phoneme 8402
   stress
   length 200
-  Tone(284, 284, envelope/p_level, NULL)
+  Tone(475, 475, envelope/p_level, NULL)
 endphoneme
 
 // ^#4.
 phoneme 8403
   stress
   length 300
-  Tone(284, 284, envelope/p_level, NULL)
+  Tone(475, 475, envelope/p_level, NULL)
 endphoneme
 
 // ^#4=
 phoneme 8404
   stress
   length 400
-  Tone(284, 284, envelope/p_level, NULL)
+  Tone(475, 475, envelope/p_level, NULL)
 endphoneme
 
 // ^#4==
 phoneme 8406
   stress
   length 600
-  Tone(284, 284, envelope/p_level, NULL)
+  Tone(475, 475, envelope/p_level, NULL)
 endphoneme
 
 // ^#4===
 phoneme 8408
   stress
   length 800
-  Tone(284, 284, envelope/p_level, NULL)
+  Tone(475, 475, envelope/p_level, NULL)
 endphoneme
 
 // ^5,,
 phoneme 8450
   stress
   length 50
-  Tone(307, 307, envelope/p_level, NULL)
+  Tone(509, 509, envelope/p_level, NULL)
 endphoneme
 
 // ^5,
 phoneme 8451
   stress
   length 100
-  Tone(307, 307, envelope/p_level, NULL)
+  Tone(509, 509, envelope/p_level, NULL)
 endphoneme
 
 // ^5
 phoneme 8452
   stress
   length 200
-  Tone(307, 307, envelope/p_level, NULL)
+  Tone(509, 509, envelope/p_level, NULL)
 endphoneme
 
 // ^5.
 phoneme 8453
   stress
   length 300
-  Tone(307, 307, envelope/p_level, NULL)
+  Tone(509, 509, envelope/p_level, NULL)
 endphoneme
 
 // ^5=
 phoneme 8454
   stress
   length 400
-  Tone(307, 307, envelope/p_level, NULL)
+  Tone(509, 509, envelope/p_level, NULL)
 endphoneme
 
 // ^5==
 phoneme 8456
   stress
   length 600
-  Tone(307, 307, envelope/p_level, NULL)
+  Tone(509, 509, envelope/p_level, NULL)
 endphoneme
 
 // ^5===
 phoneme 8458
   stress
   length 800
-  Tone(307, 307, envelope/p_level, NULL)
+  Tone(509, 509, envelope/p_level, NULL)
 endphoneme
 
 // ^#5,,
 phoneme 8500
   stress
   length 50
-  Tone(331, 331, envelope/p_level, NULL)
+  Tone(546, 546, envelope/p_level, NULL)
 endphoneme
 
 // ^#5,
 phoneme 8501
   stress
   length 100
-  Tone(331, 331, envelope/p_level, NULL)
+  Tone(546, 546, envelope/p_level, NULL)
 endphoneme
 
 // ^#5
 phoneme 8502
   stress
   length 200
-  Tone(331, 331, envelope/p_level, NULL)
+  Tone(546, 546, envelope/p_level, NULL)
 endphoneme
 
 // ^#5.
 phoneme 8503
   stress
   length 300
-  Tone(331, 331, envelope/p_level, NULL)
+  Tone(546, 546, envelope/p_level, NULL)
 endphoneme
 
 // ^#5=
 phoneme 8504
   stress
   length 400
-  Tone(331, 331, envelope/p_level, NULL)
+  Tone(546, 546, envelope/p_level, NULL)
 endphoneme
 
 // ^#5==
 phoneme 8506
   stress
   length 600
-  Tone(331, 331, envelope/p_level, NULL)
+  Tone(546, 546, envelope/p_level, NULL)
 endphoneme
 
 // ^#5===
 phoneme 8508
   stress
   length 800
-  Tone(331, 331, envelope/p_level, NULL)
+  Tone(546, 546, envelope/p_level, NULL)
 endphoneme
 
 // ^6,,
 phoneme 8550
   stress
   length 50
-  Tone(357, 357, envelope/p_level, NULL)
+  Tone(585, 585, envelope/p_level, NULL)
 endphoneme
 
 // ^6,
 phoneme 8551
   stress
   length 100
-  Tone(357, 357, envelope/p_level, NULL)
+  Tone(585, 585, envelope/p_level, NULL)
 endphoneme
 
 // ^6
 phoneme 8552
   stress
   length 200
-  Tone(357, 357, envelope/p_level, NULL)
+  Tone(585, 585, envelope/p_level, NULL)
 endphoneme
 
 // ^6.
 phoneme 8553
   stress
   length 300
-  Tone(357, 357, envelope/p_level, NULL)
+  Tone(585, 585, envelope/p_level, NULL)
 endphoneme
 
 // ^6=
 phoneme 8554
   stress
   length 400
-  Tone(357, 357, envelope/p_level, NULL)
+  Tone(585, 585, envelope/p_level, NULL)
 endphoneme
 
 // ^6==
 phoneme 8556
   stress
   length 600
-  Tone(357, 357, envelope/p_level, NULL)
+  Tone(585, 585, envelope/p_level, NULL)
 endphoneme
 
 // ^6===
 phoneme 8558
   stress
   length 800
-  Tone(357, 357, envelope/p_level, NULL)
+  Tone(585, 585, envelope/p_level, NULL)
 endphoneme
 
 // ^#6,,
 phoneme 8600
   stress
   length 50
-  Tone(385, 385, envelope/p_level, NULL)
+  Tone(625, 625, envelope/p_level, NULL)
 endphoneme
 
 // ^#6,
 phoneme 8601
   stress
   length 100
-  Tone(385, 385, envelope/p_level, NULL)
+  Tone(625, 625, envelope/p_level, NULL)
 endphoneme
 
 // ^#6
 phoneme 8602
   stress
   length 200
-  Tone(385, 385, envelope/p_level, NULL)
+  Tone(625, 625, envelope/p_level, NULL)
 endphoneme
 
 // ^#6.
 phoneme 8603
   stress
   length 300
-  Tone(385, 385, envelope/p_level, NULL)
+  Tone(625, 625, envelope/p_level, NULL)
 endphoneme
 
 // ^#6=
 phoneme 8604
   stress
   length 400
-  Tone(385, 385, envelope/p_level, NULL)
+  Tone(625, 625, envelope/p_level, NULL)
 endphoneme
 
 // ^#6==
 phoneme 8606
   stress
   length 600
-  Tone(385, 385, envelope/p_level, NULL)
+  Tone(625, 625, envelope/p_level, NULL)
 endphoneme
 
 // ^#6===
 phoneme 8608
   stress
   length 800
-  Tone(385, 385, envelope/p_level, NULL)
+  Tone(625, 625, envelope/p_level, NULL)
 endphoneme
 
 // ^7,,
 phoneme 8650
   stress
   length 50
-  Tone(413, 413, envelope/p_level, NULL)
+  Tone(668, 668, envelope/p_level, NULL)
 endphoneme
 
 // ^7,
 phoneme 8651
   stress
   length 100
-  Tone(413, 413, envelope/p_level, NULL)
+  Tone(668, 668, envelope/p_level, NULL)
 endphoneme
 
 // ^7
 phoneme 8652
   stress
   length 200
-  Tone(413, 413, envelope/p_level, NULL)
+  Tone(668, 668, envelope/p_level, NULL)
 endphoneme
 
 // ^7.
 phoneme 8653
   stress
   length 300
-  Tone(413, 413, envelope/p_level, NULL)
+  Tone(668, 668, envelope/p_level, NULL)
 endphoneme
 
 // ^7=
 phoneme 8654
   stress
   length 400
-  Tone(413, 413, envelope/p_level, NULL)
+  Tone(668, 668, envelope/p_level, NULL)
 endphoneme
 
 // ^7==
 phoneme 8656
   stress
   length 600
-  Tone(413, 413, envelope/p_level, NULL)
+  Tone(668, 668, envelope/p_level, NULL)
 endphoneme
 
 // ^7===
 phoneme 8658
   stress
   length 800
-  Tone(413, 413, envelope/p_level, NULL)
+  Tone(668, 668, envelope/p_level, NULL)
 endphoneme
 
 // ^^1,,
 phoneme 9100
   stress
   length 50
-  Tone(444, 444, envelope/p_level, NULL)
+  Tone(714, 714, envelope/p_level, NULL)
 endphoneme
 
 // ^^1,
 phoneme 9101
   stress
   length 100
-  Tone(444, 444, envelope/p_level, NULL)
+  Tone(714, 714, envelope/p_level, NULL)
 endphoneme
 
 // ^^1
 phoneme 9102
   stress
   length 200
-  Tone(444, 444, envelope/p_level, NULL)
+  Tone(714, 714, envelope/p_level, NULL)
 endphoneme
 
 // ^^1.
 phoneme 9103
   stress
   length 300
-  Tone(444, 444, envelope/p_level, NULL)
+  Tone(714, 714, envelope/p_level, NULL)
 endphoneme
 
 // ^^1=
 phoneme 9104
   stress
   length 400
-  Tone(444, 444, envelope/p_level, NULL)
+  Tone(714, 714, envelope/p_level, NULL)
 endphoneme
 
 // ^^1==
 phoneme 9106
   stress
   length 600
-  Tone(444, 444, envelope/p_level, NULL)
+  Tone(714, 714, envelope/p_level, NULL)
 endphoneme
 
 // ^^1===
 phoneme 9108
   stress
   length 800
-  Tone(444, 444, envelope/p_level, NULL)
+  Tone(714, 714, envelope/p_level, NULL)
 endphoneme
 
 // ^^#1,,
 phoneme 9150
   stress
   length 50
-  Tone(476, 476, envelope/p_level, NULL)
+  Tone(762, 762, envelope/p_level, NULL)
 endphoneme
 
 // ^^#1,
 phoneme 9151
   stress
   length 100
-  Tone(476, 476, envelope/p_level, NULL)
+  Tone(762, 762, envelope/p_level, NULL)
 endphoneme
 
 // ^^#1
 phoneme 9152
   stress
   length 200
-  Tone(476, 476, envelope/p_level, NULL)
+  Tone(762, 762, envelope/p_level, NULL)
 endphoneme
 
 // ^^#1.
 phoneme 9153
   stress
   length 300
-  Tone(476, 476, envelope/p_level, NULL)
+  Tone(762, 762, envelope/p_level, NULL)
 endphoneme
 
 // ^^#1=
 phoneme 9154
   stress
   length 400
-  Tone(476, 476, envelope/p_level, NULL)
+  Tone(762, 762, envelope/p_level, NULL)
 endphoneme
 
 // ^^#1==
 phoneme 9156
   stress
   length 600
-  Tone(476, 476, envelope/p_level, NULL)
+  Tone(762, 762, envelope/p_level, NULL)
 endphoneme
 
 // ^^#1===
 phoneme 9158
   stress
   length 800
-  Tone(476, 476, envelope/p_level, NULL)
+  Tone(762, 762, envelope/p_level, NULL)
 endphoneme
 
-// ^^2,,
-phoneme 9200
-  stress
-  length 50
-  Tone(510, 510, envelope/p_level, NULL)
-endphoneme
-
-// ^^2,
-phoneme 9201
-  stress
-  length 100
-  Tone(510, 510, envelope/p_level, NULL)
-endphoneme
-
-// ^^2
-phoneme 9202
-  stress
-  length 200
-  Tone(510, 510, envelope/p_level, NULL)
-endphoneme
-
-// ^^2.
-phoneme 9203
-  stress
-  length 300
-  Tone(510, 510, envelope/p_level, NULL)
-endphoneme
-
-// ^^2=
-phoneme 9204
-  stress
-  length 400
-  Tone(510, 510, envelope/p_level, NULL)
-endphoneme
-
-// ^^2==
-phoneme 9206
-  stress
-  length 600
-  Tone(510, 510, envelope/p_level, NULL)
-endphoneme
-
-// ^^2===
-phoneme 9208
-  stress
-  length 800
-  Tone(510, 510, envelope/p_level, NULL)
-endphoneme
-
-// ^^#2,,
-phoneme 9250
-  stress
-  length 50
-  Tone(547, 547, envelope/p_level, NULL)
-endphoneme
-
-// ^^#2,
-phoneme 9251
-  stress
-  length 100
-  Tone(547, 547, envelope/p_level, NULL)
-endphoneme
-
-// ^^#2
-phoneme 9252
-  stress
-  length 200
-  Tone(547, 547, envelope/p_level, NULL)
-endphoneme
-
-// ^^#2.
-phoneme 9253
-  stress
-  length 300
-  Tone(547, 547, envelope/p_level, NULL)
-endphoneme
-
-// ^^#2=
-phoneme 9254
-  stress
-  length 400
-  Tone(547, 547, envelope/p_level, NULL)
-endphoneme
-
-// ^^#2==
-phoneme 9256
-  stress
-  length 600
-  Tone(547, 547, envelope/p_level, NULL)
-endphoneme
-
-// ^^#2===
-phoneme 9258
-  stress
-  length 800
-  Tone(547, 547, envelope/p_level, NULL)
-endphoneme
-
-// ^^3,,
-phoneme 9300
-  stress
-  length 50
-  Tone(585, 585, envelope/p_level, NULL)
-endphoneme
-
-// ^^3,
-phoneme 9301
-  stress
-  length 100
-  Tone(585, 585, envelope/p_level, NULL)
-endphoneme
-
-// ^^3
-phoneme 9302
-  stress
-  length 200
-  Tone(585, 585, envelope/p_level, NULL)
-endphoneme
-
-// ^^3.
-phoneme 9303
-  stress
-  length 300
-  Tone(585, 585, envelope/p_level, NULL)
-endphoneme
-
-// ^^3=
-phoneme 9304
-  stress
-  length 400
-  Tone(585, 585, envelope/p_level, NULL)
-endphoneme
-
-// ^^3==
-phoneme 9306
-  stress
-  length 600
-  Tone(585, 585, envelope/p_level, NULL)
-endphoneme
-
-// ^^3===
-phoneme 9308
-  stress
-  length 800
-  Tone(585, 585, envelope/p_level, NULL)
-endphoneme
-
+// _1,,        6100
+// _1,         6101
+// _1          6102
+// _1.         6103
+// _1=         6104
+// _1==        6106
+// _1===       6108
+// _#1,,       6150
+// _#1,        6151
+// _#1         6152
+// _#1.        6153
+// _#1=        6154
+// _#1==       6156
+// _#1===      6158
+// _2,,        6200
+// _2,         6201
+// _2          6202
+// _2.         6203
+// _2=         6204
+// _2==        6206
+// _2===       6208
+// _#2,,       6250
+// _#2,        6251
+// _#2         6252
+// _#2.        6253
+// _#2=        6254
+// _#2==       6256
+// _#2===      6258
+// _3,,        6300
+// _3,         6301
+// _3          6302
+// _3.         6303
+// _3=         6304
+// _3==        6306
+// _3===       6308
+// _4,,        6350
+// _4,         6351
+// _4          6352
+// _4.         6353
+// _4=         6354
+// _4==        6356
+// _4===       6358
+// _#4,,       6400
+// _#4,        6401
+// _#4         6402
+// _#4.        6403
+// _#4=        6404
+// _#4==       6406
+// _#4===      6408
 // _5,,        6450
 // _5,         6451
 // _5          6452
@@ -1892,27 +2130,6 @@ endphoneme
 // ^^#1=       9154
 // ^^#1==      9156
 // ^^#1===     9158
-// ^^2,,       9200
-// ^^2,        9201
-// ^^2         9202
-// ^^2.        9203
-// ^^2=        9204
-// ^^2==       9206
-// ^^2===      9208
-// ^^#2,,      9250
-// ^^#2,       9251
-// ^^#2        9252
-// ^^#2.       9253
-// ^^#2=       9254
-// ^^#2==      9256
-// ^^#2===     9258
-// ^^3,,       9300
-// ^^3,        9301
-// ^^3         9302
-// ^^3.        9303
-// ^^3=        9304
-// ^^3==       9306
-// ^^3===      9308
 
 //============================================================
 // music end
@@ -3963,10 +4180,14 @@ phoneme r.    //   retroflex
   //   InsertPhoneme(·)
   // ENDIF
 
-  // FMT(ipa/rfx_apr1)
-  FMT(r3/@tap_rfx)  // good
-  // FMT(r3/@tap_rfx, 60)
-  // FMT(r3/r_trill,80) addWav(r3/r_trill.wav, 50)
+  IF prevPhW(isNotVowel) THEN
+    // FMT(ipa/rfx_apr1)
+    FMT(r3/@tap_rfx, 100) addWav(vocw/zh_rfx, 20)
+    // FMT(r3/@tap_rfx, 60)
+    // FMT(r3/r_trill,80) addWav(r3/r_trill.wav, 50)
+  ELSE
+    FMT(r3/@tap_rfx, 150) addWav(vocw/zh_rfx, 50)
+  ENDIF
 endphoneme
 
 phoneme r-   // syllabic, deprecated

@@ -2738,12 +2738,16 @@ void TranslateClause(Translator *tr, int *tone_out, char **voice_change)
 		PHONEME_LIST2 *p2;
 		p2 = &ph_list2[n_ph_list2 + ix];
 
+#if 0
 		if (tr->translator_name == L3('i', 'p', 'a')) {
 			p2->phcode = phonPAUSE_VSHORT;
 		}
 		else {
 			p2->phcode = phonPAUSE;
 		}
+#else
+		p2->phcode = phonPAUSE;
+#endif
 
 		p2->stresslevel = 0;
 		p2->sourceix = source_index;

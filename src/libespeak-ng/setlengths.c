@@ -467,12 +467,21 @@ void CalcLengths(Translator *tr)
 	PHONEME_DATA phdata_tone;
 
 	if (tr->translator_name == L3('i', 'p', 'a')) {
+		bool is_singing = false;
+		char tone_str[5];
 		for (ix = 1; ix < n_phoneme_list; ix++) {
 			p = &phoneme_list[ix];
 			if (0 == strcmp("++", WordToString(p->ph->mnemonic))) {
 				p->length = 0;
 				p->phcode = phonPAUSE;
 				p->type = phPAUSE;
+			}
+			strcpy(tone_str, WordToString(phoneme_tab[p->tone_ph]->mnemonic));
+			if (tone_str[0] >= '6' && tone_str[1] <= '9') {
+				is_singing = true;
+			}
+			if (is_singing && p->type == phPAUSE && ix >= n_phoneme_list - 2) {
+				p->length = 10;
 			}
 		}
 	}
@@ -835,8 +844,9 @@ void CalcLengths(Translator *tr)
 			break;
 		}
 
-		DEBUG_PRINT("DEBUG 837: ix=%d, p->length=%d, newword=%d, phoneme=%s, tone=%s, type=%d\n",
-			ix, p->length, p->newword,
+		DEBUG_PRINT("DEBUG 837: ix=%d, phcode=%d, p->length=%d, newword=%d, phoneme=%s, tone=%s, type=%d\n",
+			ix, p->phcode,
+			p->length, p->newword,
 			WordToString(p->ph->mnemonic),
 			WordToString_2(phoneme_tab[p->tone_ph]->mnemonic),
 			p->type);
@@ -855,10 +865,13 @@ void CalcLengths(Translator *tr)
 				strcpy(tone_str, WordToString(phoneme_tab[temp_p->tone_ph]->mnemonic));
 				if (tone_str[0] >= '6' && tone_str[1] <= '9') {
 					is_singing = true;
-					// * 2.5 比较适合普通曲子
+#if 0
 					// * 5 比较适合慢节奏的古曲
-					// singing_length = (int)(phoneme_tab[temp_p->tone_ph]->std_length * speed2 * 5 / 128);
+					singing_length = (int)(phoneme_tab[temp_p->tone_ph]->std_length * speed2 * 5 / 128);
+#else
+					// * 2.5 比较适合普通曲子
 					singing_length = (int)(phoneme_tab[temp_p->tone_ph]->std_length * speed2 * 2.5 / 128);
+#endif
 					DEBUG_PRINT("tone_length=%d, speed2=%d, singing_length=%d\n",
 							phoneme_tab[temp_p->tone_ph]->std_length, speed2, singing_length);
 					break;
@@ -900,6 +913,8 @@ void CalcLengths(Translator *tr)
 				while (kk >= 1) {
 					temp_p = &phoneme_list[kk];
 					if (total_orig_len == 0) {
+						new_len = singing_length;
+					} else if (0 == strcmp("++", WordToString(temp_p->ph->mnemonic))) {
 						new_len = singing_length;
 					} else if (0 == strcmp("w\"", WordToString(temp_p->ph->mnemonic))) {
 						new_len = temp_p->length;

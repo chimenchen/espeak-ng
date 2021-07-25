@@ -1590,9 +1590,12 @@ Translator *SelectTranslator(const char *name)
 		break;
 	case L3('i', 'p', 'a'):
     {
+		tr->langopts.stress_rule = STRESSPOSN_1R; // stress on final syllable of a "word"
         tr->langopts.stress_flags = S_NO_DIM; // don't automatically set diminished stress (may be set in the intonation module)
+		tr->langopts.vowel_pause = 0;
         tr->langopts.tone_language = 1; // Tone language, use  CalcPitches_Tone() rather than CalcPitches()
         tr->langopts.tone_numbers = 1; // a number after letters indicates a tone number (eg. pinyin or jyutping)
+		tr->langopts.word_gap = 0x21; // length of a final vowel is less dependent on the next consonant, don't merge consonant with next word
         tr->langopts.ideographs = 1;
 		tr->langopts.max_lengthmod = 1600;
         break;
