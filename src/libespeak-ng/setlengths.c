@@ -175,7 +175,9 @@ void SetSpeed(int control)
 		x = 73;
 		if (control & 1) {
 			speed1 = (x * voice->speedf1)/256;
+			DEBUG_PRINT("set speed2: x=%d, voice->speedf2=%d\n", x, voice->speedf2);
 			speed2 = (x * voice->speedf2)/256;
+			DEBUG_PRINT("set speed2: speed2=%d\n", speed2);
 			speed3 = (x * voice->speedf3)/256;
 		}
 		if (control & 2) {
@@ -209,7 +211,9 @@ void SetSpeed(int control)
 		// set speed factors for different syllable positions within a word
 		// these are used in CalcLengths()
 		speed1 = (x * voice->speedf1)/256;
+		DEBUG_PRINT("2 set speed2: x=%d, voice->speedf2=%d\n", x, voice->speedf2);
 		speed2 = (x * voice->speedf2)/256;
+		DEBUG_PRINT("2 set speed2: speed2=%d\n", speed2);
 		speed3 = (x * voice->speedf3)/256;
 
 		if (x <= 7) {
@@ -295,6 +299,8 @@ void SetSpeed(int control)
 	if (wpm > 359) wpm2 = 359;
 	if (wpm < espeakRATE_MINIMUM) wpm2 = espeakRATE_MINIMUM;
 	x = speed_lookup[wpm2-espeakRATE_MINIMUM];
+	DEBUG_PRINT("wpm=%d, wpm2=%d, espeakRATE_MINIMUM=%d, x=%d\n",
+			wpm, wpm2, espeakRATE_MINIMUM, x);
 
 	if (wpm >= 380)
 		x = 7;
@@ -306,6 +312,9 @@ void SetSpeed(int control)
 		// these are used in CalcLengths()
 		speed1 = (x * voice->speedf1)/256;
 		speed2 = (x * voice->speedf2)/256;
+		DEBUG_PRINT("3 set speed2: x=%d, voice->speedf2=%d\n", x, voice->speedf2);
+		speed2 = (x * voice->speedf2)/256;
+		DEBUG_PRINT("3 set speed2: speed2=%d\n", speed2);
 		speed3 = (x * voice->speedf3)/256;
 
 		if (x <= 7) {
@@ -481,7 +490,7 @@ void CalcLengths(Translator *tr)
 				is_singing = true;
 			}
 			if (is_singing && p->type == phPAUSE && ix >= n_phoneme_list - 2) {
-				p->length = 10;
+				p->length = 0;
 			}
 		}
 	}
@@ -870,10 +879,14 @@ void CalcLengths(Translator *tr)
 					singing_length = (int)(phoneme_tab[temp_p->tone_ph]->std_length * speed2 * 5 / 128);
 #else
 					// * 2.5 比较适合普通曲子
-					singing_length = (int)(phoneme_tab[temp_p->tone_ph]->std_length * speed2 * 2.5 / 128);
+					// 400, 60, 4000
+					// 60 / wpm * 400
+					// singing_length = (int)(phoneme_tab[temp_p->tone_ph]->std_length * speed2 * 2.5 / 128);
+					singing_length = (int)(phoneme_tab[temp_p->tone_ph]->std_length * 1.313 * 600 / embedded_value[EMBED_S]);
 #endif
-					DEBUG_PRINT("tone_length=%d, speed2=%d, singing_length=%d\n",
-							phoneme_tab[temp_p->tone_ph]->std_length, speed2, singing_length);
+					DEBUG_PRINT("tone_length=%d, speed2=%d, singing_length=%d, wpm=%d\n",
+							phoneme_tab[temp_p->tone_ph]->std_length, speed2, singing_length,
+							embedded_value[EMBED_S]);
 					break;
 				}
 				if ((kk < ix && temp_p->newword > 0) || p->newword > 0)

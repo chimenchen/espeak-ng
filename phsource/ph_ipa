@@ -3194,9 +3194,9 @@ phoneme v.        // approximant, not fricative
   Vowelin  f1=0  f2=1000 -300 -200  f3=-300 100
   Vowelout f1=0  f2=1000 -500 -300  f3=-300 60  len=50
   IF nextPh(isPause2) THEN
-    FMT(voc/v_)
+    FMT(voc/v#_)
   ENDIF
-  FMT(voc/v)
+  FMT(voc/v#)
 endphoneme
 
 phoneme v
@@ -3283,6 +3283,39 @@ phoneme c
 
   WAV(vietnam/ch,5)
 endphoneme
+
+phoneme C
+  vls pal frc
+  ipa ç
+  lengthmod 3
+  Vowelin  f1=0  f2=2700 400 600  f3=200 70
+  Vowelout f1=0  f2=2700 400 600  f3=200 70  rms=20
+
+  // WAV(ufric/ch)
+  WAV(vietnam/ch,5)
+endphoneme
+
+phoneme Ch
+  vls pal stp pzd
+  voicingswitch g
+  lengthmod 2
+  Vowelin f1=0  f2=2700 400 600  f3= 200 80
+  Vowelout f1=0 f2=2700 400 600  f3= 200 80  rms=20
+  // WAV(ustop/ki)
+  WAV(ufric/ch)
+endphoneme
+
+phoneme t;
+  vls pal stp pzd
+  lengthmod 2
+  Vowelin f1=0  f2=2700 400 600  f3=300 80 rate len=70
+  Vowelout f1=1  f2=2700 400 600  f3=200 70 len=50 colr=1
+  IF nextPh(isPause2) THEN
+    WAV(ustop/t_pzd, 30)
+  ENDIF
+  WAV(ustop/t_pzd, 60)
+endphoneme
+
 
 phoneme kk  //  /ㄲ/
   vls vel stp
@@ -3666,10 +3699,17 @@ phoneme uo
   FMT(vwl_zh/uo)
 endphoneme
 
+phoneme v.'
+  ipa ʋ
+  vwl starttype #u endtype #u
+  CALL vowel_length_u  // 90, next vowel 20, 180
+  FMT(voc/v#) addWav(vowel/u#_2, 30)
+endphoneme
+
 phoneme u
   vwl starttype #u endtype #u
   CALL vowel_length_u  // 90, next vowel 20, 180
-  FMT(vowel/u)
+  FMT(vowel/u_bck)
 endphoneme
 
 phoneme w-
@@ -3768,6 +3808,21 @@ phoneme o-
   CALL vowel_length_o  // 80, , 130
   FMT(vowel/8)
 endphoneme
+
+phoneme i[ //after ts tsh s
+  vwl  starttype #i  endtype #i
+  ipa ɿ
+  CALL vowel_length_u_long
+  FMT(vowel/i#_7)
+endphoneme
+
+phoneme i. //after ts. ts.h s. z.
+  vwl  starttype #i  endtype #i
+  ipa ʅ
+  CALL vowel_length_u_long
+  FMT(vowel/i#_6)
+endphoneme
+
 
 phoneme i"
   vwl starttype #i endtype #i
@@ -4186,7 +4241,7 @@ phoneme r.    //   retroflex
     // FMT(r3/@tap_rfx, 60)
     // FMT(r3/r_trill,80) addWav(r3/r_trill.wav, 50)
   ELSE
-    FMT(r3/@tap_rfx, 150) addWav(vocw/zh_rfx, 50)
+    FMT(r3/@tap_rfx, 110) addWav(vocw/zh_rfx, 30)
   ENDIF
 endphoneme
 
@@ -4208,6 +4263,115 @@ phoneme *.  // copied from Japanese phoneme r`
   Vowelin  f1=2 f2=1400 -400 300  f3=-400 80 len=20
 
   FMT(r3/@tap_rfx)
+endphoneme
+
+
+phoneme pL
+  vcd blb stp
+  ChangePhoneme(p)
+endphoneme
+
+phoneme pH
+  vcd blb stp
+  lengthmod 2
+  Vowelin  f1=0  f2=1000 -50 -100  f3=-200 80 amp=11
+  Vowelout f1=0  f2=1000 -500 -350  f3=-300 80 rms=22
+  FMT(b/b, 10) addWav(ustop/p_asp, 200)
+endphoneme
+
+phoneme tL
+  vcd alv stp
+  ChangePhoneme(t)
+endphoneme
+
+phoneme tH
+  vcd alv stp
+  lengthmod 2
+  Vowelin f1=0  f2=1700 -300 300  f3=-100 80
+  Vowelout f1=0 f2=1700 -300 250  f3=-100 80  rms=20
+  FMT(d/d, 20) addWav(ustop/t_, 200)
+endphoneme
+
+phoneme sL
+  vcd alv frc sib
+  ChangePhoneme(s)
+endphoneme
+
+phoneme tsL
+  vcd alv afr sib
+  lengthmod 2
+  Vowelin f1=0  f2=1700 -300 300  f3=-100 80
+  Vowelout f1=0 f2=1700 -300 250  f3=-100 80  rms=20
+  FMT(d/xdz) addWav(ustop/ts_unasp, 150)
+endphoneme
+
+phoneme tsH
+  vcd alv afr sib
+  lengthmod 2
+  Vowelin f1=0  f2=1700 -300 300  f3=-100 80
+  Vowelout f1=0 f2=1700 -300 250  f3=-100 80  rms=20
+  FMT(d/xdz) addWav(ustop/ts, 150)
+endphoneme
+
+phoneme ts.L
+  vcd pla frc sib
+  lengthmod 3
+  Vowelin  f1=0  f2=1800 -100 300  f3=-300 80
+  Vowelout f1=0  f2=1800 -100 300  f3=-300 80
+  // WAV(ustop/ts_rfx_unasp)
+  // FIXME: dZ; ?
+  // FMT(dzh/dzh) addWav(ustop/ts_rfx_unasp, 150)
+  FMT(dzh/dzh) addWav(x/dzh)
+endphoneme
+
+phoneme ts.H
+  // vcd pla frc sib
+  vls pla frc sib
+  lengthmod 3
+  Vowelin  f1=0  f2=1800 -100 300  f3=-300 80
+  Vowelout f1=0  f2=1800 -100 300  f3=-300 80
+  // FIXME: dZ; ?
+  // FMT(dzh/dzh) addWav(ustop/ts_rfx, 150)
+  WAV(ustop/ts_rfx)
+endphoneme
+
+phoneme kL
+  vcd vel stp
+  ChangePhoneme(k)
+endphoneme
+
+phoneme kH
+  vcd vel stp
+  lengthmod 2
+  Vowelin f1=1  f2=1700 0 200  f3=-300 80 f4
+  Vowelout f1=1 f2=1700 0 200  f3=-300 80 f4 rms=30
+  FMT(g/g, 10) addWav(ustop/k_asp, 200)
+endphoneme
+
+phoneme tSL
+  vcd pla afr sib
+  lengthmod 2
+  Vowelin f1=0  f2=2300 200 400  f3=-100 80
+  // WAV(ustop/tsh_unasp)
+  // FIXME: dZ; ?
+  // FMT(dzh/dzh) addWav(ustop/tsh_unasp, 150)
+  FMT(dzh/dzh) addWav(x/dzh)
+endphoneme
+
+phoneme tSH
+  // vcd pla afr sib
+  vls pla frc sib
+  lengthmod 2
+  Vowelin  f1=0  f2=1800 -100 300  f3=-300 80
+  Vowelout f1=0  f2=1800 -100 300  f3=-300 80
+  WAV(ustop/ts_rfx)
+  // FIXME: dZ; ?
+  // FMT(dzh/dzh) addWav(ustop/ts_rfx, 150)
+endphoneme
+
+phoneme SL
+  vcd pla frc sib
+  ChangePhoneme(S)
 endphoneme
 
 // used together with music tones, like

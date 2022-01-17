@@ -1,7 +1,7 @@
 name Chinese (IPA)
 language ipa
 
-translator ipa
+// translator ipa
 phonemes ipa
 dictionary ipa
 
