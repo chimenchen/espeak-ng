@@ -42,6 +42,13 @@
 #define PLAYBACK_MODE ENOUTPUT_MODE_SPEAK_AUDIO
 #endif
 
+#if defined(_WIN32) || defined(_WIN64) // Windows
+#define PLATFORM_WINDOWS
+#include <wtypes.h>
+#include <locale.h>
+#endif
+
+
 extern ESPEAK_NG_API void strncpy0(char *to, const char *from, int size);
 extern ESPEAK_NG_API int utf8_in(int *c, const char *buf);
 extern ESPEAK_NG_API int GetFileLength(const char *filename);
@@ -669,6 +676,37 @@ int main(int argc, char **argv)
 				flag_stdin = 2;
 		}
 	} else {
+#ifdef PLATFORM_WINDOWS
+		filesize = GetFileLength(filename);
+		if (filesize == -1) {
+			fprintf(stderr, "File not found '%s'\n", filename);
+			exit(EXIT_FAILURE);
+		}
+
+		char cp[16];
+		CPINFO cpi;
+		UINT  codepage; 			// the output code page
+		BOOL  dbcs;				// is it DBCS?
+
+		sprintf(cp, ".%u", codepage = GetConsoleOutputCP());
+		setlocale(LC_CTYPE, cp);
+
+		GetCPInfo(codepage, &cpi);
+		dbcs = (cpi.LeadByte[0] != 0);
+
+		WCHAR wfilename[1024];
+		MultiByteToWideChar(codepage, 0, filename, -1, wfilename, 1024);
+
+		f_text = _wfopen(wfilename, "r");
+		if (f_text == NULL) {
+			fprintf(stderr, "Failed to read file '%s'\n", filename);
+			exit(EXIT_FAILURE);
+		}
+		struct stat st;
+		if (stat(filename, &st) == 0 && S_ISFIFO(st.st_mode)) {
+			flag_stdin = 2;
+		}
+#else
 		struct stat st;
 		if (stat(filename, &st) != 0) {
 			fprintf(stderr, "Failed to stat() file '%s'\n", filename);
@@ -683,6 +721,7 @@ int main(int argc, char **argv)
 		if (S_ISFIFO(st.st_mode)) {
 			flag_stdin = 2;
 		}
+#endif
 	}
 
 	if (p_text != NULL) {

@@ -252,8 +252,11 @@ int sync_espeak_terminated_msg(uint32_t unique_identifier, void *user_data)
 static int check_data_path(const char *path, int allow_directory)
 {
 	if (!path) return 0;
-
+#ifdef PLATFORM_WINDOWS
+	snprintf(path_home, sizeof(path_home), "%s\\espeak-ng-data", path);
+#else
 	snprintf(path_home, sizeof(path_home), "%s/espeak-ng-data", path);
+#endif
 	if (GetFileLength(path_home) == -EISDIR)
 		return 1;
 
@@ -306,6 +309,28 @@ ESPEAK_NG_API espeak_ng_STATUS espeak_ng_InitializeOutput(espeak_ng_OUTPUT_MODE 
 
 int GetFileLength(const char *filename)
 {
+#ifdef PLATFORM_WINDOWS
+	BOOL                        fOk;
+	WIN32_FILE_ATTRIBUTE_DATA   fileInfo;
+	struct stat statbuf;
+
+	if (NULL == filename)
+		return -1;
+
+	if (stat(filename, &statbuf) == 0) {
+		if (S_ISDIR(statbuf.st_mode))
+			return -EISDIR;
+
+		if (statbuf.st_size > 0)
+			return statbuf.st_size;
+	}
+
+	fOk = GetFileAttributesExA(filename, GetFileExInfoStandard, (void*)&fileInfo);
+	if (!fOk)
+		return -1;
+	return (int)fileInfo.nFileSizeLow;
+
+#else
 	struct stat statbuf;
 
 	if (stat(filename, &statbuf) != 0)
@@ -315,6 +340,7 @@ int GetFileLength(const char *filename)
 		return -EISDIR;
 
 	return statbuf.st_size;
+#endif
 }
 
 ESPEAK_NG_API void espeak_ng_InitializePath(const char *path)
