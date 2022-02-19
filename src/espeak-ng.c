@@ -46,6 +46,7 @@
 #define PLATFORM_WINDOWS
 #include <wtypes.h>
 #include <locale.h>
+#include <errno.h>
 #endif
 
 
@@ -227,12 +228,36 @@ static int OpenWavFile(char *path, int rate)
 			_setmode(_fileno(stdout), _O_BINARY);
 #endif
 			f_wavfile = stdout;
-		} else
+		}
+		else {
+#ifdef PLATFORM_WINDOWS
+			char cp[16];
+			CPINFO cpi;
+			UINT  codepage; 			// the output code page
+			BOOL  dbcs;				// is it DBCS?
+
+			sprintf(cp, ".%u", codepage = GetConsoleOutputCP());
+			setlocale(LC_CTYPE, cp);
+
+			GetCPInfo(codepage, &cpi);
+			dbcs = (cpi.LeadByte[0] != 0);
+
+			WCHAR wfilename[1024];
+			MultiByteToWideChar(codepage, 0, path, -1, wfilename, 1024);
+
+			f_wavfile = _wfopen(wfilename, L"wb");
+#else
 			f_wavfile = fopen(path, "wb");
+
+#endif
+		}
 	}
 
 	if (f_wavfile == NULL) {
 		fprintf(stderr, "Can't write to: '%s'\n", path);
+#ifdef PLATFORM_WINDOWS
+		printf("fopen failed, errno = %d\n", errno);
+#endif
 		return 1;
 	}
 
@@ -697,7 +722,7 @@ int main(int argc, char **argv)
 		WCHAR wfilename[1024];
 		MultiByteToWideChar(codepage, 0, filename, -1, wfilename, 1024);
 
-		f_text = _wfopen(wfilename, "r");
+		f_text = _wfopen(wfilename, L"rb");
 		if (f_text == NULL) {
 			fprintf(stderr, "Failed to read file '%s'\n", filename);
 			exit(EXIT_FAILURE);
