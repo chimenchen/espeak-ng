@@ -40,7 +40,10 @@ endif
 # NOTE: in the emscripten virtual FS,
 #       this is the location of the eSpeak-ng data files,
 #       if we configure with "./configure --prefix=/usr"
-EM_VIRTUAL_PATH_ESPEAKNG_DATA=/usr/share/espeak-ng-data
+# EM_VIRTUAL_PATH_ESPEAKNG_DATA=/usr/share/espeak-ng-data
+# NOTE: if not using --prefix=/usr,
+# change EM_VIRTUAL_PATH_ESPEAKNG_DATA to use /usr/local/... instead
+EM_VIRTUAL_PATH_ESPEAKNG_DATA=/usr/local/share/espeak-ng-data
 
 # NOTE: emmake will replace EMSCRIPTEN with the actual root directory
 #       of the emscripten tools inside the emscripten SDK directory
@@ -84,6 +87,9 @@ EM_ALL_PRE_JS=$(EM_PRE_JS) $(EM_ESPEAKNG_DATA_PACKAGE_JS)
 EM_ALL_POST_JS=$(EM_GLUE_AUTOGEN_JS) $(EM_POST_JS)
 
 # NOTE: compile without async, i.e. with synchronous output
+#
+# NOTE: if not using --prefix=/usr,
+# change EM_VIRTUAL_PATH_ESPEAKNG_DATA to use /usr/local/... instead
 #
 # ./emconfigure ./configure --prefix=/usr --without-async
 # ./emmake make

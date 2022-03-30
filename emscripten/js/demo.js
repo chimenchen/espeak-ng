@@ -164,7 +164,14 @@ function speak() {
   tts.set_pitch(Number(document.getElementById('pitch').value));
   console.log('  Setting pitch... done');
   console.log('  Setting voice...');
-  tts.set_voice(document.getElementById('voice').value);
+  console.log(document.getElementById('voice').value);
+  //FIXME: test only
+  // tts.set_voice(document.getElementById('voice').value);
+  tts.set_voice('ipa+m7',
+    function cb99(set_voice_result) {
+      console.log(" set_voice returned " + set_voice_result);
+    }
+  );
   console.log('  Setting voice... done');
 
   var now = Date.now();
@@ -222,7 +229,11 @@ function ipa() {
 
  //user_text = user_text.repeat(50);
   
-  tts.set_voice(document.getElementById('voice').value);
+  console.log('  Setting voice... (2)');
+  // FIXME: test only
+  // tts.set_voice(document.getElementById('voice').value);
+  tts.set_voice('ipa+m7');
+  console.log('  Setting voice... (2) done');
   tts.synthesize_ipa(user_text, function(result) { 
     var te = new Date();
     document.getElementById('ipaarea').value = result.ipa;
@@ -232,7 +243,7 @@ function ipa() {
 
 function speakAndIpa() {
   speak();
-  ipa();
+  // ipa();
 }
 
 function resetPitch() {

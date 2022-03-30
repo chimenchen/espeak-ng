@@ -17,6 +17,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <emscripten.h>
 #include "speak_lib.h"
 
@@ -44,7 +45,10 @@ public:
     else
       espeak_SetVoiceByName("default");
 
-    espeak_Synth(aText, 0, 0, POS_CHARACTER, 0, 0, NULL, NULL);
+    printf("Synth %s\n", aText);
+    int text_len = strlen(aText);
+	  int synth_flags = espeakCHARS_AUTO | espeakPHONEMES | espeakENDPAUSE;
+    espeak_Synth(aText, text_len+1, 0, POS_CHARACTER, 0, synth_flags, NULL, NULL);
 
     // Reset callback so other instances will work too.
     espeak_SetSynthCallback(NULL);

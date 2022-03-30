@@ -132,6 +132,9 @@ repository.
 
 6. Enter the `emscripten` directory and compile the JS worker with `emmake`:
 
+    Note: if `'--prefix'` specified when running `configure` (for the `espeak-ng` library) was not `'/usr'`,
+    modify the `EM_VIRTUAL_PATH_ESPEAKNG_DATA` in `Makefile` (under `emscripten`)
+
     ```bash
     $ cd emscripten
     $ emmake make
