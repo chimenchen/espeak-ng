@@ -25,7 +25,7 @@
     <Feature Id="All" Title="eSpeak NG" Level="1">
       <ComponentGroupRef Id="CoreComponents"/>
       <ComponentGroupRef Id="VoiceData"/>
-    </Feature>
+	</Feature>
     <Feature Id="lang" Title="Languages">
       <Feature Id="lang_af" Title="Afrikaans" Level="1">
         <ComponentGroupRef Id="LangAfrikaans"/>
@@ -74,6 +74,9 @@
       </Feature>
       <Feature Id="lang_cmn" Title="Chinese (Mandarin)" Level="1">
         <ComponentGroupRef Id="LangChineseMandarin"/>
+      </Feature>
+      <Feature Id="lang_ipa" Title="Chinese (IPA)" Level="1">
+        <ComponentGroupRef Id="LangChineseIPA"/>
       </Feature>
       <Feature Id="lang_hr" Title="Croatian" Level="1">
         <ComponentGroupRef Id="LangCroatian"/>
@@ -594,11 +597,539 @@
             <Component Id="cmn_dict" Win64="$(var.Win64)" Guid="6DF6E437-BF8B-4FCD-B094-D88C65ACDE6E">
               <File Name="cmn_dict" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\cmn_dict" KeyPath="yes"/>
             </Component>
-            <Component Id="yue_dict" Win64="$(var.Win64)" Guid="D6BF57DA-A408-40FC-9D8E-610C8AED5836">
+			<Component Id="ipa_dict" Win64="$(var.Win64)" Guid="EDC824E1-4063-461F-8B9A-E815B947F90D">
+			  <File Name="ipa_dict" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\ipa_dict" KeyPath="yes"/>
+			</Component>
+			<Component Id="yue_dict" Win64="$(var.Win64)" Guid="D6BF57DA-A408-40FC-9D8E-610C8AED5836">
               <File Name="yue_dict" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\yue_dict" KeyPath="yes"/>
             </Component>
             <Directory Id="VOICES" Name="voices">
-              <Directory Id="AAV" Name="aav">
+			  <Directory Id="_v" Name="!v">
+
+				<Component Id="adam" Win64="$(var.Win64)" Guid="92C1F0BF-3CEE-44FA-90B3-3C4D6AA4E579">
+					<File Name="adam" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\adam" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="Alex" Win64="$(var.Win64)" Guid="56EDE383-E160-4914-BB98-7507B47F3A0A">
+					<File Name="Alex" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\Alex" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="Alicia" Win64="$(var.Win64)" Guid="3AB61B8F-AF1D-4BF8-A47A-0E8DABCC338E">
+					<File Name="Alicia" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\Alicia" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="Andrea" Win64="$(var.Win64)" Guid="A935CF24-C522-4E74-9196-BEB90C3AF63D">
+					<File Name="Andrea" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\Andrea" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="Andy" Win64="$(var.Win64)" Guid="ECCC8B90-7F74-47EA-BF30-4346F6B68EED">
+					<File Name="Andy" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\Andy" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="anika" Win64="$(var.Win64)" Guid="86F783C0-25E7-45EE-BEB0-E3BBAB620DE7">
+					<File Name="anika" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\anika" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="anikaRobot" Win64="$(var.Win64)" Guid="106A3DFA-BFF9-4EB2-BEED-13AA76A84F59">
+					<File Name="anikaRobot" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\anikaRobot" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="Annie" Win64="$(var.Win64)" Guid="9B380B0B-6EB1-4543-9F98-325E1650F643">
+					<File Name="Annie" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\Annie" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="announcer" Win64="$(var.Win64)" Guid="05887473-D064-4D13-A682-91CAA6E1481E">
+					<File Name="announcer" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\announcer" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="antonio" Win64="$(var.Win64)" Guid="9CA929C2-31D6-475C-BC5D-8A4B400BFB69">
+					<File Name="antonio" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\antonio" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="AnxiousAndy" Win64="$(var.Win64)" Guid="C2EA68E1-469A-45AC-BE4C-A613F6267F4F">
+					<File Name="AnxiousAndy" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\AnxiousAndy" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="aunty" Win64="$(var.Win64)" Guid="817FC7E0-F47A-46AA-B47A-63FEB4ABAA7E">
+					<File Name="aunty" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\aunty" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="belinda" Win64="$(var.Win64)" Guid="EAD7171F-3F6E-4F38-84F5-261E74932D02">
+					<File Name="belinda" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\belinda" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="benjamin" Win64="$(var.Win64)" Guid="99B27F91-D187-4860-BD7A-B23D26C20914">
+					<File Name="benjamin" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\benjamin" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="boris" Win64="$(var.Win64)" Guid="41736B15-1CCD-418D-A879-7CE179A0C120">
+					<File Name="boris" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\boris" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="caleb" Win64="$(var.Win64)" Guid="4FD3B088-4642-47D4-8926-BC2A8CDA733C">
+					<File Name="caleb" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\caleb" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="chihiro" Win64="$(var.Win64)" Guid="A1AF42D3-D89C-4AC7-9757-4E895C2783E0">
+					<File Name="chihiro" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\chihiro" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="chihiro2" Win64="$(var.Win64)" Guid="2B21F91D-2EB7-4E1C-B32D-D58F6D4B9B08">
+					<File Name="chihiro2" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\chihiro2" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="chihiro3" Win64="$(var.Win64)" Guid="369C5704-76B3-4C9F-B0AB-6537E697DDD6">
+					<File Name="chihiro3" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\chihiro3" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="croak" Win64="$(var.Win64)" Guid="61BA0D9E-33D6-4635-91CA-B5F548A43271">
+					<File Name="croak" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\croak" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="david" Win64="$(var.Win64)" Guid="91319E76-D32B-45E3-A2BA-E8955117D806">
+					<File Name="david" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\david" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="Demonic" Win64="$(var.Win64)" Guid="6D53ECFE-7059-4B15-A575-F8A718744C5E">
+					<File Name="Demonic" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\Demonic" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="Denis" Win64="$(var.Win64)" Guid="7C1D23D2-58A8-4196-A5F2-186A687F52EF">
+					<File Name="Denis" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\Denis" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="Diogo" Win64="$(var.Win64)" Guid="B3D6A23C-A8A6-4376-8173-0EF3CEE56795">
+					<File Name="Diogo" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\Diogo" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="ed" Win64="$(var.Win64)" Guid="9AC06CC8-F6F5-4D8D-9E00-7DA46E6ED38D">
+					<File Name="ed" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\ed" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="edward" Win64="$(var.Win64)" Guid="EEDA0D73-4DB5-4C36-872F-7F1BDDD664C1">
+					<File Name="edward" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\edward" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="edward2" Win64="$(var.Win64)" Guid="D5F89661-9CB0-4DA2-93C8-6449AD70CA65">
+					<File Name="edward2" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\edward2" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="f1" Win64="$(var.Win64)" Guid="908C9200-7CE3-4F38-A905-F7E61722D2B5">
+					<File Name="f1" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\f1" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="f2" Win64="$(var.Win64)" Guid="433C86FA-FBDC-44EA-ABD9-8AE7A27B4E4E">
+					<File Name="f2" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\f2" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="f3" Win64="$(var.Win64)" Guid="F0BEA801-38E4-46B5-9315-8C0773EDACAA">
+					<File Name="f3" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\f3" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="f4" Win64="$(var.Win64)" Guid="F3572A76-9EAB-40C3-B9BF-1B331065D72B">
+					<File Name="f4" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\f4" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="f5" Win64="$(var.Win64)" Guid="9EF78F92-CB03-4B48-83EA-03EA2260ED94">
+					<File Name="f5" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\f5" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="f7" Win64="$(var.Win64)" Guid="1C55970A-0FBB-49EE-BF57-739F5B640944">
+					<File Name="f7" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\f7" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="fast" Win64="$(var.Win64)" Guid="3494974D-F68F-4467-AD88-15E583319AE0">
+					<File Name="fast" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\fast" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="Gene" Win64="$(var.Win64)" Guid="CE83E012-0194-4ADA-B3AB-F76A980A33EC">
+					<File Name="Gene" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\Gene" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="Gene2" Win64="$(var.Win64)" Guid="09B75461-5A96-47B9-B44D-FA3B5B652B57">
+					<File Name="Gene2" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\Gene2" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="grandma" Win64="$(var.Win64)" Guid="FADA37E4-A85C-4E3E-80B7-EC5E3ADD56CA">
+					<File Name="grandma" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\grandma" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="grandpa" Win64="$(var.Win64)" Guid="75B4B1F6-168C-4120-9C56-380787D7D3F9">
+					<File Name="grandpa" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\grandpa" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="gustave" Win64="$(var.Win64)" Guid="61510058-2412-4A2A-80F3-4D19BC45828A">
+					<File Name="gustave" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\gustave" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="Henrique" Win64="$(var.Win64)" Guid="7E910B29-0FFC-4C84-B315-C98DAF7912F8">
+					<File Name="Henrique" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\Henrique" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="Hugo" Win64="$(var.Win64)" Guid="ADFC611B-2B86-46E3-BF07-6A1020A90AC6">
+					<File Name="Hugo" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\Hugo" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="iven" Win64="$(var.Win64)" Guid="3ED21C8F-3629-45CA-8698-BD40DDCCB00B">
+					<File Name="iven" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\iven" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="iven2" Win64="$(var.Win64)" Guid="34307561-BE67-45F5-A631-5C72C6AFEA24">
+					<File Name="iven2" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\iven2" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="iven3" Win64="$(var.Win64)" Guid="99BE33A4-21D5-4036-9FC6-F445D279B632">
+					<File Name="iven3" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\iven3" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="iven4" Win64="$(var.Win64)" Guid="145A98EA-E90B-4DD1-86A9-F5863520B0D4">
+					<File Name="iven4" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\iven4" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="Jacky" Win64="$(var.Win64)" Guid="E29BA51D-D694-4C9A-9009-FB4C0FF456DD">
+					<File Name="Jacky" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\Jacky" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="john" Win64="$(var.Win64)" Guid="05AD1D18-7C93-4C65-AFC4-85C281D2B58E">
+					<File Name="john" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\john" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="kaukovalta" Win64="$(var.Win64)" Guid="B858534A-9417-4567-A1DA-9A8A8B3962F8">
+					<File Name="kaukovalta" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\kaukovalta" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="klatt" Win64="$(var.Win64)" Guid="78F617A2-2494-44F2-8821-1C3926753B74">
+					<File Name="klatt" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\klatt" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="klatt2" Win64="$(var.Win64)" Guid="6590BAC9-5F6D-40E1-A7F4-8B1217D09617">
+					<File Name="klatt2" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\klatt2" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="klatt3" Win64="$(var.Win64)" Guid="0EDD6327-02B5-4F66-9F3F-81DB45480508">
+					<File Name="klatt3" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\klatt3" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="klatt4" Win64="$(var.Win64)" Guid="36E6447C-43B2-4E07-A5A9-0CEC167B076A">
+					<File Name="klatt4" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\klatt4" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="klatt5" Win64="$(var.Win64)" Guid="3DE826F4-3B02-4B95-88D4-10BEABFBF70B">
+					<File Name="klatt5" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\klatt5" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="klatt6" Win64="$(var.Win64)" Guid="F7DFDAF0-8398-45EF-942C-2735AEB28272">
+					<File Name="klatt6" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\klatt6" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="Lee" Win64="$(var.Win64)" Guid="6C4ABA41-237A-4325-80F5-3C459D338DFC">
+					<File Name="Lee" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\Lee" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="linda" Win64="$(var.Win64)" Guid="E6F2D04A-5DBC-4429-B40B-554B27E04CC7">
+					<File Name="linda" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\linda" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="m1" Win64="$(var.Win64)" Guid="2017AE47-0482-4C23-9B2F-D8B597C8C099">
+					<File Name="m1" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\m1" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="m2" Win64="$(var.Win64)" Guid="DC33185E-E952-4A77-B53A-58B5B1A7EC22">
+					<File Name="m2" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\m2" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="m3" Win64="$(var.Win64)" Guid="6FC7F52E-A06E-4A6C-A7E8-9E8940CF50F9">
+					<File Name="m3" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\m3" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="m4" Win64="$(var.Win64)" Guid="4F526EEE-E93C-4B20-ABF8-80B23C4B438F">
+					<File Name="m4" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\m4" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="m5" Win64="$(var.Win64)" Guid="4FFD963B-9300-45A1-A40E-C89004553F60">
+					<File Name="m5" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\m5" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="m6" Win64="$(var.Win64)" Guid="B28C1C64-D1A8-49A2-9ED2-6224BCA41304">
+					<File Name="m6" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\m6" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="m7" Win64="$(var.Win64)" Guid="2E46D91B-7238-4D46-A44F-3BA927099ADB">
+					<File Name="m7" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\m7" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="m8" Win64="$(var.Win64)" Guid="C8846454-A748-4E51-B49B-BF5310DB4409">
+					<File Name="m8" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\m8" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="marcelo" Win64="$(var.Win64)" Guid="3D2928F8-17C4-4025-A722-C0DC0465A222">
+					<File Name="marcelo" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\marcelo" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="Marco" Win64="$(var.Win64)" Guid="C88F7F74-878E-4114-B123-4EE3C44A3004">
+					<File Name="Marco" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\Marco" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="Mario" Win64="$(var.Win64)" Guid="2BA1BBBE-D569-44DF-BAA9-D20DA94D3823">
+					<File Name="Mario" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\Mario" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="max" Win64="$(var.Win64)" Guid="6BED8410-521C-408B-8C47-D50F528A26D1">
+					<File Name="max" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\max" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="Michael" Win64="$(var.Win64)" Guid="6AC9BF6B-EBF0-435E-8C37-58845E089F2A">
+					<File Name="Michael" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\Michael" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="michel" Win64="$(var.Win64)" Guid="C89D5887-87C6-4980-8ECF-894E3617DD75">
+					<File Name="michel" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\michel" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="miguel" Win64="$(var.Win64)" Guid="37AC7183-7CA9-4DF1-BC0B-CAD5908AF8EF">
+					<File Name="miguel" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\miguel" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="Mike" Win64="$(var.Win64)" Guid="B12CC8FD-9280-4726-8EEE-4A416ABE54DA">
+					<File Name="Mike" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\Mike" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="Mr_serious" Win64="$(var.Win64)" Guid="F43132B0-426D-405F-B61D-C772FF91C95F">
+					<File Name="Mr serious" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\Mr serious" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="Nguyen" Win64="$(var.Win64)" Guid="41F9592B-85AE-4AC0-9B20-4C94D4A40FAB">
+					<File Name="Nguyen" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\Nguyen" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="norbert" Win64="$(var.Win64)" Guid="22E017A4-B602-4CD4-BFB9-250BFF58585B">
+					<File Name="norbert" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\norbert" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="pablo" Win64="$(var.Win64)" Guid="EDA74F73-D0D3-4089-9AE1-E11F299644AA">
+					<File Name="pablo" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\pablo" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="paul" Win64="$(var.Win64)" Guid="F7858E27-736A-45BC-BEC0-95F426F9A046">
+					<File Name="paul" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\paul" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="pedro" Win64="$(var.Win64)" Guid="B694E2BF-C685-4BFD-A575-2CF14FD0720E">
+					<File Name="pedro" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\pedro" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="quincy" Win64="$(var.Win64)" Guid="C9437CE8-4237-4F4F-A530-21B894D773B3">
+					<File Name="quincy" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\quincy" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="RicishayMax" Win64="$(var.Win64)" Guid="7CB367CF-1EAA-42F9-BA53-BBF4EC9DEE33">
+					<File Name="RicishayMax" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\RicishayMax" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="RicishayMax2" Win64="$(var.Win64)" Guid="BA3FB038-BF14-4BBB-9AF1-4F86065CE34B">
+					<File Name="RicishayMax2" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\RicishayMax2" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="RicishayMax3" Win64="$(var.Win64)" Guid="8B2F5C4C-D696-4592-87A3-47EB5A485A24">
+					<File Name="RicishayMax3" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\RicishayMax3" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="rob" Win64="$(var.Win64)" Guid="DC51C158-6710-4921-B606-13D3B6DF903B">
+					<File Name="rob" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\rob" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="robert" Win64="$(var.Win64)" Guid="EA0FCB78-7128-48A8-9485-0F1B6752E9C1">
+					<File Name="robert" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\robert" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="robosoft" Win64="$(var.Win64)" Guid="6066D5EF-4AC4-4290-BE4F-88C970FA9AC9">
+					<File Name="robosoft" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\robosoft" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="robosoft2" Win64="$(var.Win64)" Guid="2A2D6E8B-776A-4213-A0A6-DBFBFC259F2E">
+					<File Name="robosoft2" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\robosoft2" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="robosoft3" Win64="$(var.Win64)" Guid="F41BBD62-7823-45CC-A078-A661E72456C4">
+					<File Name="robosoft3" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\robosoft3" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="robosoft4" Win64="$(var.Win64)" Guid="A65564F1-E657-4092-8EB6-D850DB8FD306">
+					<File Name="robosoft4" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\robosoft4" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="robosoft5" Win64="$(var.Win64)" Guid="B5837565-D1D0-4A6B-BE68-3A1783EB026B">
+					<File Name="robosoft5" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\robosoft5" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="robosoft6" Win64="$(var.Win64)" Guid="71279CBF-137B-43A1-ACCA-C937E27679E1">
+					<File Name="robosoft6" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\robosoft6" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="robosoft7" Win64="$(var.Win64)" Guid="5A747B75-25CA-427B-BE0C-B636989830D3">
+					<File Name="robosoft7" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\robosoft7" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="robosoft8" Win64="$(var.Win64)" Guid="3254C398-0A82-43FC-9DD8-DD11CF476CFC">
+					<File Name="robosoft8" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\robosoft8" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="sandro" Win64="$(var.Win64)" Guid="DF79FAD6-9C0F-4EBE-9B8A-7B3A7B0369A8">
+					<File Name="sandro" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\sandro" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="shelby" Win64="$(var.Win64)" Guid="F8C41B01-CEFC-40B8-8E56-48727BE20232">
+					<File Name="shelby" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\shelby" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="steph" Win64="$(var.Win64)" Guid="D81EE91E-21DD-4425-8C25-AB0FE0F4D737">
+					<File Name="steph" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\steph" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="steph2" Win64="$(var.Win64)" Guid="AFD11B04-B0C8-4D52-8464-D4487F532B62">
+					<File Name="steph2" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\steph2" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="steph3" Win64="$(var.Win64)" Guid="B732F64B-F15A-41AA-96FE-160371844433">
+					<File Name="steph3" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\steph3" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="Storm" Win64="$(var.Win64)" Guid="63AFA5B2-1158-4E16-9E00-D574C122BBD7">
+					<File Name="Storm" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\Storm" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="travis" Win64="$(var.Win64)" Guid="904D9656-02AD-486F-B7E8-27183994CC8A">
+					<File Name="travis" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\travis" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="Tweaky" Win64="$(var.Win64)" Guid="73DE9576-4C1A-4075-9F35-E063810CB54F">
+					<File Name="Tweaky" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\Tweaky" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="UniRobot" Win64="$(var.Win64)" Guid="947FF588-2124-4CE7-B120-553DC032BF0C">
+					<File Name="UniRobot" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\UniRobot" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="victor" Win64="$(var.Win64)" Guid="3E369AF5-8C5D-430D-A9D4-07D43FC4324D">
+					<File Name="victor" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\victor" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="whisper" Win64="$(var.Win64)" Guid="20D88505-11EE-448D-8F59-D14D162807A7">
+					<File Name="whisper" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\whisper" KeyPath="yes"/>
+				</Component>
+
+
+				<Component Id="whisperf" Win64="$(var.Win64)" Guid="46FBE87D-5B1F-4014-A4AC-D07E918F0FDB">
+					<File Name="whisperf" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\whisperf" KeyPath="yes"/>
+				</Component>
+				<Component Id="zac" Win64="$(var.Win64)" Guid="E31142EB-D72D-4813-BB5D-DB35B203B790">
+					<File Name="zac" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\voices\!v\zac" KeyPath="yes"/>
+				</Component>
+				</Directory>
+
+			  <Directory Id="AAV" Name="aav">
                 <Component Id="vi" Win64="$(var.Win64)" Guid="36A8D59F-65BC-41A8-90EB-5BEED8A081D5">
                   <File Name="vi" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\lang\aav\vi" KeyPath="yes"/>
                 </Component>
@@ -865,7 +1396,10 @@
                 </Component>
               </Directory>
               <Directory Id="SIT" Name="sit">
-                <Component Id="cmn" Win64="$(var.Win64)" Guid="B9F21B2A-BD29-42DF-84D6-AD1CA29799B5">
+				<Component Id="ipa" Win64="$(var.Win64)" Guid="AC89F7DE-5B7F-4DE5-B9E8-5A926ACA45ED">
+				  <File Name="ipa" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\lang\sit\ipa" KeyPath="yes"/>
+				</Component>
+				<Component Id="cmn" Win64="$(var.Win64)" Guid="B9F21B2A-BD29-42DF-84D6-AD1CA29799B5">
                   <File Name="cmn" Source="$(var.ProjectDir)..\..\..\espeak-ng-data\lang\sit\cmn" KeyPath="yes"/>
                 </Component>
                 <Component Id="my" Win64="$(var.Win64)" Guid="0927A4D6-4DA1-431C-ABFA-E9871165B3EC">
@@ -1018,7 +1552,117 @@
       <ComponentRef Id="cmn"/>
       <ComponentRef Id="cmn_dict"/>
     </ComponentGroup>
-    <ComponentGroup Id="LangCroatian">
+    <ComponentGroup Id="LangChineseIPA">
+      <ComponentRef Id="ipa"/>
+      <ComponentRef Id="ipa_dict"/>
+		<ComponentRef Id="adam"/>
+		<ComponentRef Id="Alex"/>
+		<ComponentRef Id="Alicia"/>
+		<ComponentRef Id="Andrea"/>
+		<ComponentRef Id="Andy"/>
+		<ComponentRef Id="anika"/>
+		<ComponentRef Id="anikaRobot"/>
+		<ComponentRef Id="Annie"/>
+		<ComponentRef Id="announcer"/>
+		<ComponentRef Id="antonio"/>
+		<ComponentRef Id="AnxiousAndy"/>
+		<ComponentRef Id="aunty"/>
+		<ComponentRef Id="belinda"/>
+		<ComponentRef Id="benjamin"/>
+		<ComponentRef Id="boris"/>
+		<ComponentRef Id="caleb"/>
+		<ComponentRef Id="chihiro"/>
+		<ComponentRef Id="chihiro2"/>
+		<ComponentRef Id="chihiro3"/>
+		<ComponentRef Id="croak"/>
+		<ComponentRef Id="david"/>
+		<ComponentRef Id="Demonic"/>
+		<ComponentRef Id="Denis"/>
+		<ComponentRef Id="Diogo"/>
+		<ComponentRef Id="ed"/>
+		<ComponentRef Id="edward"/>
+		<ComponentRef Id="edward2"/>
+		<ComponentRef Id="f1"/>
+		<ComponentRef Id="f2"/>
+		<ComponentRef Id="f3"/>
+		<ComponentRef Id="f4"/>
+		<ComponentRef Id="f5"/>
+		<ComponentRef Id="f7"/>
+		<ComponentRef Id="fast"/>
+		<ComponentRef Id="Gene"/>
+		<ComponentRef Id="Gene2"/>
+		<ComponentRef Id="grandma"/>
+		<ComponentRef Id="grandpa"/>
+		<ComponentRef Id="gustave"/>
+		<ComponentRef Id="Henrique"/>
+		<ComponentRef Id="Hugo"/>
+		<ComponentRef Id="iven"/>
+		<ComponentRef Id="iven2"/>
+		<ComponentRef Id="iven3"/>
+		<ComponentRef Id="iven4"/>
+		<ComponentRef Id="Jacky"/>
+		<ComponentRef Id="john"/>
+		<ComponentRef Id="kaukovalta"/>
+		<ComponentRef Id="klatt"/>
+		<ComponentRef Id="klatt2"/>
+		<ComponentRef Id="klatt3"/>
+		<ComponentRef Id="klatt4"/>
+		<ComponentRef Id="klatt5"/>
+		<ComponentRef Id="klatt6"/>
+		<ComponentRef Id="Lee"/>
+		<ComponentRef Id="linda"/>
+		<ComponentRef Id="m1"/>
+		<ComponentRef Id="m2"/>
+		<ComponentRef Id="m3"/>
+		<ComponentRef Id="m4"/>
+		<ComponentRef Id="m5"/>
+		<ComponentRef Id="m6"/>
+		<ComponentRef Id="m7"/>
+		<ComponentRef Id="m8"/>
+		<ComponentRef Id="marcelo"/>
+		<ComponentRef Id="Marco"/>
+		<ComponentRef Id="Mario"/>
+		<ComponentRef Id="max"/>
+		<ComponentRef Id="Michael"/>
+		<ComponentRef Id="michel"/>
+		<ComponentRef Id="miguel"/>
+		<ComponentRef Id="Mike"/>
+		<ComponentRef Id="Mr_serious"/>
+		<ComponentRef Id="Nguyen"/>
+		<ComponentRef Id="norbert"/>
+		<ComponentRef Id="pablo"/>
+		<ComponentRef Id="paul"/>
+		<ComponentRef Id="pedro"/>
+		<ComponentRef Id="quincy"/>
+		<ComponentRef Id="RicishayMax"/>
+		<ComponentRef Id="RicishayMax2"/>
+		<ComponentRef Id="RicishayMax3"/>
+		<ComponentRef Id="rob"/>
+		<ComponentRef Id="robert"/>
+		<ComponentRef Id="robosoft"/>
+		<ComponentRef Id="robosoft2"/>
+		<ComponentRef Id="robosoft3"/>
+		<ComponentRef Id="robosoft4"/>
+		<ComponentRef Id="robosoft5"/>
+		<ComponentRef Id="robosoft6"/>
+		<ComponentRef Id="robosoft7"/>
+		<ComponentRef Id="robosoft8"/>
+		<ComponentRef Id="sandro"/>
+		<ComponentRef Id="shelby"/>
+		<ComponentRef Id="steph"/>
+		<ComponentRef Id="steph2"/>
+		<ComponentRef Id="steph3"/>
+		<ComponentRef Id="Storm"/>
+		<ComponentRef Id="travis"/>
+		<ComponentRef Id="Tweaky"/>
+		<ComponentRef Id="UniRobot"/>
+		<ComponentRef Id="victor"/>
+		<ComponentRef Id="whisper"/>
+		<ComponentRef Id="whisperf"/>
+		<ComponentRef Id="zac"/>
+
+	</ComponentGroup>
+	<ComponentGroup Id="LangCroatian">
       <ComponentRef Id="hr"/>
       <ComponentRef Id="hr_dict"/>
     </ComponentGroup>
