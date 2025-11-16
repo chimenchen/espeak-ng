@@ -165,13 +165,13 @@ function speak() {
   console.log('  Setting pitch... done');
   console.log('  Setting voice...');
   console.log(document.getElementById('voice').value);
-  //FIXME: test only
-  // tts.set_voice(document.getElementById('voice').value);
-  tts.set_voice('ipa+m7',
+  tts.set_voice(document.getElementById('voice').value);
+  // test only
+  /* tts.set_voice('ipa+m7',
     function cb99(set_voice_result) {
       console.log(" set_voice returned " + set_voice_result);
     }
-  );
+  ); */
   console.log('  Setting voice... done');
 
   var now = Date.now();
@@ -206,15 +206,15 @@ function speak() {
         return;
       }
       if (pusher) {
-        //console.log('  Pushing chunk ' + chunkID, Date.now());
+        // console.log('  Pushing chunk ' + chunkID, Date.now());
         pusher.push(new Float32Array(samples));
         ++chunkID;
       }
       if (now) {
-        //console.log('  Latency:', Date.now() - now);
+        // console.log('  Latency:', Date.now() - now);
         now = 0;
       }
-      //console.log('  Leaving synt cb');
+      // console.log('  Leaving synt cb');
     } // end of function cb
   ); // end of tts.synthesize()
   console.log('  Calling synthesize... done');  
@@ -223,17 +223,21 @@ function speak() {
 
 function ipa() {
   
+  if (document.getElementById('voice').value === 'sit/ipa') {
+    return;
+  }
+
   console.log("Synthesizing ipa ... ");
   var ts = new Date();
   var user_text = document.getElementById('texttospeak').value;
 
  //user_text = user_text.repeat(50);
   
-  console.log('  Setting voice... (2)');
-  // FIXME: test only
-  // tts.set_voice(document.getElementById('voice').value);
-  tts.set_voice('ipa+m7');
-  console.log('  Setting voice... (2) done');
+  // console.log('  Setting voice... (2)');
+  tts.set_voice(document.getElementById('voice').value);
+  // test only
+  /* tts.set_voice('ipa+m7');
+  console.log('  Setting voice... (2) done'); */
   tts.synthesize_ipa(user_text, function(result) { 
     var te = new Date();
     document.getElementById('ipaarea').value = result.ipa;
@@ -243,7 +247,7 @@ function ipa() {
 
 function speakAndIpa() {
   speak();
-  // ipa();
+  ipa();
 }
 
 function resetPitch() {
@@ -278,7 +282,8 @@ function initializeDemo() {
             opt.value = voice.identifier;
             console.log('Adding voice: ' + opt.text);
             sel.add(opt);
-            if (voice.name === 'English (Great Britain)') {
+            // if (voice.name === 'English (Great Britain)') {
+            if (voice.name === 'Chinese (IPA)') {
               opt.id = 'default-voice';
               opt.selected = true;
             }
