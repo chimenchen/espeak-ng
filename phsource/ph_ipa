@@ -2470,13 +2470,16 @@ endphoneme
 
 phoneme mh
   vls blb nas
-  lengthmod 4
+  lengthmod 2.5
   ipa m̥
-  Vowelout f1=2  f2=1000 -500 -350  f3=-200 80 brk
-  FMT(m/m#_, 10) addWav(ipa/mh)
+
+  Vowelout f1=2 f2=1100 -450 -300 f3=-450 85 rms=30 len=10
+
+  // 虽是清音，但仅用 WAV 未达到效果。以下为模拟，听感在m、h之间
+  FMT(ipa/mh, 60) addWav(ipa/mh, 60)
 endphoneme
 
-phoneme m#
+phoneme m#  // 未用到
   vcd blb nas
   lengthmod 6
   ipa m#
@@ -2485,7 +2488,7 @@ phoneme m#
 endphoneme
 
 
-phoneme m0
+phoneme m0  // 使用系统的 m 即可
   vcd blb nas
   Vowelout f1=2 f2=1700 -300 250  f3=-100 80  rms=20 brk
   // lengthmod 4
@@ -2510,19 +2513,16 @@ endphoneme
 phoneme t
   vls alv stp
   lengthmod 2
-  // Vowelin f1=0  f2=1700 -300 300  f3=-100 80  rms=40
-  Vowelin f1=0  f2=1700 -300 300  f3=100 80
-  // Vowelout f1=0 f2=1700 -300 250  f3=-100 80  rms=20
-  // Vowelout f1=1 f2=1700 -300 250  f3=-100 80  rms=20
-  Vowelout f1=1 f2=1700 -300 250  f3=-100 80  rms=20 len=15
-  // WAV(ustop/t_unasp2, 40)
+
+  Vowelin f1=0  f2=1700 -300 300  f3=100 80 rms=30 len=15
+
+  Vowelout f1=1 f2=1700 -300 250  f3=-150 80 rms=18 len=10 colr=1.1
+
   IF nextPh(isPause2) THEN
-     // WAV(NULL)
-     //FMT(nn/nn_, 90)
-     WAV(ustop/t_unasp2, 5)
+    WAV(NULL)
+    //WAV(ustop/t_unasp2, 20)
   ENDIF
-  // WAV(ustop/t)
-  WAV(ustop/t_unasp2, 40)
+  WAV(ustop/t_unasp2, 45)
 endphoneme
 
 phoneme th
@@ -2559,8 +2559,10 @@ endphoneme
 
 phoneme N
   vcd vel nas
-  Vowelout f1=2 f2=1900 0 300  f3=400 80  len=50 rms=15 brk
-  lengthmod 7
+  ipa ŋ
+  lengthmod 6
+
+  Vowelout f1=2 f2=1900 0 250 f3=0 80 len=15 rms=25 colr=1.0
 
   NextVowelStarts
     VowelStart(nn/nn@)
@@ -2571,11 +2573,20 @@ phoneme N
     VowelStart(nn/nnu)
   EndSwitch
 
-  IF prevPh(isPause) THEN
-    FMT(nn/_nn)
+  IF prevPh(#i) THEN
+    VowelEnding(nn/inn, -20)
+  ENDIF
+
+  IF prevPh(isNotVowel) AND nextPhW(isNotVowel) THEN
+    lengthmod 1.5
+    FMT(nn/nn_, 60)
+  ELIF prevPh(isPause) THEN
+    FMT(nn/_nn, 70)
   ELIF nextPh(isNotVowel) THEN
-    length 120
-    FMT(nn/nn2_, 50)
+    lengthmod 2
+    FMT(nn/nn2_, 65)
+  ELSE
+    FMT(nn/nn_, 65)
   ENDIF
 endphoneme
 
@@ -2585,10 +2596,11 @@ phoneme nh
   lengthmod 6
   Vowelout f1=2 f2=1700 -300 250  f3=-100 80  rms=20 brk
 
+  // 模拟
   FMT(n/n#_, 30) addWav(ipa/nh)
 endphoneme
 
-phoneme n#
+phoneme n#  // 未用到
   vcd alv nas
   lengthmod 6
   ipa n#
@@ -2606,7 +2618,7 @@ phoneme n#
   FMT(n/n#_)
 endphoneme
 
-phoneme n!
+phoneme n!  // 未用到
   vcd alv nas
   Vowelout f1=2 f2=1700 -300 250  f3=-100 80  rms=20 brk
   lengthmod 2
@@ -2626,7 +2638,7 @@ phoneme n!
   FMT(n/_n)
 endphoneme
 
-phoneme n"  // ipa ɴ
+phoneme n"  // ipa ɴ 
   vcd uvl nas
   ChangePhoneme(N)  // FIXME
 endphoneme
@@ -2636,9 +2648,9 @@ phoneme t.
   lengthmod 2
   ipa ʈ
   voicingswitch d.
-  Vowelin f1=0  f2=1800 -300 300  f3=-400 80
+  Vowelin  f1=0 f2=1800 -300 300  f3=-400 80
   Vowelout f1=0 f2=1800 -300 250  f3=-400 80  rms=20 colr=2
-  WAV(ustop/t_short)
+  WAV(ipa/t_rfx, 50)
 endphoneme
 
 phoneme t.h
@@ -2647,7 +2659,7 @@ phoneme t.h
   ipa ʈh
   Vowelin f1=0  f2=1700 -300 300  f3=-100 80
   Vowelout f1=0 f2=1700 -300 250  f3=-100 80  rms=20
-  WAV(ustop/th_rfx, 40)  // FIXME: placeholder
+  WAV(ipa/th_rfx, 80)
 endphoneme
 
 phoneme d.
@@ -2663,7 +2675,7 @@ phoneme d.
     FMT(d/dr) addWav(x/d)
   ENDIF
 
-  FMT(d/d) addWav(x/d, 50)
+  FMT(d/dr) addWav(x/d, 50)
 endphoneme
 
 phoneme n.
@@ -2722,7 +2734,7 @@ phoneme n^
   FMT(n^/n^_) addWav(ufric/s_pzd, 40)
 endphoneme
 
-phoneme l'  // FIXME: placeholder
+phoneme l'
   liquid
   lengthmod 2
 
@@ -2731,6 +2743,7 @@ phoneme l'  // FIXME: placeholder
   IF nextPhW(#i) THEN
     VowelStart(l/li)
   ENDIF
+  // 模拟
   FMT(l/_l) addWav(ustop/ts, 140)
 endphoneme
 
@@ -2786,6 +2799,24 @@ phoneme l
     VowelStart(l/li)
   ENDIF
   FMT(l/_l)
+endphoneme
+
+phoneme L
+  liquid lat pal
+
+  ipa ʎ
+  lengthmod 2
+
+  Vowelout f1=380 f2=1700 -130 220 f3=2900 110 rms=35 len=15
+  Vowelin  f1=320 f2=2000 -90  260 f3=3100 85  rms=30 len=18
+
+  FMT(ipa/lj, 85)
+
+  // 声母条件：后元时弱融合（如 ʎa）
+  IF nextPh(isVowel) THEN
+    lengthmod 1.1
+  ENDIF
+
 endphoneme
 
 phoneme ts
@@ -2849,7 +2880,7 @@ phoneme ts.h
   WAV(ustop/ts_rfx)
 endphoneme
 
-phoneme dz.  // FIXME: bellow is dZ;
+phoneme dz.  // FIXME: bellow is dZ; (dʑ)
   vcd alp sib afr
   voicingswitch ts.
   ipa dʐ
@@ -2907,11 +2938,12 @@ phoneme z.
   FMT(voc/zh) addWav(vocw/zh_rfx)
 endphoneme
 
-phoneme tS;  // FIXME: wrong sound?
+phoneme tS;
   vls alp sib afr
   ipa tɕ
   lengthmod 2
   Vowelin f1=0  f2=2700 400 600  f3=300 80
+  // 实不送气
   WAV(ustop/tsh_pzd_unasp)
 endphoneme
 
@@ -3034,12 +3066,11 @@ phoneme ng
   FMT(nn/nn2_, 250) addWav(vowel/u#_2, 100)
 endphoneme
 
-phoneme ?'  // FIXME
+phoneme ?'  // FIXME 郑张上古拟音
   vls glt stp
   ChangePhoneme(?)
 endphoneme
 
-// FIXME: keep
 phoneme ?
   vls glt stp
   lengthmod 3
@@ -3097,11 +3128,13 @@ phoneme h
   WAV(h/h_, 70)  // no vowel following
 endphoneme
 
-phoneme h.  // FIXME h<?>
+phoneme h.
   vcd glt apr
-  lengthmod 3
+  lengthmod 6
   ipa ɦ
-  FMT(h/h_)  addWav(x/g2, 150)  // placeholder
+
+  FMT(ipa/h_voiced, 30) addWav(ufric/xx, 40)
+  // FMT(voc/Q_ulv, 20) addWav(u/h_, 50)
 endphoneme
 
 // phoneme X
@@ -3120,18 +3153,15 @@ endphoneme
 
 phoneme q
   ipa q
-  // import_phoneme base1/q        // FIXME
   vls uvl stp
   lengthmod 2
   Vowelin f1=1  f2=1700 0 200  f3=-300 80 f4
   Vowelout f1=1 f2=1700 0 200  f3=-300 80 f4 rms=30
   WAV(ustop/q, 12)
-  // WAV(ipa/q)
 endphoneme
 
 phoneme qh
   ipa qʰ
-  // import_phoneme  consonants/kh  //FIXME
   vls uvl stp
   lengthmod 2
   Vowelin f1=1  f2=1700 0 200  f3=-300 80 f4
@@ -3142,11 +3172,10 @@ endphoneme
 phoneme G
   vcd uvl stp
   ipa ɢ
-  ChangePhoneme(g)  // FIXME
-  // lengthmod 5
-  // Vowelin f1=2  f2=2300 200 300  f3=-300 80
-  // Vowelout f1=2  f2=2300 250 300  f3=-300 80 brk
-  // FMT(g/g) addWav(ustop/q, 40)
+  lengthmod 6
+  Vowelin  f1=2   f2=900 -200 250  f3=2200 110 rms=28 len=12
+  Vowelout f1=1.8 f2=950 -150 280  f3=2300 100 rms=25 len=15
+  FMT(ipa/g_uvular, 100) addWav(ustop/q, 40)
 endphoneme
 
 phoneme R
@@ -3327,7 +3356,7 @@ phoneme kk  //  /ㄲ/
   length 100
 endphoneme
 
-phoneme x  // FIXME
+phoneme x
   vls vel frc
   ipa x
   lengthmod 3
@@ -3384,12 +3413,12 @@ endphoneme
 
 phoneme r
   liquid trl
-  lengthmod 6
+  lengthmod 5
   ipa r
-  Vowelin  f1=0  f2=1500 -300 300  f3=-200 80 len=30 rms=60 brk
-  Vowelout f1=2  f2=1500 -300 300  f3=-200 80
-  // FMT(r3/r_trill_short) addWav(r3/r_trill.wav, 50)
-  FMT(r3/r_ru2) addWav(r3/r_ru, 50)
+  Vowelin  f1=0  f2=1500 -300 300  f3=-200 80 len=30 rms=32 brk
+  Vowelout f1=1  f2=1500 -300 300  f3=-200 80 rms=22 len=30
+  FMT(r3/r_trill_short, 70) addWav(r3/r_trill.wav, 50)
+  // FMT(r3/r_ru2) addWav(r3/r_ru, 40)
 endphoneme
 
 phoneme r2
@@ -3773,7 +3802,6 @@ phoneme r+O
   FMT(vowel/oo_2)
 endphoneme
 
-// FIXME: keep
 phoneme @
   vwl  starttype #@  endtype #@
   ipa ə
@@ -3828,7 +3856,10 @@ phoneme i"
   vwl starttype #i endtype #i
   ipa ɨ
   CALL vowel_length_i  // 90, , 180
-  FMT(vowel/i#_4, 60)
+  IF nextPh(isVowel) THEN
+    Vowelout f1=1 f2=1700 -100 200  f3=-100 80  rms=20 len=50
+  ENDIF
+  FMT(vowel/i#_4, 80)
 endphoneme
 
 phoneme y"
@@ -4138,8 +4169,14 @@ phoneme j"
   vwl starttype #i endtype #i
   ipa j̈
   unstressed
-  length 70
-  FMT(vowel/i#_4)  //FIXME: placeholder
+  lengthmod 0.8  // 基线短促（*0.8，原 70 → ~56ms），介音快速滑过
+  //length 70
+
+  Vowelout f1=280 f2=2300 -150 120 f3=2800 90 rms=20 len=8
+  Vowelin  f1=220 f2=2600 -80  180 f3=3400 70 rms=28 len=12
+
+  // 介音专属逻辑：默认滑 + 前鼻/卷微调（无韵核分支）
+  FMT(ipa/j_medial, 75)
 endphoneme
 
 phoneme w
@@ -4230,18 +4267,16 @@ phoneme r.    //   retroflex
   Vowelout f1=3 f2=1400 -400 300  f3=-400 80 rms=35 len=15 colr=2
   Vowelin f1=2  f2=1400 -400 300  f3=-400 80
 
-  // IF prevPhW(isVowel) THEN
-  // ELSE
-  //   InsertPhoneme(·)
-  // ENDIF
-
-  IF prevPhW(isNotVowel) THEN
-    // FMT(ipa/rfx_apr1)
-    FMT(r3/@tap_rfx, 100) addWav(vocw/zh_rfx, 20)
-    // FMT(r3/@tap_rfx, 60)
-    // FMT(r3/r_trill,80) addWav(r3/r_trill.wav, 50)
+  IF prevPh(isPause) THEN
+    // 声母
+    FMT(ipa/rfx_initial, 110) addWav(vocw/zh_rfx, 50)
+    lengthmod 2.5
   ELSE
-    FMT(r3/@tap_rfx, 110) addWav(vocw/zh_rfx, 30)
+    // 介音
+    FMT(ipa/rfx_medial, 90)
+    IF nextPh(j) OR nextPh(w) THEN
+      lengthmod 2.0
+    ENDIF
   ENDIF
 endphoneme
 
