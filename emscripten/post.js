@@ -89,7 +89,15 @@ eSpeakNGWorker.prototype.synthesize = function (aText, aCallback) {
   }
 
   var fp = addFunction(cb);
-  this.synth_(aText, fp);
+
+  // this.synth_(aText, fp);
+
+  var lines = aText.split('\n');
+  for (var j = 0; j < lines.length; j++) {
+    var line = lines[j];
+    this.synth_(line, fp);
+  }
+
   removeFunction(fp);
 };
 
