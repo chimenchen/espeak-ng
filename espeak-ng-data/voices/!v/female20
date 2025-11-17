@@ -1,0 +1,20 @@
+# 故事女声
+name story_female
+language variant
+gender female 20
+pitch 210 270
+
+formant 0 119 110 100
+formant 1 126 130 100
+formant 2 119 100 100
+formant 3 116 102 100
+formant 4 113 105 100
+formant 5 111 106  98
+formant 6 108 106  97
+formant 7 105 106  97
+
+flutter 0
+roughness 0
+voicing 110
+
+tone 600 205 1200 26 2000 26

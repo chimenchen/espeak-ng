@@ -1,0 +1,23 @@
+name male70
+language variant
+gender male 70
+pitch 70 110
+
+# 声带松弛，共振峰略分散
+formant 0  97 120 110
+formant 1  98 110  95
+formant 2 100 110  95
+formant 3 100 105  95
+formant 4  95 110  90
+formant 5  93 110  85
+formant 6  20  20  20
+formant 7  20  20  20
+formant 8  20  20  20
+
+
+roughness 3
+flutter 8
+voicing 98
+
+# 音调变化减少，更平缓
+tone 600 140 1200 20 2000 20

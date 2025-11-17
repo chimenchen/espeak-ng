@@ -1,0 +1,23 @@
+# 女声唱歌
+name singing_female_lyric
+language variant
+gender female 25
+pitch 195 260
+
+# 女声标准配置
+formant 0 119 105 105
+formant 1 125 110 105
+formant 2 118 105 100
+formant 3 111 105 100
+formant 4 109 100 100
+formant 5 107 100 100
+formant 6 106  95 100
+formant 7 105  95 100
+
+flutter 0
+roughness 0
+voicing 112
+
+# speed 165
+
+tone 600 190 1200 23 2000 23

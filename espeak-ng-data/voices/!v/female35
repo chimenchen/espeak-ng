@@ -1,0 +1,23 @@
+# 古风女声
+name poem_female_elegant
+language variant
+gender female 35
+pitch 180 230
+
+formant 0 115 102 100
+formant 1 118 100 100
+formant 2 116 102 100
+formant 3 110 100 100
+formant 4 110 105 100
+formant 5 106  95 100
+
+# 最小化抖动，保持优雅
+flutter 1
+roughness 0
+voicing 108
+
+# 略慢的语速
+# speed 155
+
+# 音调柔和变化
+tone 600 200 1200 30 2000 30

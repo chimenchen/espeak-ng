@@ -1,0 +1,20 @@
+name girl10
+language en
+gender female 10
+pitch 240 330
+
+# 儿童+女性，共振峰上移
+formant 0 140 90 100
+formant 1 150 85 100
+formant 2 135 90 100
+formant 3 135 85 100
+formant 4 120 85 100
+formant 5 120 85 100
+
+# 清脆明亮
+roughness 0
+voicing 108
+# speed 185
+
+# 活泼的音调
+tone 600 210 1200 26 2000 26

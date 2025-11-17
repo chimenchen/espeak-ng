@@ -1,0 +1,22 @@
+# 温柔女声
+name narrator_female_soft
+language variant
+gender female 30
+pitch 190 240
+
+formant 0 117 105 100
+formant 1 120 102 100
+formant 2 118 102 100
+formant 3 115 100 100
+formant 4 107  95 100
+formant 5 105  85 100
+formant 6 105  85 100
+formant 7 105  85 100
+
+# 清晰柔和
+roughness 0
+voicing 102
+# speed 170
+
+# 适度音调变化
+tone 600 165 1200 22 2000 22

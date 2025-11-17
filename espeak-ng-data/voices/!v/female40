@@ -1,0 +1,21 @@
+name narrator_female_standard
+language variant
+gender female 40
+pitch 195 235
+
+# 女声标准配置
+formant 0 115 98 100
+formant 1 115 98 100
+formant 2 115 98 100
+formant 3 110 98 100
+formant 4 108 98 100
+formant 5 106 98 100
+
+# 专业播音特征：稳定、清晰
+flutter 1
+roughness 0
+voicing 106
+
+# speed 165
+
+tone 600 175 1200 23 2000 23

@@ -1,0 +1,20 @@
+name boy10
+language variant
+gender male 10
+pitch 225 300
+
+formant 0 122  88 102
+formant 1 139  86 102
+formant 2 134  87 100
+formant 3 126  88 100
+formant 4 118  87 100
+formant 5 114  86 100
+formant 6 114  86 100
+formant 7 114  86 100
+formant 8 114  86 100
+
+roughness 0
+voicing 112
+
+# 儿童说话略快，音调变化大
+tone 600 230 1200 32 2000 32

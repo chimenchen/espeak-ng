@@ -1,0 +1,18 @@
+# 男声唱歌
+name male20
+language variant
+gender male 20
+pitch 90 170
+
+formant 0 100  95 110
+formant 1 100  95 110
+formant 2 100  95 110
+formant 3 100  95 110
+formant 4 100  95 105
+formant 5 100  95 105
+
+flutter 0
+roughness 1
+voicing 110
+
+tone 600 170 1200 22 2000 22

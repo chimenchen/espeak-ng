@@ -1,0 +1,17 @@
+name male45
+language variant
+gender male 45
+pitch  80 120
+
+formant 0  95 120 100
+formant 1  98  90  80
+formant 2 100  70  90
+formant 3 100  60  90
+formant 4 100  60  90
+formant 5  75  50  90
+formant 6  90  50 100
+formant 7 100  50 100
+formant 8 100  50 100
+
+voicing 140
+

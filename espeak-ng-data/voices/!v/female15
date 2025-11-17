@@ -1,0 +1,20 @@
+language variant
+name female15
+gender female
+pitch 185 260
+
+formant 0 115 115 110
+formant 1 130 160 120
+formant 2 150 110 150
+formant 3 135 150 100
+formant 4 120 120 120
+formant 5 120 120 120
+formant 6 100 110 105
+formant 7 100 110 160
+formant 8 200 120 100
+
+flutter 0
+roughness 0
+voicing 105
+
+tone 600 205 1200 26 2000 26

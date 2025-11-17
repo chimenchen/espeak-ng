@@ -1,0 +1,17 @@
+name male40
+language variant
+gender male 40
+pitch 85 115
+
+formant 0  95 110 105
+formant 1  98 105 105
+formant 2 100 105 100
+formant 3 100 100 100
+formant 4  97 100  98
+formant 5  95 100  96
+
+flutter 1
+roughness 1
+voicing 105
+
+tone 600 200 1200 25 2000 25

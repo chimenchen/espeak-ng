@@ -1,0 +1,20 @@
+name documentary_male
+language variant
+gender male 50
+pitch 65 105
+
+formant 0  95 125 110
+formant 1  96  95  90
+formant 2  98  80  90
+formant 3  98  70  90
+formant 4  98  70  90
+formant 5  80  60  90
+formant 6  96  60 100
+formant 7  98  50 100
+formant 8  98  55 100
+
+// roughness 2
+// flutter 2
+voicing 110
+
+// tone 600 160 1200 22 2000 22
