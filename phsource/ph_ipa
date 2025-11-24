@@ -2163,6 +2163,18 @@ phoneme 13
   Tone(36, 71, envelope/p_rise, NULL)
 endphoneme
 
+phoneme 14
+  stress
+  // length 80
+  Tone(36, 81, envelope/p_rise, NULL)
+endphoneme
+
+phoneme 15
+  stress
+  // length 80
+  Tone(36, 103, envelope/p_rise, NULL)
+endphoneme
+
 phoneme 2
   stress
   // length 60
@@ -2245,6 +2257,12 @@ phoneme 24
   stress
   // length 80
   Tone(52, 81, envelope/p_rise, NULL)
+endphoneme
+
+phoneme 25
+  stress
+  // length 80
+  Tone(52, 103, envelope/p_rise, NULL)
 endphoneme
 
 phoneme 3
@@ -2339,6 +2357,18 @@ phoneme 423
   Tone(81, 52, envelope/p_524, envelope/vi_5amp)
 endphoneme
 
+phoneme 425
+  stress
+  // length 80
+  Tone(103, 52, envelope/p_425, envelope/vi_5amp)
+endphoneme
+
+phoneme 43
+  stress
+  // length 80
+  Tone(81, 71, envelope/p_fall, NULL)
+endphoneme
+
 phoneme 44
   stress
   // length 80
@@ -2405,10 +2435,16 @@ phoneme 524
 endphoneme
 
 phoneme 53
-  ipa 53
-  stress
+  ipa 54
   // length 80
   Tone(103, 71, envelope/p_fall, NULL)
+endphoneme
+
+phoneme 54
+  ipa 54
+  stress
+  // length 80
+  Tone(103, 81, envelope/p_fall, NULL)
 endphoneme
 
 phoneme 55
