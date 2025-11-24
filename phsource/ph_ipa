@@ -2435,7 +2435,8 @@ phoneme 524
 endphoneme
 
 phoneme 53
-  ipa 54
+  ipa 53
+  stress
   // length 80
   Tone(103, 71, envelope/p_fall, NULL)
 endphoneme
